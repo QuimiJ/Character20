@@ -1,4 +1,4 @@
-package ClasesCriatura;
+package clasesCriatura;
 
 public class Hechizo {
 

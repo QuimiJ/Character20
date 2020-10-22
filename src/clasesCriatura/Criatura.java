@@ -1,4 +1,4 @@
-package ClasesCriatura;
+package clasesCriatura;
 
 public class Criatura {
 	
@@ -6,15 +6,15 @@ public class Criatura {
 	private int life;
 	private int AC; //Armor Class
 	private int speed;
-	private int str;
-	private int dex;
-	private int con;
-	private int intel;
-	private int wis;
-	private int cha;	
+	private Stat str;
+	private Stat dex;
+	private Stat con;
+	private Stat intel;
+	private Stat wis;
+	private Stat cha;	
 	
-	public Criatura(String name, int life, int aC, int speed, int str, int dex, int con,
-			int intel, int wis, int cha) {
+	public Criatura(String name, int life, int aC, int speed, Stat str, Stat dex, Stat con,
+			Stat intel, Stat wis, Stat cha) {
 		super();
 		this.name = name;
 		this.life = life;
@@ -34,12 +34,12 @@ public class Criatura {
 		this.life = 0;
 		this.AC = 0;
 		this.speed = 0;
-		this.str = 0;
-		this.dex = 0;
-		this.con = 0;
-		this.intel = 0;
-		this.wis = 0;
-		this.cha = 0;
+		this.str = new Stat();
+		this.dex = new Stat();
+		this.con = new Stat();
+		this.intel = new Stat();
+		this.wis = new Stat();
+		this.cha = new Stat();
 	}
 
 	public String getName() {
@@ -74,51 +74,51 @@ public class Criatura {
 		this.speed = speed;
 	}
 
-	public int getStr() {
+	public Stat getStr() {
 		return str;
 	}
 
-	public void setStr(int str) {
+	public void setStr(Stat str) {
 		this.str = str;
 	}
 
-	public int getDex() {
+	public Stat getDex() {
 		return dex;
 	}
 
-	public void setDex(int dex) {
+	public void setDex(Stat dex) {
 		this.dex = dex;
 	}
 
-	public int getCon() {
+	public Stat getCon() {
 		return con;
 	}
 
-	public void setCon(int con) {
+	public void setCon(Stat con) {
 		this.con = con;
 	}
 
-	public int getIntel() {
+	public Stat getIntel() {
 		return intel;
 	}
 
-	public void setIntel(int intel) {
+	public void setIntel(Stat intel) {
 		this.intel = intel;
 	}
 
-	public int getWis() {
+	public Stat getWis() {
 		return wis;
 	}
 
-	public void setWis(int wis) {
+	public void setWis(Stat wis) {
 		this.wis = wis;
 	}
 
-	public int getCha() {
+	public Stat getCha() {
 		return cha;
 	}
 
-	public void setCha(int cha) {
+	public void setCha(Stat cha) {
 		this.cha = cha;
 	}
 	
