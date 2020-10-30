@@ -55,7 +55,7 @@ public class Window {
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{151, 163, 179, 175, 163, 158, 0};
 		gbl_panel.rowHeights = new int[]{24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
@@ -142,6 +142,14 @@ public class Window {
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		JPanel panel_1 = new JPanel();
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.anchor = GridBagConstraints.NORTHWEST;
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_1.gridx = 1;
+		gbc_panel_1.gridy = 5;
+		panel.add(panel_1, gbc_panel_1);
+		
 		JPanel panel_14 = new JPanel();
 		GridBagConstraints gbc_panel_14 = new GridBagConstraints();
 		gbc_panel_14.insets = new Insets(0, 0, 5, 5);
@@ -178,6 +186,7 @@ public class Window {
 		gbc_panel_19.gridy = 7;
 		panel.add(panel_19, gbc_panel_19);
 		
+		//ATENCION: como esto es muy largo se estropean las demás label
 		JLabel lblNewLabel = new JLabel("<html>Acrobacias (Des)<br>Atletismo (Fue)<br>C. Arcano (Int)<br>Enga\u00F1o (Car)<br>Historia (Int)<br>Interpretacion (Car)<br>Intimidacion (Car)<br>Investigacion (Int)<br>IJuego de manos (Des)<br>IMedicina (Sab)<br>Naturaleza (Int)<br>Percepcion (Sab)<br>Perspicacia (Sab)<br>Persuasion (Car)<br>Religion (Int)<br>Sigilo (Des)</html>");
 		panel_19.add(lblNewLabel);
 		
