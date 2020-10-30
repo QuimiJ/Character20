@@ -55,7 +55,7 @@ public class Window {
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{151, 163, 179, 175, 163, 158, 0};
 		gbl_panel.rowHeights = new int[]{24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
@@ -142,14 +142,6 @@ public class Window {
 		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel panel_1 = new JPanel();
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 5;
-		panel.add(panel_1, gbc_panel_1);
-		
 		JPanel panel_14 = new JPanel();
 		GridBagConstraints gbc_panel_14 = new GridBagConstraints();
 		gbc_panel_14.insets = new Insets(0, 0, 5, 5);
@@ -177,6 +169,17 @@ public class Window {
 		
 		JLabel lblNewLabel_8 = new JLabel(pruebaCon.modToString());
 		panel_9.add(lblNewLabel_8);
+		
+		JPanel panel_19 = new JPanel();
+		GridBagConstraints gbc_panel_19 = new GridBagConstraints();
+		gbc_panel_19.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_19.fill = GridBagConstraints.BOTH;
+		gbc_panel_19.gridx = 1;
+		gbc_panel_19.gridy = 7;
+		panel.add(panel_19, gbc_panel_19);
+		
+		JLabel lblNewLabel = new JLabel("<html>Acrobacias (Des)<br>Atletismo (Fue)<br>C. Arcano (Int)<br>Enga\u00F1o (Car)<br>Historia (Int)<br>Interpretacion (Car)<br>Intimidacion (Car)<br>Investigacion (Int)<br>IJuego de manos (Des)<br>IMedicina (Sab)<br>Naturaleza (Int)<br>Percepcion (Sab)<br>Perspicacia (Sab)<br>Persuasion (Car)<br>Religion (Int)<br>Sigilo (Des)</html>");
+		panel_19.add(lblNewLabel);
 		
 		JLabel lblNewLabel_4 = new JLabel("Constitucion");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
