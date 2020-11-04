@@ -21,7 +21,7 @@ public class Hechizo {
 		return level;
 	}
 	public void setLevel(int level) {
-		if (this.level == 1 || this.level == 2 || this.level == 3 || this.level == 4 || this.level == 5 || this.level == 6 || this.level == 7 || this.level == 8 || this.level == 9) { 
+		if (this.level >= 1 && this.level <=9 ) { 
 		this.level = level;
 		}
 	}

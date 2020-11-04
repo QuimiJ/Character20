@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
@@ -47,10 +48,10 @@ public class Window {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1350, 900);
+		frame.setBounds(100, 100, 1600, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel panel = new JPanel();
+		/*JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{151, 163, 179, 175, 163, 158, 0};
@@ -65,8 +66,71 @@ public class Window {
 		gbc_panel_7.fill = GridBagConstraints.BOTH;
 		gbc_panel_7.gridx = 0;
 		gbc_panel_7.gridy = 0;
-		panel.add(panel_7, gbc_panel_7);
+		panel.add(panel_7, gbc_panel_7);*/
 		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(4, 1));
+		frame.add(panel);
+		
+		JPanel panel11 = new JPanel(); 
+		JPanel panel12 = new JPanel();
+		JPanel panel13 = new JPanel();
+		JPanel panel14 = new JPanel();
+		panel11.setLayout(new GridLayout(1, 6));
+		panel12.setLayout(new GridLayout(1, 2));
+		panel13.setLayout(new GridLayout(1, 2));
+		panel14.setLayout(new GridLayout(1, 2));
+		panel.add(panel11);
+		panel.add(panel12);
+		panel.add(panel13);	
+		panel.add(panel14);
+		
+		JPanel panel111 = new JPanel();
+		JPanel panel112 = new JPanel();
+		JPanel panel113 = new JPanel();
+		JPanel panel114 = new JPanel();
+		JPanel panel115 = new JPanel();
+		JPanel panel116 = new JPanel();
+		panel111.setLayout(new GridLayout(1,3));
+		panel112.setLayout(new GridLayout(1,3));
+		panel113.setLayout(new GridLayout(1,3));
+		panel114.setLayout(new GridLayout(1,3));
+		panel115.setLayout(new GridLayout(1,3));
+		panel116.setLayout(new GridLayout(1,3));
+		panel11.add(panel111);
+		panel11.add(panel112);
+		panel11.add(panel113);
+		panel11.add(panel114);
+		panel11.add(panel115);
+		panel11.add(panel116);
+		
+		
+		JPanel panel1111 = new JPanel();
+		JPanel panel1121 = new JPanel();
+		JPanel panel1131 = new JPanel();
+		JPanel panel1141 = new JPanel();
+		JPanel panel1151 = new JPanel();
+		JPanel panel1161 = new JPanel();
+		panel1111.setLayout(new GridLayout(2,1));
+		panel1121.setLayout(new GridLayout(2,1));
+		panel1131.setLayout(new GridLayout(2,1));
+		panel1141.setLayout(new GridLayout(2,1));
+		panel1151.setLayout(new GridLayout(2,1));
+		panel1161.setLayout(new GridLayout(2,1));
+		panel111.add(panel1111);
+		
+		JPanel panel1113 = new JPanel();
+		JPanel panel1123 = new JPanel();
+		JPanel panel1133 = new JPanel();
+		JPanel panel1143 = new JPanel();
+		JPanel panel1153 = new JPanel();
+		JPanel panel1163 = new JPanel();
+		panel1113.setLayout(new GridLayout(2,1));
+		panel1123.setLayout(new GridLayout(2,1));
+		panel1133.setLayout(new GridLayout(2,1));
+		panel1143.setLayout(new GridLayout(2,1));
+		panel1153.setLayout(new GridLayout(2,1));
+		panel1163.setLayout(new GridLayout(2,1));
 		
 		//IMPORTANTE
 		//Estadisticas de prueba hasta que se implementen los personajes en los ficheros de texto
@@ -85,17 +149,17 @@ public class Window {
 		
 		
 		JLabel lFuerzaScore = new JLabel(pruebaStr.scoreToString());
-		panel_7.add(lFuerzaScore);
+		panel111.add(lFuerzaScore);
 		
 		JLabel lFuerzaMod = new JLabel(pruebaStr.modToString());
-		panel_7.add(lFuerzaMod);
+		panel111.add(lFuerzaMod);
 		
 		JLabel lFuerza = new JLabel("Fuerza");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 1;
-		panel.add(lFuerza, gbc_lblNewLabel);
+		panel111.add(lFuerza, gbc_lblNewLabel);
 		
 		JPanel panel_13 = new JPanel();
 		GridBagConstraints gbc_panel_13 = new GridBagConstraints();
