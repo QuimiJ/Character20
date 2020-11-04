@@ -37,6 +37,7 @@ public class Personaje extends Criatura {
 	private int iniciativa = dex.getModifier();
     Arma[] armas;
     Clase clasepj;
+    Hechizo[] hechizos;
     
     //Pertenencias
     private int piezasCobre;
@@ -223,6 +224,12 @@ public class Personaje extends Criatura {
 	public void setClasepj(Clase clase) {
 		this.clasepj = clasepj;
 	}
+	public Hechizo[] gethechizos() {
+		return hechizos;
+	}
+	public void setHechizos(Hechizo[] hechizos) {
+		this.hechizos = hechizos;
+	}
 	public int getPiezasCobre() {
 		return piezasCobre;
 	}
@@ -304,9 +311,9 @@ public class Personaje extends Criatura {
 			int tratoAnimales, int arcana, int atletismo, int engaño, int historia, int perspicacia, int intimidacion,
 			int investigacion, int medicina, int naturaleza, int percepcion, int interpretacion, int persuasion,
 			int religion, int juegoManos, int sigilo, int supervivencia, int bonoCompetencia, int iniciativa,
-			Arma[] armas,Clase clasepj, int piezasCobre, int piezasPlata, int piezasOro, int piezasElectrum, int piezasPlatino,
-			String equipo, String tesoro, String idiomas, String rasgosPersonalidad, String ideales, String vinculos,
-			String defectos) {
+			Arma[] armas, Clase clasepj, Hechizo[] hechizos, int piezasCobre, int piezasPlata, int piezasOro,
+			int piezasElectrum, int piezasPlatino, String equipo, String tesoro, String idiomas,
+			String rasgosPersonalidad, String ideales, String vinculos, String defectos) {
 		super(name, life, aC, speed, str, dex, con, intel, wis, cha);
 		this.strsave = strsave;
 		this.dexsave = dexsave;
@@ -335,7 +342,8 @@ public class Personaje extends Criatura {
 		this.bonoCompetencia = bonoCompetencia;
 		this.iniciativa = iniciativa;
 		this.armas = armas;
-		this.clase = clasepj;
+		this.clasepj = clasepj;
+		this.hechizos = hechizos;
 		this.piezasCobre = piezasCobre;
 		this.piezasPlata = piezasPlata;
 		this.piezasOro = piezasOro;
@@ -380,6 +388,7 @@ public class Personaje extends Criatura {
 		this.iniciativa = 0;
 		this.armas = null;
 		this.clasepj = null;
+		this.hechizos = null;
 		this.piezasCobre = 0;
 		this.piezasPlata = 0;
 		this.piezasOro = 0;
@@ -393,6 +402,7 @@ public class Personaje extends Criatura {
 		this.vinculos = null;
 		this.defectos = null;
 	}
+	
 	public String toString() {
 		return "Personaje [strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave + ", intsave="
 				+ intsave + ", wissave=" + wissave + ", chasave=" + chasave + ", acrobacias=" + acrobacias
@@ -402,17 +412,13 @@ public class Personaje extends Criatura {
 				+ ", percepcion=" + percepcion + ", interpretacion=" + interpretacion + ", persuasion=" + persuasion
 				+ ", religion=" + religion + ", juegoManos=" + juegoManos + ", sigilo=" + sigilo + ", supervivencia="
 				+ supervivencia + ", bonoCompetencia=" + bonoCompetencia + ", iniciativa=" + iniciativa + ", armas="
-				+ (armas != null ? Arrays.asList(armas) : null) + ", clasepj=" + clasepj + ", piezasCobre="
-				+ piezasCobre + ", piezasPlata=" + piezasPlata + ", piezasOro=" + piezasOro + ", piezasElectrum="
-				+ piezasElectrum + ", piezasPlatino=" + piezasPlatino + ", equipo=" + equipo + ", tesoro=" + tesoro
-				+ ", idiomas=" + idiomas + ", rasgosPersonalidad=" + rasgosPersonalidad + ", ideales=" + ideales
-				+ ", vinculos=" + vinculos + ", defectos=" + defectos + "]";
+				+ (armas != null ? Arrays.asList(armas) : null) + ", clasepj=" + clasepj + ", hechizos="
+				+ (hechizos != null ? Arrays.asList(hechizos) : null) + ", piezasCobre=" + piezasCobre
+				+ ", piezasPlata=" + piezasPlata + ", piezasOro=" + piezasOro + ", piezasElectrum=" + piezasElectrum
+				+ ", piezasPlatino=" + piezasPlatino + ", equipo=" + equipo + ", tesoro=" + tesoro + ", idiomas="
+				+ idiomas + ", rasgosPersonalidad=" + rasgosPersonalidad + ", ideales=" + ideales + ", vinculos="
+				+ vinculos + ", defectos=" + defectos + "]";
 	}
-	
-	
-	}
-    
-    
     
 	
 	 
