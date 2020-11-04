@@ -118,6 +118,7 @@ public class Window {
 		panel1151.setLayout(new GridLayout(2,1));
 		panel1161.setLayout(new GridLayout(2,1));
 		panel111.add(panel1111);
+		panel112.add(panel1121);
 		
 		JPanel panel1113 = new JPanel();
 		JPanel panel1123 = new JPanel();
