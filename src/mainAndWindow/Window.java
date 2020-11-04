@@ -149,10 +149,10 @@ public class Window {
 		
 		
 		JLabel lFuerzaScore = new JLabel(pruebaStr.scoreToString());
-		panel111.add(lFuerzaScore);
+		panel1111.add(lFuerzaScore);
 		
 		JLabel lFuerzaMod = new JLabel(pruebaStr.modToString());
-		panel111.add(lFuerzaMod);
+		panel1111.add(lFuerzaMod);
 		
 		JLabel lFuerza = new JLabel("Fuerza");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
