@@ -132,7 +132,7 @@ public class Window {
 		lStrSave.setBounds(180, 30, 65, 45);
 		panel.add(lStrSave);
 		
-		JLabel lSaves = new JLabel("Saves");
+		JLabel lSaves = new JLabel("(Saves)");
 		lSaves.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lSaves.setHorizontalAlignment(SwingConstants.CENTER);
 		lSaves.setBounds(180, 15, 65, 14);
@@ -181,7 +181,7 @@ public class Window {
 		panel_1_1.add(textFieldCon);
 		textFieldCon.setColumns(10);
 		
-		JLabel lConMod = new JLabel(Integer.toString(character.getDex().getModifier()));
+		JLabel lConMod = new JLabel(Integer.toString( character.getDex().getModifier()));
 		lConMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lConMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lConMod.setBounds(115, 30, 65, 45);
@@ -879,6 +879,66 @@ public class Window {
 		bStoreProperties.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				/*
+				character.setName(textFieldIntroduceTuNombre.getText());
+				character.setLife(Integer.parseInt(textFieldPuntosGolpe.getText()));
+				character.setAC(Integer.parseInt(textFieldAC.getText()));
+				character.setSpeed(Integer.parseInt(textFieldSpeed.getText()));
+				character.getStr().setScore(Integer.parseInt(textFieldStr.getText()));
+				character.getDex().setScore(Integer.parseInt(textFieldDex.getText()));
+				character.getCon().setScore(Integer.parseInt(textFieldCon.getText()));
+				character.getIntel().setScore(Integer.parseInt(textFieldInt.getText()));
+				character.getWis().setScore(Integer.parseInt(textFieldWis.getText()));
+				character.getCha().setScore(Integer.parseInt(textFieldCar.getText()));
+				character.setStrsave(Integer.parseInt(lStrSave.getText()));
+				character.setDexsave(Integer.parseInt(lDexSave.getText()));
+				character.setConsave(Integer.parseInt(lConSave.getText()));
+				character.setIntsave(Integer.parseInt(lIntSave.getText()));
+				character.setWissave(Integer.parseInt(lWisSave.getText()));
+				character.setChasave(Integer.parseInt(lCarSave.getText()));
+				character.setAcrobacias(Integer.parseInt(textFieldAcrobacias.getText()));
+				character.setTratoAnimales(Integer.parseInt(textFieldAnimales.getText()));
+				character.setArcana(Integer.parseInt(textFieldArcana.getText()));
+				character.setAtletismo(Integer.parseInt(textFieldAtletismo.getText()));
+				character.setEnganyo(Integer.parseInt(textFieldEnganyo.getText()));
+				character.setHistoria(Integer.parseInt(textFieldHistoria.getText()));
+				character.setPerspicacia(Integer.parseInt(textFieldPerspicacia.getText()));
+				character.setIntimidacion(Integer.parseInt(textFieldIntimidacion.getText()));
+				character.setInvestigacion(Integer.parseInt(textFieldInvestigacion.getText()));
+				character.setMedicina(Integer.parseInt(textFieldMedicina.getText()));
+				character.setNaturaleza(Integer.parseInt(textFieldNaturaleza.getText()));
+				character.setPercepcion(Integer.parseInt(textFieldPercepcion.getText()));
+				character.setInterpretacion(Integer.parseInt(textFieldInterpretacion.getText()));
+				character.setPersuasion(Integer.parseInt(textFieldPersuasion.getText()));
+				character.setReligion(Integer.parseInt(textFieldReligion.getText()));
+				character.setJuegoManos(Integer.parseInt(textFieldJuegoManos.getText()));
+				character.setSigilo(Integer.parseInt(textFieldSigilo.getText()));
+				character.setSupervivencia(Integer.parseInt(textFieldSupervivencia.getText()));
+				character.setBonoCompetencia(Integer.parseInt(""));
+				character.setIniciativa(Integer.parseInt(textFieldIniciativa.getText()));
+				character.getArmas()[0].setNombre("");
+				character.getArmas()[1].setNombre("");
+				character.getArmas()[2].setNombre("");
+				character.getHechizos()[0].setSpellName("");
+				character.getHechizos()[1].setSpellName("");
+				character.getHechizos()[2].setSpellName("");
+				character.getClasepj().setNombre("");
+				character.setPiezasCobre(Integer.parseInt(""));
+				character.setPiezasPlata(Integer.parseInt(""));
+				character.setPiezasOro(Integer.parseInt(""));
+				character.setPiezasPlatino(Integer.parseInt(""));
+				character.setPiezasElectrum(Integer.parseInt(""));
+				character.setEquipo("");
+				character.setTesoro("");
+				character.setIdiomas("");
+				character.setRasgosPersonalidad("");
+				character.setIdeales("");
+				character.setVinculos("");
+				character.setDefectos("");
+				character.getRaza().setNombre("");
+				character.getSubraza().setNombre("");
+				*/
+				
 				storeOrLoadProperties("store", character, "");			
 			}
 		});
@@ -908,7 +968,6 @@ public class Window {
 		
 		}*/
 		
-		
 	}
 	
 	public static void storeOrLoadProperties(String operation, Personaje character, String nCharacter) {
@@ -924,7 +983,7 @@ public class Window {
 				
 		if (operation == "store") {
 		for (i = 0; i < 200; i++) {
-			if (objetoP.getProperty("Number" + Integer.toString(i)) == null) {
+			if (objetoP.getProperty("Number" + Integer.toString(i)) == null) {			
 				objetoP.setProperty("Number" + Integer.toString(i), Integer.toString(i));
 				objetoP.setProperty("Name" + Integer.toString(i), character.getName());
 				objetoP.setProperty("Life" + Integer.toString(i), Integer.toString(character.getLife()));
@@ -942,7 +1001,7 @@ public class Window {
 				objetoP.setProperty("IntSave" + Integer.toString(i), Integer.toString(character.getIntsave()));
 				objetoP.setProperty("WisSave" + Integer.toString(i), Integer.toString(character.getWissave()));
 				objetoP.setProperty("CharSave" + Integer.toString(i), Integer.toString(character.getChasave()));
-				
+		
 				objetoP.setProperty("Acrobacias" + Integer.toString(i), Integer.toString(character.getAcrobacias()));
 				objetoP.setProperty("TratoConAnimales" + Integer.toString(i), Integer.toString(character.getTratoAnimales()));
 				objetoP.setProperty("Arcana" + Integer.toString(i), Integer.toString(character.getArcana()));
@@ -985,6 +1044,8 @@ public class Window {
 				objetoP.setProperty("Flaws" + Integer.toString(i), character.getDefectos());		
 				objetoP.setProperty("Race" + Integer.toString(i), character.getSubraza().getNombre());
 				objetoP.setProperty("Subrace" + Integer.toString(i), character.getRaza().getNombre());
+				
+				System.out.println("Character saved.");
 
 				try {
 					objetoP.store(new FileWriter("characters.properties"), "Operation" + objetoP.getProperty("Number" + Integer.toString(i)));
@@ -1090,10 +1151,11 @@ public class Window {
 				character.setRaza(raza);
 				character.setSubraza(subraza);
 					
+				System.out.println("Character loaded.");
+				
 				i=200;
 			}
 		}
 	}
-	}
-		
+	}		
 }

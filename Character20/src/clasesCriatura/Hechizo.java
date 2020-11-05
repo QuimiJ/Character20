@@ -10,7 +10,6 @@ public class Hechizo {
 	private String duration;
 	private String description;
 	
-	
 	public String getSpellName() {
 		return spellName;
 	}
@@ -62,5 +61,28 @@ public class Hechizo {
 		this.description = description;
 	}
 	
-
+	public Hechizo(String spellName, int level, String school, String castingTime, int range, String components,
+			String duration, String description) {
+		super();
+		this.spellName = spellName;
+		this.level = level;
+		this.school = school;
+		this.castingTime = castingTime;
+		this.range = range;
+		this.components = components;
+		this.duration = duration;
+		this.description = description;
+	}
+	
+	public Hechizo() {
+		super();
+		this.spellName = "";
+		this.level = 0;
+		this.school = "";
+		this.castingTime = "";
+		this.range = 0;
+		this.components = "";
+		this.duration = "";
+		this.description = "";
+	}
 }
