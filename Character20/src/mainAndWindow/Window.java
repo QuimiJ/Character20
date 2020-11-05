@@ -132,6 +132,14 @@ public class Window {
 		lStrSave.setBounds(180, 30, 65, 45);
 		panel.add(lStrSave);
 		
+		//
+		JLabel lMod = new JLabel("(Mods)");
+		lMod.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lMod.setBounds(115, 15, 65, 14);
+		panel.add(lMod);
+		//
+		
 		JLabel lSaves = new JLabel("(Saves)");
 		lSaves.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lSaves.setHorizontalAlignment(SwingConstants.CENTER);
@@ -759,11 +767,11 @@ public class Window {
 		lBonificador.setBounds(160, 10, 70, 15);
 		panel_2_1_1.add(lBonificador);
 		
-		JLabel ldanyoTipo = new JLabel("Danyo/Tipo");
-		ldanyoTipo.setHorizontalAlignment(SwingConstants.CENTER);
-		ldanyoTipo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		ldanyoTipo.setBounds(240, 10, 140, 15);
-		panel_2_1_1.add(ldanyoTipo);
+		JLabel lDanyoTipo = new JLabel("Danyo/Tipo");
+		lDanyoTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lDanyoTipo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lDanyoTipo.setBounds(240, 10, 140, 15);
+		panel_2_1_1.add(lDanyoTipo);
 		
 		textFieldArma1 = new JTextField();
 		textFieldArma1.setText(character.getArmas()[0].getNombre());
@@ -870,7 +878,7 @@ public class Window {
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
-		JButton bEditorPersonaje = new JButton("Editor de Personaje\r\n");
+		JButton bEditorPersonaje = new JButton("Editor \r\n");
 		bEditorPersonaje.setBounds(0, 10, 130, 42);
 		panel_4.add(bEditorPersonaje);
 		
