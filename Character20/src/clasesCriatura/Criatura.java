@@ -31,9 +31,9 @@ public class Criatura {
 	public Criatura() {
 		super();
 		this.name = "";
-		this.life = 0;
-		this.AC = 0;
-		this.speed = 0;
+		this.life = 1;
+		this.AC = 10;
+		this.speed = 30;
 		this.str = new Stat();
 		this.dex = new Stat();
 		this.con = new Stat();

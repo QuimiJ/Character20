@@ -17,7 +17,7 @@ public class Personaje extends Criatura {
 	private int tratoAnimales = wis.getModifier();
 	private int arcana = intel.getModifier();
 	private int atletismo = str.getModifier();
-	private int engaño = cha.getModifier();
+	private int enganyo = cha.getModifier();
 	private int historia = intel.getModifier();
 	private int perspicacia = wis.getModifier();
 	private int intimidacion = cha.getModifier();
@@ -119,11 +119,11 @@ public class Personaje extends Criatura {
 	public void setAtletismo(int atletismo) {
 		this.atletismo = atletismo;
 	}
-	public int getEngaño() {
-		return engaño;
+	public int getEnganyo() {
+		return enganyo;
 	}
-	public void setEngaño(int engaño) {
-		this.engaño = engaño;
+	public void setEnganyo(int engaño) {
+		this.enganyo = engaño;
 	}
 	public int getHistoria() {
 		return historia;
@@ -338,7 +338,7 @@ public class Personaje extends Criatura {
 		this.tratoAnimales = tratoAnimales;
 		this.arcana = arcana;
 		this.atletismo = atletismo;
-		this.engaño = engaño;
+		this.enganyo = engaño;
 		this.historia = historia;
 		this.perspicacia = perspicacia;
 		this.intimidacion = intimidacion;
@@ -385,7 +385,7 @@ public class Personaje extends Criatura {
 		this.tratoAnimales = 0;
 		this.arcana = 0;
 		this.atletismo = 0;
-		this.engaño = 0;
+		this.enganyo = 0;
 		this.historia = 0;
 		this.perspicacia = 0;
 		this.intimidacion = 0;
@@ -401,9 +401,13 @@ public class Personaje extends Criatura {
 		this.supervivencia = 0;
 		this.bonoCompetencia = 0;
 		this.iniciativa = 0;
-		this.armas = null;
-		this.clasepj = null;
-		this.hechizos = null;
+		Arma arma1 = new Arma(), arma2 = new Arma(), arma3 = new Arma();
+		Arma[] armas = {arma1, arma2, arma3};
+		this.armas = armas;
+		this.clasepj = new Clase();
+		Hechizo hechizo1 = new Hechizo(), hechizo2 = new Hechizo(), hechizo3 = new Hechizo();
+		Hechizo[] hechizos = {hechizo1, hechizo2, hechizo3};
+		this.hechizos = hechizos;
 		this.piezasCobre = 0;
 		this.piezasPlata = 0;
 		this.piezasOro = 0;
@@ -416,15 +420,15 @@ public class Personaje extends Criatura {
 		this.ideales = "";
 		this.vinculos = "";
 		this.defectos = "";
-		this.raza = null;
-		this.subraza = null;
+		this.raza = new Raza();
+		this.subraza = new Subraza();
 	}
 	
 	public String toString() {
 		return "Personaje [strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave + ", intsave="
 				+ intsave + ", wissave=" + wissave + ", chasave=" + chasave + ", acrobacias=" + acrobacias
 				+ ", tratoAnimales=" + tratoAnimales + ", arcana=" + arcana + ", atletismo=" + atletismo + ", engaño="
-				+ engaño + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion=" + intimidacion
+				+ enganyo + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion=" + intimidacion
 				+ ", investigacion=" + investigacion + ", medicina=" + medicina + ", naturaleza=" + naturaleza
 				+ ", percepcion=" + percepcion + ", interpretacion=" + interpretacion + ", persuasion=" + persuasion
 				+ ", religion=" + religion + ", juegoManos=" + juegoManos + ", sigilo=" + sigilo + ", supervivencia="

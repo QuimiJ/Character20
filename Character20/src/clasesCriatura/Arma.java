@@ -83,14 +83,14 @@ public class Arma {
 	
 	public Arma() {
 		super();
-		this.nombre = null;
+		this.nombre = "";
 		this.marcial = false;
-		this.daño = null;
-		this.tipo = null;
-		this.propiedad1 = null;
-		this.propiedad2 = null;
-		this.propiedad3 = null;
-		this.propiedad4 = null;
+		this.daño = "";
+		this.tipo = "";
+		this.propiedad1 = "";
+		this.propiedad2 = "";
+		this.propiedad3 = "";
+		this.propiedad4 = "";
 	}
 	
 	public String toString() {

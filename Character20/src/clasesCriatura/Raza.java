@@ -44,9 +44,11 @@ public class Raza {
 	
 	public Raza() {
 		super();
-		this.nombre = null;
-		this.rasgos = null;
-		this.tamanyo = null;
+		this.nombre = "";
+		Rasgo rasgo = new Rasgo();
+		Rasgo[] rasgos = {rasgo};
+		this.rasgos = rasgos;
+		this.tamanyo = "";
 		this.velocidad = 0;
 	}
 	

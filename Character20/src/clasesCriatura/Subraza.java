@@ -27,8 +27,10 @@ public class Subraza extends Raza {
 	
 	public Subraza() {
 		super();
-		this.subNombre = null;
-		this.subRasgos = null;
+		this.subNombre = "";
+		Rasgo rasgo = new Rasgo();
+		Rasgo[] rasgos = {rasgo};
+		this.subRasgos = rasgos;
 	}
 	
 	public String toString() {

@@ -1,28 +1,71 @@
 package mainAndWindow;
 
-import java.awt.EventQueue;
+
 import clasesCriatura.*;
+import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import javax.swing.JTextPane;
+import javax.swing.JButton;
 
 public class Window {
 
 	private JFrame frame;
+	private JTextField textFieldStr;
+	private JTextField textFieldDex;
+	private JTextField textFieldCon;
+	private JTextField textFieldInt;
+	private JTextField textFieldWis;
+	private JTextField textFieldCar;
+	private JTextField textFieldAcrobacias;
+	private JTextField textFieldAtletismo;
+	private JTextField textFieldArcana;
+	private JTextField textFieldEnganyo;
+	private JTextField textFieldHistoria;
+	private JTextField textFieldInterpretacion;
+	private JTextField textFieldIntimidacion;
+	private JTextField textFieldInvestigacion;
+	private JTextField textFieldJuegoManos;
+	private JTextField textFieldMedicina;
+	private JTextField textFieldNaturaleza;
+	private JTextField textFieldPercepcion;
+	private JTextField textFieldPerspicacia;
+	private JTextField textFieldPersuasion;
+	private JTextField textFieldReligion;
+	private JTextField textFieldSigilo;
+	private JTextField textFieldSupervivencia;
+	private JTextField textFieldAnimales;
+	private JTextField textFieldAC;
+	private JTextField textFieldIniciativa;
+	private JTextField textFieldSpeed;
+	private JTextField textFieldPuntosGolpe;
+	private JTextField textFieldVidaTemporal;
+	private JTextField txDadosGolpe;
+	private JTextField textFieldArma1;
+	private JTextField textFieldDanyoTipo1;
+	private JTextField textFieldBonificador1;
+	private JTextField textFieldArma2;
+	private JTextField textFieldArma3;
+	private JTextField textFieldDanyoTipo2;
+	private JTextField textFieldDanyoTipo3;
+	private JTextField textFieldBonificador2;
+	private JTextField textFieldBonificador3;
+	private JTextField textFieldIntroduceTuNombre;
 
 	/**
 	 * Launch the application.
@@ -51,416 +94,820 @@ public class Window {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1600, 900);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		/*JPanel panel = new JPanel();
-		frame.getContentPane().add(panel, BorderLayout.WEST);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{151, 163, 179, 175, 163, 158, 0};
-		gbl_panel.rowHeights = new int[]{24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
-		
-		JPanel panel_7 = new JPanel();
-		GridBagConstraints gbc_panel_7 = new GridBagConstraints();
-		gbc_panel_7.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_7.fill = GridBagConstraints.BOTH;
-		gbc_panel_7.gridx = 0;
-		gbc_panel_7.gridy = 0;
-		panel.add(panel_7, gbc_panel_7);*/
-		
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(4, 1));
-		frame.add(panel);
-		
-		JPanel panel11 = new JPanel(); 
-		JPanel panel12 = new JPanel();
-		JPanel panel13 = new JPanel();
-		JPanel panel14 = new JPanel();
-		panel11.setLayout(new GridLayout(1, 6));
-		panel12.setLayout(new GridLayout(1, 2));
-		panel13.setLayout(new GridLayout(1, 2));
-		panel14.setLayout(new GridLayout(1, 2));
-		panel.add(panel11);
-		panel.add(panel12);
-		panel.add(panel13);	
-		panel.add(panel14);
-		
-		JPanel panel111 = new JPanel();
-		JPanel panel112 = new JPanel();
-		JPanel panel113 = new JPanel();
-		JPanel panel114 = new JPanel();
-		JPanel panel115 = new JPanel();
-		JPanel panel116 = new JPanel();
-		panel111.setLayout(new GridLayout(1,3));
-		panel112.setLayout(new GridLayout(1,3));
-		panel113.setLayout(new GridLayout(1,3));
-		panel114.setLayout(new GridLayout(1,3));
-		panel115.setLayout(new GridLayout(1,3));
-		panel116.setLayout(new GridLayout(1,3));
-		panel11.add(panel111);
-		panel11.add(panel112);
-		panel11.add(panel113);
-		panel11.add(panel114);
-		panel11.add(panel115);
-		panel11.add(panel116);
-		
-		
-		JPanel panel1111 = new JPanel();
-		JPanel panel1121 = new JPanel();
-		JPanel panel1131 = new JPanel();
-		JPanel panel1141 = new JPanel();
-		JPanel panel1151 = new JPanel();
-		JPanel panel1161 = new JPanel();
-		panel1111.setLayout(new GridLayout(2,1));
-		panel1121.setLayout(new GridLayout(2,1));
-		panel1131.setLayout(new GridLayout(2,1));
-		panel1141.setLayout(new GridLayout(2,1));
-		panel1151.setLayout(new GridLayout(2,1));
-		panel1161.setLayout(new GridLayout(2,1));
-		panel111.add(panel1111);
-		panel112.add(panel1121);
-		
-		JPanel panel1113 = new JPanel();
-		JPanel panel1123 = new JPanel();
-		JPanel panel1133 = new JPanel();
-		JPanel panel1143 = new JPanel();
-		JPanel panel1153 = new JPanel();
-		JPanel panel1163 = new JPanel();
-		panel1113.setLayout(new GridLayout(2,1));
-		panel1123.setLayout(new GridLayout(2,1));
-		panel1133.setLayout(new GridLayout(2,1));
-		panel1143.setLayout(new GridLayout(2,1));
-		panel1153.setLayout(new GridLayout(2,1));
-		panel1163.setLayout(new GridLayout(2,1));
-		
-		//Estadisticas de prueba hasta que se implementen los personajes en los ficheros de texto
-		Stat pruebaStr = new Stat();
-		pruebaStr.setScore(17);
-		Stat pruebaDex = new Stat();
-		pruebaDex.setScore(7);
-		Stat pruebaCon = new Stat();
-		pruebaCon.setScore(10);
-		Stat pruebaInt = new Stat();
-		pruebaInt.setScore(18);
-		Stat pruebaWis = new Stat();
-		pruebaWis.setScore(8);
-		Stat pruebaChar = new Stat();
-		pruebaChar.setScore(13);
-		//IMPORTANTE
 		Personaje character = new Personaje();
 		
+		frame = new JFrame();
+		frame.setBounds(100, 100, 1626, 949);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
-		JLabel lStrScore = new JLabel(pruebaStr.scoreToString());
-		panel1111.add(lStrScore);
+		JPanel panel = new JPanel();
+		panel.setBounds(20, 22, 270, 125);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JLabel lStrMod = new JLabel(pruebaStr.modToString());
-		panel1111.add(lStrMod);
+		textFieldStr = new JTextField();
+		textFieldStr.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldStr.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldStr.setText(Integer.toString(character.getStr().getScore()));
+		textFieldStr.setBounds(40, 30, 65, 45);
+		panel.add(textFieldStr);
+		textFieldStr.setColumns(14);
 		
-		JLabel lStr = new JLabel("Fuerza");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 1;
-		panel111.add(lStr, gbc_lblNewLabel);
+		JLabel lStrMod = new JLabel(Integer.toString(character.getStr().getModifier()));
+		lStrMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lStrMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lStrMod.setBounds(115, 30, 65, 45);
+		panel.add(lStrMod);
 		
-		JPanel panel_13 = new JPanel();
-		GridBagConstraints gbc_panel_13 = new GridBagConstraints();
-		gbc_panel_13.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_13.fill = GridBagConstraints.BOTH;
-		gbc_panel_13.gridx = 0;
-		gbc_panel_13.gridy = 2;
-		panel.add(panel_13, gbc_panel_13);
+		JLabel lStr = new JLabel("FUERZA");
+		lStr.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lStr.setHorizontalAlignment(SwingConstants.CENTER);
+		lStr.setBounds(80, 80, 110, 30);
+		panel.add(lStr);
 		
-		JButton btnNewButton = new JButton("+");
+		JLabel lStrSave = new JLabel(Integer.toString(character.getStrsave()));
+		lStrSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lStrSave.setHorizontalAlignment(SwingConstants.CENTER);
+		lStrSave.setBounds(180, 30, 65, 45);
+		panel.add(lStrSave);
 		
-		//Si el score es 20 no se podra sumar mas
-		if (pruebaStr.getScore()<21) {
-			btnNewButton.addActionListener(new ActionListener() {		
-				public void actionPerformed(ActionEvent arg0) {
-					
-				}
-			});
-		}
-		panel_13.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("-");
-		panel_13.add(btnNewButton_1);
-		
-		JPanel panel_8 = new JPanel();
-		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
-		gbc_panel_8.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_8.fill = GridBagConstraints.BOTH;
-		gbc_panel_8.gridx = 0;
-		gbc_panel_8.gridy = 3;
-		panel.add(panel_8, gbc_panel_8);
-		
-		JLabel lDexScore = new JLabel(pruebaDex.scoreToString());
-		panel_8.add(lDexScore);
-		
-		JLabel lDexMod = new JLabel(pruebaDex.modToString());
-		panel_8.add(lDexMod);
-		
-		JLabel lDex = new JLabel("Destreza");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 4;
-		panel.add(lDex, gbc_lblNewLabel_1);
-		lDex.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel lSaves = new JLabel("Saves");
+		lSaves.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lSaves.setHorizontalAlignment(SwingConstants.CENTER);
+		lSaves.setBounds(180, 15, 65, 14);
+		panel.add(lSaves);
 		
 		JPanel panel_1 = new JPanel();
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 5;
-		panel.add(panel_1, gbc_panel_1);
+		panel_1.setBounds(20, 168, 270, 125);
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(null);
 		
-		JPanel panel_14 = new JPanel();
-		GridBagConstraints gbc_panel_14 = new GridBagConstraints();
-		gbc_panel_14.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_14.fill = GridBagConstraints.BOTH;
-		gbc_panel_14.gridx = 0;
-		gbc_panel_14.gridy = 6;
-		panel.add(panel_14, gbc_panel_14);
+		textFieldDex = new JTextField();
+		textFieldDex.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldDex.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldDex.setText(Integer.toString(character.getDex().getScore()));
+		textFieldDex.setBounds(40, 30, 65, 45);
+		panel_1.add(textFieldDex);
+		textFieldDex.setColumns(10);
 		
-		JButton btnNewButton_2 = new JButton("+");
-		panel_14.add(btnNewButton_2);
+		JLabel lDexMod = new JLabel(Integer.toString(character.getDex().getModifier()));
+		lDexMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lDexMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lDexMod.setBounds(115, 30, 65, 45);
+		panel_1.add(lDexMod);
 		
-		JButton btnNewButton_3 = new JButton("-");
-		panel_14.add(btnNewButton_3);
+		JLabel lDex = new JLabel("DESTREZA");
+		lDex.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lDex.setBounds(60, 80, 150, 30);
+		panel_1.add(lDex);
 		
-		JPanel panel_9 = new JPanel();
-		GridBagConstraints gbc_panel_9 = new GridBagConstraints();
-		gbc_panel_9.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_9.fill = GridBagConstraints.BOTH;
-		gbc_panel_9.gridx = 0;
-		gbc_panel_9.gridy = 7;
-		panel.add(panel_9, gbc_panel_9);
+		JLabel lDexSave = new JLabel(Integer.toString(character.getDexsave()));
+		lDexSave.setHorizontalAlignment(SwingConstants.CENTER);
+		lDexSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lDexSave.setBounds(180, 30, 65, 45);
+		panel_1.add(lDexSave);
 		
-		JLabel lConScore = new JLabel(pruebaCon.scoreToString());
-		panel_9.add(lConScore);
+		JPanel panel_1_1 = new JPanel();
+		panel_1_1.setBounds(20, 324, 270, 125);
+		frame.getContentPane().add(panel_1_1);
+		panel_1_1.setLayout(null);
 		
-		JLabel lConMod = new JLabel(pruebaCon.modToString());
-		panel_9.add(lConMod);
+		textFieldCon = new JTextField();
+		textFieldCon.setText(Integer.toString(character.getCon().getScore()));
+		textFieldCon.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldCon.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldCon.setBounds(40, 30, 65, 45);
+		panel_1_1.add(textFieldCon);
+		textFieldCon.setColumns(10);
 		
-		JPanel panel_19 = new JPanel();
-		GridBagConstraints gbc_panel_19 = new GridBagConstraints();
-		gbc_panel_19.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_19.fill = GridBagConstraints.BOTH;
-		gbc_panel_19.gridx = 1;
-		gbc_panel_19.gridy = 7;
-		panel.add(panel_19, gbc_panel_19);
+		JLabel lConMod = new JLabel(Integer.toString(character.getDex().getModifier()));
+		lConMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lConMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lConMod.setBounds(115, 30, 65, 45);
+		panel_1_1.add(lConMod);
 		
-		//ATENCION: como esto es muy largo se estropean las demás label
-		JLabel lCapacities = new JLabel("<html>Acrobacias (Des)<br>Atletismo (Fue)<br>C. Arcano (Int)<br>Enganyo (Car)<br>Historia (Int)<br>Interpretacion (Car)<br>Intimidacion (Car)<br>Investigacion (Int)<br>Juego de manos (Des)<br>Medicina (Sab)<br>Naturaleza (Int)<br>Percepcion (Sab)<br>Perspicacia (Sab)<br>Persuasion (Car)<br>Religion (Int)<br>Sigilo (Des)</html>");
-		panel_19.add(lCapacities);
+		JLabel lCon = new JLabel("CONSTITUCION");
+		lCon.setHorizontalAlignment(SwingConstants.CENTER);
+		lCon.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lCon.setBounds(20, 80, 230, 30);
+		panel_1_1.add(lCon);
 		
-		JLabel lCon = new JLabel("Constitucion");
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_4.gridx = 0;
-		gbc_lblNewLabel_4.gridy = 8;
-		panel.add(lCon, gbc_lblNewLabel_4);
+		JLabel lConSave = new JLabel(Integer.toString(character.getConsave()));
+		lConSave.setHorizontalAlignment(SwingConstants.CENTER);
+		lConSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lConSave.setBounds(180, 30, 65, 45);
+		panel_1_1.add(lConSave);
+		
+		JPanel panel_1_1_1 = new JPanel();
+		panel_1_1_1.setBounds(20, 460, 270, 125);
+		frame.getContentPane().add(panel_1_1_1);
+		panel_1_1_1.setLayout(null);
+		
+		textFieldInt = new JTextField();
+		textFieldInt.setText(Integer.toString(character.getIntel().getScore()));
+		textFieldInt.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldInt.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldInt.setBounds(40, 30, 65, 45);
+		panel_1_1_1.add(textFieldInt);
+		textFieldInt.setColumns(10);
+		
+		JLabel lIntMod = new JLabel(Integer.toString(character.getIntel().getModifier()));
+		lIntMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lIntMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lIntMod.setBounds(115, 30, 65, 45);
+		panel_1_1_1.add(lIntMod);
+		
+		JLabel lInt = new JLabel("INTELIGENCIA");
+		lInt.setHorizontalAlignment(SwingConstants.CENTER);
+		lInt.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lInt.setBounds(20, 80, 230, 30);
+		panel_1_1_1.add(lInt);
+		
+		JLabel lIntSave = new JLabel(Integer.toString(character.getIntsave()));
+		lIntSave.setHorizontalAlignment(SwingConstants.CENTER);
+		lIntSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lIntSave.setBounds(180, 30, 65, 45);
+		panel_1_1_1.add(lIntSave);
+		
+		JPanel panel_1_1_1_1 = new JPanel();
+		panel_1_1_1_1.setBounds(20, 606, 270, 125);
+		frame.getContentPane().add(panel_1_1_1_1);
+		panel_1_1_1_1.setLayout(null);
+		
+		textFieldWis = new JTextField();
+		textFieldWis.setText(Integer.toString(character.getWis().getScore()));
+		textFieldWis.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldWis.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldWis.setBounds(40, 30, 65, 45);
+		panel_1_1_1_1.add(textFieldWis);
+		textFieldWis.setColumns(10);
+		
+		JLabel lWisMod = new JLabel(Integer.toString(character.getWis().getModifier()));
+		lWisMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lWisMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lWisMod.setBounds(115, 30, 65, 45);
+		panel_1_1_1_1.add(lWisMod);
+		
+		JLabel lWis = new JLabel("SABIDURIA");
+		lWis.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lWis.setHorizontalAlignment(SwingConstants.CENTER);
+		lWis.setBounds(20, 80, 230, 30);
+		panel_1_1_1_1.add(lWis);
+		
+		JLabel lWisSave = new JLabel(Integer.toString(character.getWissave()));
+		lWisSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lWisSave.setHorizontalAlignment(SwingConstants.CENTER);
+		lWisSave.setBounds(180, 30, 65, 45);
+		panel_1_1_1_1.add(lWisSave);
+		
+		JPanel panel_1_1_1_1_1 = new JPanel();
+		panel_1_1_1_1_1.setBounds(20, 752, 270, 125);
+		frame.getContentPane().add(panel_1_1_1_1_1);
+		panel_1_1_1_1_1.setLayout(null);
+		
+		textFieldCar = new JTextField();
+		textFieldCar.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldCar.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldCar.setText(Integer.toString(character.getCha().getScore()));
+		textFieldCar.setBounds(40, 30, 65, 45);
+		panel_1_1_1_1_1.add(textFieldCar);
+		textFieldCar.setColumns(10);
+		
+		JLabel lCarMod = new JLabel(Integer.toString(character.getCha().getModifier()));
+		lCarMod.setHorizontalAlignment(SwingConstants.CENTER);
+		lCarMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lCarMod.setBounds(115, 30, 64, 45);
+		panel_1_1_1_1_1.add(lCarMod);
+		
+		JLabel lCha = new JLabel("CARISMA");
+		lCha.setHorizontalAlignment(SwingConstants.CENTER);
+		lCha.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lCha.setBounds(20, 80, 230, 30);
+		panel_1_1_1_1_1.add(lCha);
+		
+		JLabel lCarSave = new JLabel(Integer.toString(character.getChasave()));
+		lCarSave.setHorizontalAlignment(SwingConstants.CENTER);
+		lCarSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lCarSave.setBounds(180, 30, 65, 45);
+		panel_1_1_1_1_1.add(lCarSave);
 		
 		JPanel panel_2 = new JPanel();
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_2.gridx = 0;
-		gbc_panel_2.gridy = 9;
-		panel.add(panel_2, gbc_panel_2);
+		panel_2.setBounds(330, 22, 390, 200);
+		frame.getContentPane().add(panel_2);
+		panel_2.setLayout(null);
 		
-		JPanel panel_15 = new JPanel();
-		GridBagConstraints gbc_panel_15 = new GridBagConstraints();
-		gbc_panel_15.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_15.fill = GridBagConstraints.BOTH;
-		gbc_panel_15.gridx = 0;
-		gbc_panel_15.gridy = 10;
-		panel.add(panel_15, gbc_panel_15);
+		JLabel lExitos = new JLabel("EXITOS");
+		lExitos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lExitos.setHorizontalAlignment(SwingConstants.CENTER);
+		lExitos.setBounds(40, 40, 80, 25);
+		panel_2.add(lExitos);
 		
-		JButton btnNewButton_4 = new JButton("+");
-		panel_15.add(btnNewButton_4);
+		JLabel lFallos = new JLabel("FALLOS");
+		lFallos.setHorizontalAlignment(SwingConstants.CENTER);
+		lFallos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lFallos.setBounds(40, 90, 80, 25);
+		panel_2.add(lFallos);
 		
-		JButton btnNewButton_5 = new JButton("-");
-		panel_15.add(btnNewButton_5);
+		JLabel lSalvaciones = new JLabel("SALVACIONES");
+		lSalvaciones.setHorizontalAlignment(SwingConstants.CENTER);
+		lSalvaciones.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lSalvaciones.setBounds(47, 134, 300, 30);
+		panel_2.add(lSalvaciones);
 		
-		JPanel panel_10 = new JPanel();
-		GridBagConstraints gbc_panel_10 = new GridBagConstraints();
-		gbc_panel_10.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_10.fill = GridBagConstraints.BOTH;
-		gbc_panel_10.gridx = 0;
-		gbc_panel_10.gridy = 11;
-		panel.add(panel_10, gbc_panel_10);
+		JLabel lContraMuerte = new JLabel("CONTRA MUERTE");
+		lContraMuerte.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lContraMuerte.setHorizontalAlignment(SwingConstants.CENTER);
+		lContraMuerte.setBounds(47, 165, 300, 30);
+		panel_2.add(lContraMuerte);
 		
-		JLabel lIntScore = new JLabel(pruebaInt.scoreToString());
-		panel_10.add(lIntScore);
+		JRadioButton rButtonFail1 = new JRadioButton("");
+		rButtonFail1.setBounds(165, 41, 21, 23);
+		panel_2.add(rButtonFail1);
 		
-		JLabel lIntMod = new JLabel(pruebaInt.modToString());
-		panel_10.add(lIntMod);
+		JRadioButton rButtonFail2 = new JRadioButton("");
+		rButtonFail2.setBounds(235, 41, 21, 23);
+		panel_2.add(rButtonFail2);
 		
-		JLabel lInt = new JLabel("Inteligencia");
-		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_5.gridx = 0;
-		gbc_lblNewLabel_5.gridy = 12;
-		panel.add(lInt, gbc_lblNewLabel_5);
+		JRadioButton rButtonFail3 = new JRadioButton("");
+		rButtonFail3.setBounds(305, 41, 21, 23);
+		panel_2.add(rButtonFail3);
+		
+		JRadioButton rButtonSave1 = new JRadioButton("");
+		rButtonSave1.setBounds(165, 91, 21, 23);
+		panel_2.add(rButtonSave1);
+		
+		JRadioButton rButtonSave2 = new JRadioButton("");
+		rButtonSave2.setBounds(235, 91, 21, 23);
+		panel_2.add(rButtonSave2);
+		
+		JRadioButton rButtonSave3 = new JRadioButton("");
+		rButtonSave3.setBounds(305, 91, 21, 23);
+		panel_2.add(rButtonSave3);
 		
 		JPanel panel_3 = new JPanel();
-		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
-		gbc_panel_3.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_3.gridx = 0;
-		gbc_panel_3.gridy = 13;
-		panel.add(panel_3, gbc_panel_3);
+		panel_3.setBounds(330, 287, 390, 590);
+		frame.getContentPane().add(panel_3);
+		panel_3.setLayout(null);
 		
-		JPanel panel_16 = new JPanel();
-		GridBagConstraints gbc_panel_16 = new GridBagConstraints();
-		gbc_panel_16.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_16.fill = GridBagConstraints.BOTH;
-		gbc_panel_16.gridx = 0;
-		gbc_panel_16.gridy = 14;
-		panel.add(panel_16, gbc_panel_16);
+		JLabel lSkills = new JLabel("HABILIDADES");
+		lSkills.setHorizontalAlignment(SwingConstants.CENTER);
+		lSkills.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
+		lSkills.setBounds(20, 560, 350, 30);
+		panel_3.add(lSkills);
 		
-		JButton btnNewButton_6 = new JButton("+");
-		panel_16.add(btnNewButton_6);
+		JCheckBox checkBox = new JCheckBox("");
+		checkBox.setBounds(15, 27, 21, 23);
+		panel_3.add(checkBox);
 		
-		JButton btnNewButton_7 = new JButton("-");
-		panel_16.add(btnNewButton_7);
+		JCheckBox checkBox_1 = new JCheckBox("");
+		checkBox_1.setSelected(true);
+		checkBox_1.setBounds(15, 57, 21, 23);
+		panel_3.add(checkBox_1);
 		
-		JPanel panel_11 = new JPanel();
-		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
-		gbc_panel_11.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_11.fill = GridBagConstraints.BOTH;
-		gbc_panel_11.gridx = 0;
-		gbc_panel_11.gridy = 15;
-		panel.add(panel_11, gbc_panel_11);
+		JCheckBox checkBox_2 = new JCheckBox("");
+		checkBox_2.setBounds(15, 87, 21, 23);
+		panel_3.add(checkBox_2);
 		
-		JLabel lWisScore = new JLabel(pruebaWis.scoreToString());
-		panel_11.add(lWisScore);
+		JCheckBox checkBox_3 = new JCheckBox("");
+		checkBox_3.setBounds(15, 267, 21, 23);
+		panel_3.add(checkBox_3);
 		
-		JLabel lWisMod = new JLabel(pruebaWis.modToString());
-		panel_11.add(lWisMod);
+		JCheckBox checkBox_4 = new JCheckBox("");
+		checkBox_4.setBounds(15, 297, 21, 23);
+		panel_3.add(checkBox_4);
 		
-		JLabel lWis = new JLabel("Sabiduria");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 0;
-		gbc_lblNewLabel_3.gridy = 16;
-		panel.add(lWis, gbc_lblNewLabel_3);
+		JCheckBox checkBox_5 = new JCheckBox("");
+		checkBox_5.setBounds(15, 207, 21, 23);
+		panel_3.add(checkBox_5);
+		
+		JCheckBox checkBox_6 = new JCheckBox("");
+		checkBox_6.setBounds(15, 327, 21, 23);
+		panel_3.add(checkBox_6);
+		
+		JCheckBox checkBox_7 = new JCheckBox("");
+		checkBox_7.setBounds(15, 417, 21, 23);
+		panel_3.add(checkBox_7);
+		
+		JCheckBox checkBox_8 = new JCheckBox("");
+		checkBox_8.setBounds(15, 237, 21, 23);
+		panel_3.add(checkBox_8);
+		
+		JCheckBox checkBox_9 = new JCheckBox("");
+		checkBox_9.setBounds(15, 387, 21, 23);
+		panel_3.add(checkBox_9);
+		
+		JCheckBox checkBox_10 = new JCheckBox("");
+		checkBox_10.setSelected(true);
+		checkBox_10.setBounds(15, 147, 21, 23);
+		panel_3.add(checkBox_10);
+		
+		JCheckBox checkBox_11 = new JCheckBox("");
+		checkBox_11.setBounds(15, 117, 21, 23);
+		panel_3.add(checkBox_11);
+		
+		JCheckBox checkBox_12 = new JCheckBox("");
+		checkBox_12.setBounds(15, 177, 21, 23);
+		panel_3.add(checkBox_12);
+		
+		JCheckBox checkBox_13 = new JCheckBox("");
+		checkBox_13.setSelected(true);
+		checkBox_13.setBounds(15, 357, 21, 23);
+		panel_3.add(checkBox_13);
+		
+		JCheckBox checkBox_14 = new JCheckBox("");
+		checkBox_14.setBounds(15, 447, 21, 23);
+		panel_3.add(checkBox_14);
+		
+		JCheckBox checkBox_15 = new JCheckBox("");
+		checkBox_15.setBounds(15, 477, 21, 23);
+		panel_3.add(checkBox_15);
+		
+		textFieldAcrobacias = new JTextField();
+		textFieldAcrobacias.setText(Integer.toString(character.getAcrobacias()));
+		textFieldAcrobacias.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldAcrobacias.setBounds(40, 27, 25, 20);
+		panel_3.add(textFieldAcrobacias);
+		textFieldAcrobacias.setColumns(10);
+		
+		textFieldAtletismo = new JTextField();
+		textFieldAtletismo.setText(Integer.toString(character.getAtletismo()));
+		textFieldAtletismo.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldAtletismo.setColumns(10);
+		textFieldAtletismo.setBounds(40, 57, 25, 20);
+		panel_3.add(textFieldAtletismo);
+		
+		textFieldArcana = new JTextField();
+		textFieldArcana.setText(Integer.toString(character.getArcana()));
+		textFieldArcana.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldArcana.setColumns(10);
+		textFieldArcana.setBounds(40, 87, 25, 20);
+		panel_3.add(textFieldArcana);
+		
+		textFieldEnganyo = new JTextField();
+		textFieldEnganyo.setText(Integer.toString(character.getEnganyo()));
+		textFieldEnganyo.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldEnganyo.setColumns(10);
+		textFieldEnganyo.setBounds(40, 117, 25, 20);
+		panel_3.add(textFieldEnganyo);
+		
+		textFieldHistoria = new JTextField();
+		textFieldHistoria.setText(Integer.toString(character.getHistoria()));
+		textFieldHistoria.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldHistoria.setColumns(10);
+		textFieldHistoria.setBounds(40, 147, 25, 20);
+		panel_3.add(textFieldHistoria);
+		
+		textFieldInterpretacion = new JTextField();
+		textFieldInterpretacion.setText(Integer.toString(character.getInterpretacion()));
+		textFieldInterpretacion.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldInterpretacion.setColumns(10);
+		textFieldInterpretacion.setBounds(40, 177, 25, 20);
+		panel_3.add(textFieldInterpretacion);
+		
+		textFieldIntimidacion = new JTextField();
+		textFieldIntimidacion.setText(Integer.toString(character.getIntimidacion()));
+		textFieldIntimidacion.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldIntimidacion.setColumns(10);
+		textFieldIntimidacion.setBounds(40, 207, 25, 20);
+		panel_3.add(textFieldIntimidacion);
+		
+		textFieldInvestigacion = new JTextField();
+		textFieldInvestigacion.setText(Integer.toString(character.getInvestigacion()));
+		textFieldInvestigacion.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldInvestigacion.setColumns(10);
+		textFieldInvestigacion.setBounds(40, 237, 25, 20);
+		panel_3.add(textFieldInvestigacion);
+		
+		textFieldJuegoManos = new JTextField();
+		textFieldJuegoManos.setText(Integer.toString(character.getJuegoManos()));
+		textFieldJuegoManos.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldJuegoManos.setColumns(10);
+		textFieldJuegoManos.setBounds(40, 267, 25, 20);
+		panel_3.add(textFieldJuegoManos);
+		
+		textFieldMedicina = new JTextField();
+		textFieldMedicina.setText(Integer.toString(character.getMedicina()));
+		textFieldMedicina.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldMedicina.setColumns(10);
+		textFieldMedicina.setBounds(40, 297, 25, 20);
+		panel_3.add(textFieldMedicina);
+		
+		textFieldNaturaleza = new JTextField();
+		textFieldNaturaleza.setText(Integer.toString(character.getNaturaleza()));
+		textFieldNaturaleza.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldNaturaleza.setColumns(10);
+		textFieldNaturaleza.setBounds(40, 327, 25, 20);
+		panel_3.add(textFieldNaturaleza);
+		
+		textFieldPercepcion = new JTextField();
+		textFieldPercepcion.setText(Integer.toString(character.getPercepcion()));
+		textFieldPercepcion.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldPercepcion.setColumns(10);
+		textFieldPercepcion.setBounds(40, 357, 25, 20);
+		panel_3.add(textFieldPercepcion);
+		
+		textFieldPerspicacia = new JTextField();
+		textFieldPerspicacia.setText(Integer.toString(character.getPerspicacia()));
+		textFieldPerspicacia.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldPerspicacia.setColumns(10);
+		textFieldPerspicacia.setBounds(40, 387, 25, 20);
+		panel_3.add(textFieldPerspicacia);
+		
+		textFieldPersuasion = new JTextField();
+		textFieldPersuasion.setText(Integer.toString(character.getPersuasion()));
+		textFieldPersuasion.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldPersuasion.setColumns(10);
+		textFieldPersuasion.setBounds(40, 417, 25, 20);
+		panel_3.add(textFieldPersuasion);
+		
+		textFieldReligion = new JTextField();
+		textFieldReligion.setText(Integer.toString(character.getReligion()));
+		textFieldReligion.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldReligion.setColumns(10);
+		textFieldReligion.setBounds(40, 447, 25, 20);
+		panel_3.add(textFieldReligion);
+		
+		textFieldSigilo = new JTextField();
+		textFieldSigilo.setText(Integer.toString(character.getSigilo()));
+		textFieldSigilo.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldSigilo.setColumns(10);
+		textFieldSigilo.setBounds(40, 477, 25, 20);
+		panel_3.add(textFieldSigilo);
+		
+		JLabel lAcrobacias = new JLabel("Acrobacias (SAB)");
+		lAcrobacias.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lAcrobacias.setBounds(100, 27, 270, 20);
+		panel_3.add(lAcrobacias);
+		
+		JLabel lAtletismo = new JLabel("Atletismo (FUE)");
+		lAtletismo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lAtletismo.setBounds(100, 57, 270, 20);
+		panel_3.add(lAtletismo);
+		
+		JLabel lArcana = new JLabel("Conocimiento Arcano (INT)");
+		lArcana.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lArcana.setBounds(100, 87, 270, 20);
+		panel_3.add(lArcana);
+		
+		JLabel lEnganyo = new JLabel("Enganyo (CAR)");
+		lEnganyo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lEnganyo.setBounds(100, 117, 270, 20);
+		panel_3.add(lEnganyo);
+		
+		JLabel lHistoria = new JLabel("Historia (INT)");
+		lHistoria.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lHistoria.setBounds(100, 147, 270, 20);
+		panel_3.add(lHistoria);
+		
+		JLabel lInterpretacion = new JLabel("Interpretacion (CAR)");
+		lInterpretacion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lInterpretacion.setBounds(100, 177, 270, 20);
+		panel_3.add(lInterpretacion);
+		
+		JLabel lIntimidacion = new JLabel("Intimidacion (CAR)");
+		lIntimidacion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lIntimidacion.setBounds(100, 207, 270, 20);
+		panel_3.add(lIntimidacion);
+		
+		JLabel lInvestigacion = new JLabel("Investigacion (INT)");
+		lInvestigacion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lInvestigacion.setBounds(100, 237, 270, 20);
+		panel_3.add(lInvestigacion);
+		
+		JLabel lJuegoManos = new JLabel("Juego de Manos (DES)");
+		lJuegoManos.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lJuegoManos.setBounds(100, 267, 270, 20);
+		panel_3.add(lJuegoManos);
+		
+		JLabel lMedicina = new JLabel("Medicina (SAB)");
+		lMedicina.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lMedicina.setBounds(100, 297, 270, 20);
+		panel_3.add(lMedicina);
+		
+		JLabel lNaturaleza = new JLabel("Naturaleza (INT)");
+		lNaturaleza.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lNaturaleza.setBounds(100, 327, 270, 20);
+		panel_3.add(lNaturaleza);
+		
+		JLabel lPercepcion = new JLabel("Percepcion (SAB)");
+		lPercepcion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lPercepcion.setBounds(100, 357, 270, 20);
+		panel_3.add(lPercepcion);
+		
+		JLabel lPerspicacia = new JLabel("Perspicacia (SAB)");
+		lPerspicacia.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lPerspicacia.setBounds(100, 387, 270, 20);
+		panel_3.add(lPerspicacia);
+		
+		JLabel lPersuasion = new JLabel("Persuasion (CAR)");
+		lPersuasion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lPersuasion.setBounds(100, 417, 270, 20);
+		panel_3.add(lPersuasion);
+		
+		JLabel lReligion = new JLabel("Religion (INT)");
+		lReligion.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lReligion.setBounds(100, 447, 270, 20);
+		panel_3.add(lReligion);
+		
+		JLabel lSigilo = new JLabel("Sigilo (DES)");
+		lSigilo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lSigilo.setBounds(100, 477, 270, 20);
+		panel_3.add(lSigilo);
+		
+		JCheckBox checkBox_15_1 = new JCheckBox("");
+		checkBox_15_1.setSelected(true);
+		checkBox_15_1.setBounds(15, 507, 21, 23);
+		panel_3.add(checkBox_15_1);
+		
+		JCheckBox checkBox_15_2 = new JCheckBox("");
+		checkBox_15_2.setBounds(15, 537, 21, 23);
+		panel_3.add(checkBox_15_2);
+		
+		textFieldSupervivencia = new JTextField();
+		textFieldSupervivencia.setText(Integer.toString(character.getSupervivencia()));
+		textFieldSupervivencia.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldSupervivencia.setColumns(10);
+		textFieldSupervivencia.setBounds(40, 507, 25, 20);
+		panel_3.add(textFieldSupervivencia);
+		
+		textFieldAnimales = new JTextField();
+		textFieldAnimales.setText(Integer.toString(character.getTratoAnimales()));
+		textFieldAnimales.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldAnimales.setColumns(10);
+		textFieldAnimales.setBounds(40, 537, 25, 20);
+		panel_3.add(textFieldAnimales);
+		
+		JLabel lSupervivencia = new JLabel("Supervivencia (SAB)");
+		lSupervivencia.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lSupervivencia.setBounds(100, 508, 270, 20);
+		panel_3.add(lSupervivencia);
+		
+		JLabel lAnimales = new JLabel("Trato con Animales (SAB)");
+		lAnimales.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lAnimales.setBounds(100, 537, 270, 20);
+		panel_3.add(lAnimales);
+		
+		JPanel panel_2_1 = new JPanel();
+		panel_2_1.setBounds(760, 22, 390, 420);
+		frame.getContentPane().add(panel_2_1);
+		panel_2_1.setLayout(null);
+		
+		JLabel lAC = new JLabel("Clase de armadura");
+		lAC.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lAC.setHorizontalAlignment(SwingConstants.CENTER);
+		lAC.setBounds(10, 20, 110, 30);
+		panel_2_1.add(lAC);
+		
+		textFieldAC = new JTextField();
+		textFieldAC.setFont(new Font("Tahoma", Font.PLAIN, 65));
+		textFieldAC.setText(Integer.toString(character.getAC()));
+		textFieldAC.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldAC.setBounds(10, 55, 110, 110);
+		panel_2_1.add(textFieldAC);
+		textFieldAC.setColumns(10);
+		
+		JLabel lIniciativa = new JLabel("Iniciativa");
+		lIniciativa.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lIniciativa.setHorizontalAlignment(SwingConstants.CENTER);
+		lIniciativa.setBounds(140, 20, 110, 30);
+		panel_2_1.add(lIniciativa);
+		
+		textFieldIniciativa = new JTextField();
+		textFieldIniciativa.setText(Integer.toString(character.getIniciativa()));
+		textFieldIniciativa.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldIniciativa.setFont(new Font("Tahoma", Font.PLAIN, 65));
+		textFieldIniciativa.setColumns(10);
+		textFieldIniciativa.setBounds(140, 55, 110, 110);
+		panel_2_1.add(textFieldIniciativa);
+		
+		JLabel lSpeed = new JLabel("Velocidad");
+		lSpeed.setHorizontalAlignment(SwingConstants.CENTER);
+		lSpeed.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lSpeed.setBounds(270, 20, 110, 30);
+		panel_2_1.add(lSpeed);
+		
+		textFieldSpeed = new JTextField();
+		textFieldSpeed.setText(Integer.toString(character.getSpeed()));
+		textFieldSpeed.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldSpeed.setFont(new Font("Tahoma", Font.PLAIN, 65));
+		textFieldSpeed.setColumns(10);
+		textFieldSpeed.setBounds(270, 55, 110, 110);
+		panel_2_1.add(textFieldSpeed);
+		
+		JLabel lPuntosGolpe = new JLabel("Puntos de Golpe");
+		lPuntosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
+		lPuntosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lPuntosGolpe.setBounds(10, 235, 110, 30);
+		panel_2_1.add(lPuntosGolpe);
+		
+		JLabel lVidaTemporal = new JLabel("PG Temporales");
+		lVidaTemporal.setHorizontalAlignment(SwingConstants.CENTER);
+		lVidaTemporal.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lVidaTemporal.setBounds(140, 235, 110, 30);
+		panel_2_1.add(lVidaTemporal);
+		
+		JLabel lDadosGolpe = new JLabel("Dados de Golpe");
+		lDadosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
+		lDadosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lDadosGolpe.setBounds(270, 235, 110, 30);
+		panel_2_1.add(lDadosGolpe);
+		
+		textFieldPuntosGolpe = new JTextField();
+		textFieldPuntosGolpe.setText(Integer.toString(character.getLife()));
+		textFieldPuntosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldPuntosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 65));
+		textFieldPuntosGolpe.setColumns(10);
+		textFieldPuntosGolpe.setBounds(10, 270, 110, 110);
+		panel_2_1.add(textFieldPuntosGolpe);
+		
+		textFieldVidaTemporal = new JTextField();
+		textFieldVidaTemporal.setText("0");
+		textFieldVidaTemporal.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldVidaTemporal.setFont(new Font("Tahoma", Font.PLAIN, 65));
+		textFieldVidaTemporal.setColumns(10);
+		textFieldVidaTemporal.setBounds(140, 270, 110, 110);
+		panel_2_1.add(textFieldVidaTemporal);
+		
+		txDadosGolpe = new JTextField();
+		txDadosGolpe.setText(character.getClasepj().getHitdie());
+		txDadosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
+		txDadosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		txDadosGolpe.setColumns(10);
+		txDadosGolpe.setBounds(270, 270, 110, 110);
+		panel_2_1.add(txDadosGolpe);
+		
+		JPanel panel_2_1_1 = new JPanel();
+		panel_2_1_1.setBounds(760, 507, 390, 370);
+		frame.getContentPane().add(panel_2_1_1);
+		panel_2_1_1.setLayout(null);
+		
+		JLabel lArmasEquipo = new JLabel("ARMAS Y EQUIPO");
+		lArmasEquipo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
+		lArmasEquipo.setHorizontalAlignment(SwingConstants.CENTER);
+		lArmasEquipo.setBounds(20, 340, 350, 30);
+		panel_2_1_1.add(lArmasEquipo);
+		
+		JLabel lNombre = new JLabel("Nombre");
+		lNombre.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lNombre.setBounds(10, 10, 90, 15);
+		panel_2_1_1.add(lNombre);
+		
+		JLabel lBonificador = new JLabel("Bonificador");
+		lBonificador.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lBonificador.setHorizontalAlignment(SwingConstants.CENTER);
+		lBonificador.setBounds(160, 10, 70, 15);
+		panel_2_1_1.add(lBonificador);
+		
+		JLabel ldanyoTipo = new JLabel("Danyo/Tipo");
+		ldanyoTipo.setHorizontalAlignment(SwingConstants.CENTER);
+		ldanyoTipo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		ldanyoTipo.setBounds(240, 10, 140, 15);
+		panel_2_1_1.add(ldanyoTipo);
+		
+		textFieldArma1 = new JTextField();
+		textFieldArma1.setText(character.getArmas()[0].getNombre());
+		textFieldArma1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldArma1.setBounds(10, 35, 140, 20);
+		panel_2_1_1.add(textFieldArma1);
+		textFieldArma1.setColumns(10);
+		
+		textFieldDanyoTipo1 = new JTextField(character.getArmas()[0].getDaño() + "   " + character.getArmas()[0].getTipo());
+		textFieldDanyoTipo1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldDanyoTipo1.setText(character.getArmas()[0].getDaño() + "   " + character.getArmas()[1].getTipo());
+		textFieldDanyoTipo1.setColumns(10);
+		textFieldDanyoTipo1.setBounds(240, 35, 140, 20);
+		panel_2_1_1.add(textFieldDanyoTipo1);
+		
+		textFieldBonificador1 = new JTextField();
+		textFieldBonificador1.setText("");
+		textFieldBonificador1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textFieldBonificador1.setColumns(10);
+		textFieldBonificador1.setBounds(170, 35, 50, 20);
+		panel_2_1_1.add(textFieldBonificador1);
+		
+		textFieldArma2 = new JTextField(character.getArmas()[1].getNombre());
+		textFieldArma2.setColumns(10);
+		textFieldArma2.setBounds(10, 65, 140, 20);
+		panel_2_1_1.add(textFieldArma2);
+		
+		textFieldBonificador2 = new JTextField();
+		textFieldBonificador2.setColumns(10);
+		textFieldBonificador2.setBounds(170, 65, 50, 20);
+		panel_2_1_1.add(textFieldBonificador2);
+		
+		textFieldDanyoTipo2 = new JTextField(character.getArmas()[1].getDaño() + "   " + character.getArmas()[1].getTipo());
+		textFieldDanyoTipo2.setColumns(10);
+		textFieldDanyoTipo2.setBounds(240, 65, 140, 20);
+		panel_2_1_1.add(textFieldDanyoTipo2);
+		
+		textFieldArma3 = new JTextField(character.getArmas()[2].getNombre());
+		textFieldArma3.setColumns(10);
+		textFieldArma3.setBounds(10, 95, 140, 20);
+		panel_2_1_1.add(textFieldArma3);
+		
+		textFieldBonificador3 = new JTextField();
+		textFieldBonificador3.setColumns(10);
+		textFieldBonificador3.setBounds(170, 95, 50, 20);
+		panel_2_1_1.add(textFieldBonificador3);
+		
+		textFieldDanyoTipo3 = new JTextField(character.getArmas()[2].getDaño() + "   " + character.getArmas()[2].getTipo());
+		textFieldDanyoTipo3.setColumns(10);
+		textFieldDanyoTipo3.setBounds(240, 95, 140, 20);
+		panel_2_1_1.add(textFieldDanyoTipo3);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(10, 125, 370, 210);
+		panel_2_1_1.add(textPane);
+		
+		JPanel panel_2_1_2 = new JPanel();
+		panel_2_1_2.setBounds(1190, 22, 390, 230);
+		frame.getContentPane().add(panel_2_1_2);
+		panel_2_1_2.setLayout(null);
+		
+		JLabel lPersonaje = new JLabel("PERSONAJE");
+		lPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
+		lPersonaje.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lPersonaje.setBounds(20, 210, 350, 20);
+		panel_2_1_2.add(lPersonaje);
+		
+		JLabel lNombreDosPuntos = new JLabel("Nombre:");
+		lNombreDosPuntos.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lNombreDosPuntos.setBounds(20, 10, 60, 20);
+		panel_2_1_2.add(lNombreDosPuntos);
+		
+		textFieldIntroduceTuNombre = new JTextField();
+		textFieldIntroduceTuNombre.setToolTipText("Introduce tu nombre...");
+		textFieldIntroduceTuNombre.setBounds(90, 10, 280, 20);
+		panel_2_1_2.add(textFieldIntroduceTuNombre);
+		textFieldIntroduceTuNombre.setColumns(10);
+		
+		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setToolTipText("Caracteristicas del personaje");
+		textPane_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textPane_1.setBounds(20, 40, 350, 165);
+		panel_2_1_2.add(textPane_1);
+		
+		JPanel panel_2_1_2_1 = new JPanel();
+		panel_2_1_2_1.setBounds(1190, 297, 390, 500);
+		frame.getContentPane().add(panel_2_1_2_1);
+		panel_2_1_2_1.setLayout(null);
+		
+		JLabel lRasgos = new JLabel("RASGOS Y ATRIBUTOS");
+		lRasgos.setHorizontalAlignment(SwingConstants.CENTER);
+		lRasgos.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lRasgos.setBounds(20, 480, 350, 20);
+		panel_2_1_2_1.add(lRasgos);
+		
+		JTextPane txtpnCosasDeTortuga = new JTextPane();
+		txtpnCosasDeTortuga.setText("cosas de tortuga:\r\n-Puedes atacar con tu zarpa haciendo 1d4 de da\u00F1o cortante\r\n-Puedes aguantar la respiraci\u00F3n bajo el agua durante 60 minutos\r\n-Puedes meterte dentro de tu caparaz\u00F3n usando tu acci\u00F3n reduciendo as\u00ED su velocidad a 0 teniendo desventaja en tiradas de destreza y ganando ventaja en tiradas de salvaci\u00F3n de constituci\u00F3n y fuerza y ganas un mas 4 en AC. puedes salir del caparaz\u00F3n como acci\u00F3n bonus pero, no puedes tomar ninguna otra acci\u00F3n tras eso.\r\n-bueno es supervivencia \r\n\r\ncosas de b\u00E1rbaro:\r\n-2 veces al dia ganas ventaja en checks y salvaciones de fuerza y recibes un +2 en  ataques a mele y resistencia contra da\u00F1o contundente penetrante y cortante\r\n-Tienes 17 de constituci\u00F3n cuando no llevas nada de armadura\r\n-Ataque temerario puedes dejar de lado toda preocupaci\u00F3n por tu defensa y atacar con una firme convicci\u00F3n. Una vez atacas por primera vez en tu turno puedes decidir atacar de forma temeraria, esto te dar\u00E1 ventaja en ataques a mele que usan fuerza, pero los ataques contra ti tendr\u00E1s desventaja hasta el siguiente turno.\r\n\r\ncosas de pescador:\r\n-Puedes hacer amigos contando historias y pescar lo suficientemente bien como para conseguir algo de pasta\r\n");
+		txtpnCosasDeTortuga.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		txtpnCosasDeTortuga.setBounds(10, 10, 370, 460);
+		panel_2_1_2_1.add(txtpnCosasDeTortuga);
 		
 		JPanel panel_4 = new JPanel();
-		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
-		gbc_panel_4.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_4.gridx = 0;
-		gbc_panel_4.gridy = 17;
-		panel.add(panel_4, gbc_panel_4);
+		panel_4.setBounds(1160, 815, 420, 62);
+		frame.getContentPane().add(panel_4);
+		panel_4.setLayout(null);
 		
-		JPanel panel_17 = new JPanel();
-		GridBagConstraints gbc_panel_17 = new GridBagConstraints();
-		gbc_panel_17.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_17.fill = GridBagConstraints.BOTH;
-		gbc_panel_17.gridx = 0;
-		gbc_panel_17.gridy = 18;
-		panel.add(panel_17, gbc_panel_17);
+		JButton bEditorPersonaje = new JButton("Editor de Personaje\r\n");
+		bEditorPersonaje.setBounds(0, 10, 130, 42);
+		panel_4.add(bEditorPersonaje);
 		
-		JButton btnNewButton_8 = new JButton("+");
-		panel_17.add(btnNewButton_8);
-		
-		JButton btnNewButton_9 = new JButton("-");
-		panel_17.add(btnNewButton_9);
-		
-		JPanel panel_12 = new JPanel();
-		GridBagConstraints gbc_panel_12 = new GridBagConstraints();
-		gbc_panel_12.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_12.fill = GridBagConstraints.BOTH;
-		gbc_panel_12.gridx = 0;
-		gbc_panel_12.gridy = 19;
-		panel.add(panel_12, gbc_panel_12);
-		
-		JLabel lCharScore = new JLabel(pruebaChar.scoreToString());
-		panel_12.add(lCharScore);
-		
-		JLabel lCharMod = new JLabel(pruebaChar.modToString());
-		panel_12.add(lCharMod);
-		
-		JLabel lChar = new JLabel("Carisma");
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 0;
-		gbc_lblNewLabel_2.gridy = 20;
-		panel.add(lChar, gbc_lblNewLabel_2);
-		
-		JPanel panel_5 = new JPanel();
-		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
-		gbc_panel_5.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_5.gridx = 0;
-		gbc_panel_5.gridy = 21;
-		panel.add(panel_5, gbc_panel_5);
-		
-		JPanel panel_18 = new JPanel();
-		GridBagConstraints gbc_panel_18 = new GridBagConstraints();
-		gbc_panel_18.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_18.fill = GridBagConstraints.BOTH;
-		gbc_panel_18.gridx = 0;
-		gbc_panel_18.gridy = 22;
-		panel.add(panel_18, gbc_panel_18);
-		
-		JButton btnNewButton_10 = new JButton("+");
-		panel_18.add(btnNewButton_10);
-		
-		JButton btnNewButton_11 = new JButton("-");
-		panel_18.add(btnNewButton_11);
-		
-		JPanel panel_6 = new JPanel();
-		GridBagConstraints gbc_panel_6 = new GridBagConstraints();
-		gbc_panel_6.insets = new Insets(0, 0, 0, 5);
-		gbc_panel_6.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_6.gridx = 0;
-		gbc_panel_6.gridy = 24;
-		panel.add(panel_6, gbc_panel_6);
-		
-		
-		
-		
-		JLabel lLife = new JLabel("Life");
-		JLabel lLifeNumber = new JLabel(Integer.toString(character.getLife()));
-		JLabel lAC = new JLabel("AC");
-		JLabel lACNumber = new JLabel(Integer.toString(character.getAC()));
-		JLabel lSpeed = new JLabel("Speed");
-		JLabel lSpeedNumber = new JLabel(Integer.toString(character.getSpeed()));
-		JLabel lIniciative = new JLabel("Iniciative");
-		//Aqui habra que meter un if para incluir los modificiadores de raza y clase al valor de la iniciativa
-		JLabel lIniciativeNumber = new JLabel(Integer.toString(character.getDex().getModifier()));
-		JLabel lHitDice = new JLabel("Hit Dice");
-		//A DESARROLLAR
-		//Meter ifs para esto:
-		JLabel lHitDiceNumber = new JLabel("1d10");
-		
-		
-		
-		JButton storeProperties = new JButton("Store");
+		JButton bStoreProperties = new JButton("Store");
 		//Rodear de un if que chequeé si se puede hacer el store 
-		storeProperties.addActionListener(new ActionListener() {
+		bStoreProperties.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				storeOrLoadProperties("store", character, "");
+				storeOrLoadProperties("store", character, "");			
 			}
 		});
+		bStoreProperties.setBounds(300, 10, 120, 42);
+		panel_4.add(bStoreProperties);
 		
-		JButton loadProperties = new JButton("Load");
-		storeProperties.addActionListener(new ActionListener() {
+		JButton bLoadProperties = new JButton("Load");
+		//Rodear de un if que chequeé si se puede hacer el load
+		bLoadProperties.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				storeOrLoadProperties("load", null, "QuimiMalo");
 			}
 		});
+		bLoadProperties.setBounds(150, 10, 130, 42);
+		panel_4.add(bLoadProperties);
+		
+		
+		/*
+		//Si el score es 20 no se podra sumar mas
+		if (pruebaStr.getScore()<21) {
+			btnNewButton.addActionListener(new ActionListener() {		
+			public void actionPerformed(ActionEvent arg0) {
+							
+			}
+			});
+		
+		}*/
+		
 		
 	}
 	
@@ -472,7 +919,7 @@ public class Window {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-			
+		
 		int i = 0;
 				
 		if (operation == "store") {
@@ -500,7 +947,7 @@ public class Window {
 				objetoP.setProperty("TratoConAnimales" + Integer.toString(i), Integer.toString(character.getTratoAnimales()));
 				objetoP.setProperty("Arcana" + Integer.toString(i), Integer.toString(character.getArcana()));
 				objetoP.setProperty("Atletismo" + Integer.toString(i), Integer.toString(character.getAtletismo()));
-				objetoP.setProperty("Engaño" + Integer.toString(i), Integer.toString(character.getEngaño()));
+				objetoP.setProperty("Engaño" + Integer.toString(i), Integer.toString(character.getEnganyo()));
 				objetoP.setProperty("Historia" + Integer.toString(i), Integer.toString(character.getHistoria()));
 				objetoP.setProperty("Perspicacia" + Integer.toString(i), Integer.toString(character.getPerspicacia()));
 				objetoP.setProperty("Intimidacion" + Integer.toString(i), Integer.toString(character.getIntimidacion()));
@@ -587,7 +1034,7 @@ public class Window {
 				character.setTratoAnimales(Integer.parseInt(objetoP.getProperty("TratoConAnimales")));
 				character.setArcana(Integer.parseInt(objetoP.getProperty("Arcana")));
 				character.setAtletismo(Integer.parseInt(objetoP.getProperty("Atletismo")));
-				character.setEngaño(Integer.parseInt(objetoP.getProperty("Engaño")));
+				character.setEnganyo(Integer.parseInt(objetoP.getProperty("Engaño")));
 				character.setHistoria(Integer.parseInt(objetoP.getProperty("Historia")));
 				character.setPerspicacia(Integer.parseInt(objetoP.getProperty("Perspicacia")));
 				character.setIntimidacion(Integer.parseInt(objetoP.getProperty("Intimidacion")));

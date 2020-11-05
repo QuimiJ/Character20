@@ -51,8 +51,8 @@ public class Clase {
 	
 	public Clase() {
 		super();
-		this.nombre = null;
-		this.hitdie = null;
+		this.nombre = "";
+		this.hitdie = "";
 		this.rasgos = null;
 		this.simpleproficiency = false;
 		this.martialproficiency = false;

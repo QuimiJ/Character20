@@ -18,7 +18,7 @@ public class Rasgo {
 	
 	public Rasgo() {
 		super();
-		this.contenido = null;
+		this.contenido = "";
 	}
 
 	public String toString() {
