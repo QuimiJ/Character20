@@ -166,7 +166,7 @@ public class Window {
 		panel_1.add(lDexMod);
 		
 		JLabel lDex = new JLabel("DESTREZA");
-		lDex.setFont(new Font("Tahoma", Font.ITALIC, 30));
+		lDex.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lDex.setBounds(60, 80, 150, 30);
 		panel_1.add(lDex);
 		
@@ -319,12 +319,12 @@ public class Window {
 		
 		JLabel lSalvaciones = new JLabel("SALVACIONES");
 		lSalvaciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lSalvaciones.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lSalvaciones.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 25));
 		lSalvaciones.setBounds(47, 134, 300, 30);
 		panel_2.add(lSalvaciones);
 		
 		JLabel lContraMuerte = new JLabel("CONTRA MUERTE");
-		lContraMuerte.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
+		lContraMuerte.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 25));
 		lContraMuerte.setHorizontalAlignment(SwingConstants.CENTER);
 		lContraMuerte.setBounds(47, 165, 300, 30);
 		panel_2.add(lContraMuerte);
@@ -360,7 +360,7 @@ public class Window {
 		
 		JLabel lSkills = new JLabel("HABILIDADES");
 		lSkills.setHorizontalAlignment(SwingConstants.CENTER);
-		lSkills.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
+		lSkills.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 30));
 		lSkills.setBounds(20, 560, 350, 30);
 		panel_3.add(lSkills);
 		
@@ -751,7 +751,7 @@ public class Window {
 		panel_2_1_1.setLayout(null);
 		
 		JLabel lArmasEquipo = new JLabel("ARMAS Y EQUIPO");
-		lArmasEquipo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
+		lArmasEquipo.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 30));
 		lArmasEquipo.setHorizontalAlignment(SwingConstants.CENTER);
 		lArmasEquipo.setBounds(20, 340, 350, 30);
 		panel_2_1_1.add(lArmasEquipo);
@@ -835,7 +835,7 @@ public class Window {
 		
 		JLabel lPersonaje = new JLabel("PERSONAJE");
 		lPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lPersonaje.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lPersonaje.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 20));
 		lPersonaje.setBounds(20, 210, 350, 20);
 		panel_2_1_2.add(lPersonaje);
 		
@@ -863,7 +863,7 @@ public class Window {
 		
 		JLabel lRasgos = new JLabel("RASGOS Y ATRIBUTOS");
 		lRasgos.setHorizontalAlignment(SwingConstants.CENTER);
-		lRasgos.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
+		lRasgos.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 20));
 		lRasgos.setBounds(20, 480, 350, 20);
 		panel_2_1_2_1.add(lRasgos);
 		
