@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
@@ -55,7 +56,7 @@ public class Window {
 	private JTextField textFieldSpeed;
 	private JTextField textFieldPuntosGolpe;
 	private JTextField textFieldVidaTemporal;
-	private JTextField txDadosGolpe;
+	private JTextField textFieldDadosGolpe;
 	private JTextField textFieldArma1;
 	private JTextField textFieldDanyoTipo1;
 	private JTextField textFieldBonificador1;
@@ -94,6 +95,7 @@ public class Window {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//Variable Personaje que sirve para almacenar la informacion que se muestra en la ventana
 		Personaje character = new Personaje();
 		
 		frame = new JFrame();
@@ -737,13 +739,13 @@ public class Window {
 		textFieldVidaTemporal.setBounds(140, 270, 110, 110);
 		panel_2_1.add(textFieldVidaTemporal);
 		
-		txDadosGolpe = new JTextField();
-		txDadosGolpe.setText(character.getClasepj().getHitdie());
-		txDadosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
-		txDadosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		txDadosGolpe.setColumns(10);
-		txDadosGolpe.setBounds(270, 270, 110, 110);
-		panel_2_1.add(txDadosGolpe);
+		textFieldDadosGolpe = new JTextField();
+		textFieldDadosGolpe.setText(character.getClasepj().getHitdie());
+		textFieldDadosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldDadosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		textFieldDadosGolpe.setColumns(10);
+		textFieldDadosGolpe.setBounds(270, 270, 110, 110);
+		panel_2_1.add(textFieldDadosGolpe);
 		
 		JPanel panel_2_1_1 = new JPanel();
 		panel_2_1_1.setBounds(760, 507, 390, 370);
@@ -780,9 +782,9 @@ public class Window {
 		panel_2_1_1.add(textFieldArma1);
 		textFieldArma1.setColumns(10);
 		
-		textFieldDanyoTipo1 = new JTextField(character.getArmas()[0].getDaño() + "   " + character.getArmas()[0].getTipo());
+		textFieldDanyoTipo1 = new JTextField(character.getArmas()[0].getDanyo() + "   " + character.getArmas()[0].getTipo());
 		textFieldDanyoTipo1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textFieldDanyoTipo1.setText(character.getArmas()[0].getDaño() + "   " + character.getArmas()[1].getTipo());
+		textFieldDanyoTipo1.setText(character.getArmas()[0].getDanyo() + "   " + character.getArmas()[1].getTipo());
 		textFieldDanyoTipo1.setColumns(10);
 		textFieldDanyoTipo1.setBounds(240, 35, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo1);
@@ -804,7 +806,7 @@ public class Window {
 		textFieldBonificador2.setBounds(170, 65, 50, 20);
 		panel_2_1_1.add(textFieldBonificador2);
 		
-		textFieldDanyoTipo2 = new JTextField(character.getArmas()[1].getDaño() + "   " + character.getArmas()[1].getTipo());
+		textFieldDanyoTipo2 = new JTextField(character.getArmas()[1].getDanyo() + "   " + character.getArmas()[1].getTipo());
 		textFieldDanyoTipo2.setColumns(10);
 		textFieldDanyoTipo2.setBounds(240, 65, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo2);
@@ -819,7 +821,7 @@ public class Window {
 		textFieldBonificador3.setBounds(170, 95, 50, 20);
 		panel_2_1_1.add(textFieldBonificador3);
 		
-		textFieldDanyoTipo3 = new JTextField(character.getArmas()[2].getDaño() + "   " + character.getArmas()[2].getTipo());
+		textFieldDanyoTipo3 = new JTextField(character.getArmas()[2].getDanyo() + "   " + character.getArmas()[2].getTipo());
 		textFieldDanyoTipo3.setColumns(10);
 		textFieldDanyoTipo3.setBounds(240, 95, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo3);
@@ -883,70 +885,10 @@ public class Window {
 		panel_4.add(bEditorPersonaje);
 		
 		JButton bStoreProperties = new JButton("Store");
-		//Rodear de un if que chequeé si se puede hacer el store 
+		//RODEAR de un if que chequeé si se puede hacer el store 
 		bStoreProperties.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				/*
-				character.setName(textFieldIntroduceTuNombre.getText());
-				character.setLife(Integer.parseInt(textFieldPuntosGolpe.getText()));
-				character.setAC(Integer.parseInt(textFieldAC.getText()));
-				character.setSpeed(Integer.parseInt(textFieldSpeed.getText()));
-				character.getStr().setScore(Integer.parseInt(textFieldStr.getText()));
-				character.getDex().setScore(Integer.parseInt(textFieldDex.getText()));
-				character.getCon().setScore(Integer.parseInt(textFieldCon.getText()));
-				character.getIntel().setScore(Integer.parseInt(textFieldInt.getText()));
-				character.getWis().setScore(Integer.parseInt(textFieldWis.getText()));
-				character.getCha().setScore(Integer.parseInt(textFieldCar.getText()));
-				character.setStrsave(Integer.parseInt(lStrSave.getText()));
-				character.setDexsave(Integer.parseInt(lDexSave.getText()));
-				character.setConsave(Integer.parseInt(lConSave.getText()));
-				character.setIntsave(Integer.parseInt(lIntSave.getText()));
-				character.setWissave(Integer.parseInt(lWisSave.getText()));
-				character.setChasave(Integer.parseInt(lCarSave.getText()));
-				character.setAcrobacias(Integer.parseInt(textFieldAcrobacias.getText()));
-				character.setTratoAnimales(Integer.parseInt(textFieldAnimales.getText()));
-				character.setArcana(Integer.parseInt(textFieldArcana.getText()));
-				character.setAtletismo(Integer.parseInt(textFieldAtletismo.getText()));
-				character.setEnganyo(Integer.parseInt(textFieldEnganyo.getText()));
-				character.setHistoria(Integer.parseInt(textFieldHistoria.getText()));
-				character.setPerspicacia(Integer.parseInt(textFieldPerspicacia.getText()));
-				character.setIntimidacion(Integer.parseInt(textFieldIntimidacion.getText()));
-				character.setInvestigacion(Integer.parseInt(textFieldInvestigacion.getText()));
-				character.setMedicina(Integer.parseInt(textFieldMedicina.getText()));
-				character.setNaturaleza(Integer.parseInt(textFieldNaturaleza.getText()));
-				character.setPercepcion(Integer.parseInt(textFieldPercepcion.getText()));
-				character.setInterpretacion(Integer.parseInt(textFieldInterpretacion.getText()));
-				character.setPersuasion(Integer.parseInt(textFieldPersuasion.getText()));
-				character.setReligion(Integer.parseInt(textFieldReligion.getText()));
-				character.setJuegoManos(Integer.parseInt(textFieldJuegoManos.getText()));
-				character.setSigilo(Integer.parseInt(textFieldSigilo.getText()));
-				character.setSupervivencia(Integer.parseInt(textFieldSupervivencia.getText()));
-				character.setBonoCompetencia(Integer.parseInt(""));
-				character.setIniciativa(Integer.parseInt(textFieldIniciativa.getText()));
-				character.getArmas()[0].setNombre("");
-				character.getArmas()[1].setNombre("");
-				character.getArmas()[2].setNombre("");
-				character.getHechizos()[0].setSpellName("");
-				character.getHechizos()[1].setSpellName("");
-				character.getHechizos()[2].setSpellName("");
-				character.getClasepj().setNombre("");
-				character.setPiezasCobre(Integer.parseInt(""));
-				character.setPiezasPlata(Integer.parseInt(""));
-				character.setPiezasOro(Integer.parseInt(""));
-				character.setPiezasPlatino(Integer.parseInt(""));
-				character.setPiezasElectrum(Integer.parseInt(""));
-				character.setEquipo("");
-				character.setTesoro("");
-				character.setIdiomas("");
-				character.setRasgosPersonalidad("");
-				character.setIdeales("");
-				character.setVinculos("");
-				character.setDefectos("");
-				character.getRaza().setNombre("");
-				character.getSubraza().setNombre("");
-				*/
-				
+			public void actionPerformed(ActionEvent arg0) {		
 				storeOrLoadProperties("store", character, "");			
 			}
 		});
@@ -954,16 +896,108 @@ public class Window {
 		panel_4.add(bStoreProperties);
 		
 		JButton bLoadProperties = new JButton("Load");
-		//Rodear de un if que chequeé si se puede hacer el load
+		//RODEAR de un if que chequeé si se puede hacer el load
+		//Implementar un jTextField para introducir el nombre del personaje que se va a cargar
 		bLoadProperties.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				storeOrLoadProperties("load", null, "QuimiMalo");
+				Thread tStore = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						Personaje personaje = new Personaje();
+						try {
+						personaje = storeOrLoadProperties("load", null, "QuimiMalo");
+						
+						textFieldIntroduceTuNombre.setText(personaje.getName());
+						textFieldPuntosGolpe.setText(Integer.toString(personaje.getLife()));
+						textFieldAC.setText(Integer.toString(personaje.getAC()));
+						textFieldSpeed.setText(Integer.toString(personaje.getSpeed()));
+						textFieldStr.setText(Integer.toString(personaje.getStr().getScore()));
+						textFieldDex.setText(Integer.toString(personaje.getDex().getScore()));
+						textFieldCon.setText(Integer.toString(personaje.getCon().getScore()));
+						textFieldInt.setText(Integer.toString(personaje.getIntel().getScore()));
+						textFieldWis.setText(Integer.toString(personaje.getWis().getScore()));
+						textFieldCar.setText(Integer.toString(personaje.getCha().getScore()));
+						lStrSave.setText(Integer.toString(personaje.getStrsave()));
+						lDexSave.setText(Integer.toString(personaje.getDexsave()));
+						lConSave.setText(Integer.toString(personaje.getConsave()));
+						lIntSave.setText(Integer.toString(personaje.getIntsave()));
+						lWisSave.setText(Integer.toString(personaje.getWissave()));
+						lCarSave.setText(Integer.toString(personaje.getChasave()));
+						
+						textFieldAcrobacias.setText(Integer.toString(personaje.getAcrobacias()));
+						textFieldAnimales.setText(Integer.toString(personaje.getTratoAnimales()));
+						textFieldArcana.setText(Integer.toString(personaje.getArcana()));
+						textFieldAtletismo.setText(Integer.toString(personaje.getAtletismo()));
+						textFieldEnganyo.setText(Integer.toString(personaje.getEnganyo()));
+						textFieldHistoria.setText(Integer.toString(personaje.getHistoria()));
+						textFieldPerspicacia.setText(Integer.toString(personaje.getPerspicacia()));
+						textFieldIntimidacion.setText(Integer.toString(personaje.getIntimidacion()));
+						textFieldInvestigacion.setText(Integer.toString(personaje.getInvestigacion()));
+						textFieldMedicina.setText(Integer.toString(personaje.getMedicina()));
+						textFieldNaturaleza.setText(Integer.toString(personaje.getNaturaleza()));
+						textFieldPercepcion.setText(Integer.toString(personaje.getPercepcion()));
+						textFieldInterpretacion.setText(Integer.toString(personaje.getInterpretacion()));
+						textFieldPersuasion.setText(Integer.toString(personaje.getPersuasion()));
+						textFieldReligion.setText(Integer.toString(personaje.getReligion()));
+						textFieldJuegoManos.setText(Integer.toString(personaje.getJuegoManos()));
+						textFieldSigilo.setText(Integer.toString(personaje.getSigilo()));
+						textFieldSupervivencia.setText(Integer.toString(personaje.getSupervivencia()));
+						
+						//ATENCION textFieldBonoCompetencia no se ha implementado en la ventana
+						//textFieldBonoCompetencia.setText(Integer.toString(personaje.getBonoCompetencia()));
+						textFieldIniciativa.setText(Integer.toString(personaje.getIniciativa()));
+						
+						//¿En que text field se mete el equipo?
+						//character.setEquipo(objetoP.getProperty("Equipment"));
+						textFieldArma1.setText(personaje.getArmas()[0].getNombre());
+						textFieldArma2.setText(personaje.getArmas()[1].getNombre());
+						textFieldArma3.setText(personaje.getArmas()[2].getNombre());
+						//El bonificador no esta en la clase Arma
+						/*
+						textFieldBonificador1.setText(personaje.getArmas()[0].get());
+						textFieldBonificador2.setText(personaje.getArmas()[1].get());
+						textFieldBonificador3.setText(personaje.getArmas()[2].get());
+						*/
+						textFieldDanyoTipo1.setText(personaje.getArmas()[0].getDanyo() + ", " + personaje.getArmas()[0].getTipo());
+						textFieldDanyoTipo2.setText(personaje.getArmas()[1].getDanyo() + ", " + personaje.getArmas()[1].getTipo());
+						textFieldDanyoTipo3.setText(personaje.getArmas()[2].getDanyo() + ", " + personaje.getArmas()[2].getTipo());
+						
+						//Pensar donde meter los hechizos
+						
+						//Hay que meter este bloque en uno de los jTextField grandes								
+						/*character.setPiezasCobre(Integer.parseInt(objetoP.getProperty("Copper")));
+						character.setPiezasPlata(Integer.parseInt(objetoP.getProperty("Silver")));
+						character.setPiezasOro(Integer.parseInt(objetoP.getProperty("Gold")));
+						character.setPiezasPlatino(Integer.parseInt(objetoP.getProperty("Platinum")));
+						character.setPiezasElectrum(Integer.parseInt(objetoP.getProperty("Electrum")));
+						
+						character.setTesoro(objetoP.getProperty("Treasure"));
+						character.setIdiomas(objetoP.getProperty("Language"));
+						character.setRasgosPersonalidad(objetoP.getProperty("PersonalityTraits"));
+						character.setIdeales(objetoP.getProperty("Ideals"));
+						character.setVinculos(objetoP.getProperty("Bonds"));
+						character.setDefectos(objetoP.getProperty("Flaws"));
+						Raza raza = new Raza();
+						Subraza subraza = new Subraza();
+						//PROVISIONAL
+						raza.setNombre(objetoP.getProperty("Race"));
+						subraza.setNombre(objetoP.getProperty("Subrace"));
+						character.setRaza(raza);
+						character.setSubraza(subraza);
+						*/
+						} catch (Exception e) {
+							//PROVISIONAL
+							System.out.println("capachau");
+						}
+					}
+				});
+				tStore.start();
 			}
 		});
+
 		bLoadProperties.setBounds(150, 10, 130, 42);
 		panel_4.add(bLoadProperties);
-		
 		
 		/*
 		//Si el score es 20 no se podra sumar mas
@@ -974,11 +1008,14 @@ public class Window {
 			}
 			});
 		
-		}*/
-		
+		}*/		
 	}
 	
-	public static void storeOrLoadProperties(String operation, Personaje character, String nCharacter) {
+	//Recibe un String operation que controla que operacion ejectuta el metodo (store o load),
+	//Un Personaje character si el método va a ejecutar load (de lo contrario recibira null)
+	//Y, si la operacion es store, un String nCharacter para indicar al programa el nombre del personaje que tiene que cargarse
+	//El metodo devuelve un objeto Personaje para realizar el load
+	public static Personaje storeOrLoadProperties(String operation, Personaje character, String nCharacter) {
 		Properties objetoP = new Properties();
 		
 		try {
@@ -989,9 +1026,10 @@ public class Window {
 		
 		int i = 0;
 				
+		//Operacion store
 		if (operation == "store") {
 		for (i = 0; i < 200; i++) {
-			if (objetoP.getProperty("Number" + Integer.toString(i)) == null) {			
+			if (objetoP.getProperty("Number" + Integer.toString(i)) == null) {
 				objetoP.setProperty("Number" + Integer.toString(i), Integer.toString(i));
 				objetoP.setProperty("Name" + Integer.toString(i), character.getName());
 				objetoP.setProperty("Life" + Integer.toString(i), Integer.toString(character.getLife()));
@@ -1066,32 +1104,20 @@ public class Window {
 		}
 		}
 				
-		//FALTA PONERLO CON LAS COSAS DE LA VENTANA CON UN HILO
+		//Operacion load
 		if (operation == "load") {
 		for (i = 0; i < 200; i++) {
-			if (nCharacter == objetoP.getProperty("Name" + Integer.toString(i))) {				
+			if (nCharacter == objetoP.getProperty("Name" + Integer.toString(i))) {		
 				character.setName(objetoP.getProperty("Name"));
 				character.setLife(Integer.parseInt(objetoP.getProperty("Life")));
 				character.setAC(Integer.parseInt(objetoP.getProperty("AC")));
 				character.setSpeed(Integer.parseInt(objetoP.getProperty("Speed")));
-				Stat str = new Stat();
-				Stat dex = new Stat();
-				Stat con = new Stat();
-				Stat intel = new Stat();
-				Stat wis = new Stat();
-				Stat car = new Stat();
-				str.setScore(Integer.parseInt(objetoP.getProperty("Str")));
-				dex.setScore(Integer.parseInt(objetoP.getProperty("Dex")));
-				con.setScore(Integer.parseInt(objetoP.getProperty("Con")));
-				intel.setScore(Integer.parseInt(objetoP.getProperty("Int")));
-				wis.setScore(Integer.parseInt(objetoP.getProperty("Wis")));
-				car.setScore(Integer.parseInt(objetoP.getProperty("Char")));
-				character.setStr(str);
-				character.setDex(dex);
-				character.setCon(con);
-				character.setIntel(intel);
-				character.setWis(wis);
-				character.setCha(car);
+				character.getStr().setScore(Integer.parseInt(objetoP.getProperty("Str")));
+				character.getDex().setScore(Integer.parseInt(objetoP.getProperty("Dex")));
+				character.getCon().setScore(Integer.parseInt(objetoP.getProperty("Con")));
+				character.getIntel().setScore(Integer.parseInt(objetoP.getProperty("Int")));
+				character.getWis().setScore(Integer.parseInt(objetoP.getProperty("Wis")));
+				character.getCha().setScore(Integer.parseInt(objetoP.getProperty("Char")));
 				character.setStrsave(Integer.parseInt(objetoP.getProperty("StrSave")));
 				character.setDexsave(Integer.parseInt(objetoP.getProperty("DexSave")));
 				character.setConsave(Integer.parseInt(objetoP.getProperty("ConSave")));
@@ -1112,7 +1138,6 @@ public class Window {
 				character.setNaturaleza(Integer.parseInt(objetoP.getProperty("Naturaleza")));
 				character.setPercepcion(Integer.parseInt(objetoP.getProperty("Percepcion")));
 				character.setInterpretacion(Integer.parseInt(objetoP.getProperty("Interpretacion")));
-				character.setPersuasion(Integer.parseInt(objetoP.getProperty("Persuasion")));
 				character.setPersuasion(Integer.parseInt(objetoP.getProperty("Persuasion")));
 				character.setReligion(Integer.parseInt(objetoP.getProperty("Religion")));
 				character.setJuegoManos(Integer.parseInt(objetoP.getProperty("JuegoManos")));
@@ -1158,12 +1183,14 @@ public class Window {
 				subraza.setNombre(objetoP.getProperty("Subrace"));
 				character.setRaza(raza);
 				character.setSubraza(subraza);
-					
+				
 				System.out.println("Character loaded.");
 				
 				i=200;
 			}
 		}
+		return character;
 	}
+		return character;
 	}		
 }

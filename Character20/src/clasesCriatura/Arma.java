@@ -6,7 +6,7 @@ public class Arma {
 	//Las armas son simple o martial
 	private boolean marcial;
 	
-	private String daño;
+	private String danyo;
 	private String tipo;
 	
 	//Las propiedades son cosas como Finesse, light, heavy o two-handed
@@ -30,11 +30,11 @@ public class Arma {
 	public void setMarcial(boolean marcial) {
 		this.marcial = marcial;
 	}
-	public String getDaño() {
-		return daño;
+	public String getDanyo() {
+		return danyo;
 	}
-	public void setDaño(String daño) {
-		this.daño = daño;
+	public void setDanyo(String daño) {
+		this.danyo = daño;
 	}
 	public String getTipo() {
 		return tipo;
@@ -73,7 +73,7 @@ public class Arma {
 		super();
 		this.nombre = nombre;
 		this.marcial = marcial;
-		this.daño = daño;
+		this.danyo = daño;
 		this.tipo = tipo;
 		this.propiedad1 = propiedad1;
 		this.propiedad2 = propiedad2;
@@ -85,7 +85,7 @@ public class Arma {
 		super();
 		this.nombre = "";
 		this.marcial = false;
-		this.daño = "";
+		this.danyo = "";
 		this.tipo = "";
 		this.propiedad1 = "";
 		this.propiedad2 = "";
@@ -94,7 +94,7 @@ public class Arma {
 	}
 	
 	public String toString() {
-		return "Arma [nombre=" + nombre + ", marcial=" + marcial + ", daño=" + daño + ", tipo=" + tipo + ", propiedad1="
+		return "Arma [nombre=" + nombre + ", marcial=" + marcial + ", daño=" + danyo + ", tipo=" + tipo + ", propiedad1="
 				+ propiedad1 + ", propiedad2=" + propiedad2 + ", propiedad3=" + propiedad3 + ", propiedad4="
 				+ propiedad4 + "]";
 	}
