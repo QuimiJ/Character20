@@ -11,7 +11,7 @@ public class Criatura {
 	protected Stat con;
 	protected Stat intel;
 	protected Stat wis;
-	protected Stat cha;	 
+	protected Stat cha;
 	
 	public Criatura(String name, int life, int aC, int speed, Stat str, Stat dex, Stat con,
 			Stat intel, Stat wis, Stat cha) {
@@ -31,9 +31,9 @@ public class Criatura {
 	public Criatura() {
 		super();
 		this.name = "";
-		this.life = 0;
-		this.AC = 0;
-		this.speed = 0;
+		this.life = 1;
+		this.AC = 10;
+		this.speed = 30;
 		this.str = new Stat();
 		this.dex = new Stat();
 		this.con = new Stat();
@@ -121,7 +121,5 @@ public class Criatura {
 	public void setCha(Stat cha) {
 		this.cha = cha;
 	}
-	
-	//Poner toString() aqui o en las clases Personaje y Encuentro
 	
 }

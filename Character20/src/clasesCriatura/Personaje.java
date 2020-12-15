@@ -17,7 +17,7 @@ public class Personaje extends Criatura {
 	private int tratoAnimales = wis.getModifier();
 	private int arcana = intel.getModifier();
 	private int atletismo = str.getModifier();
-	private int engaño = cha.getModifier();
+	private int enganyo = cha.getModifier();
 	private int historia = intel.getModifier();
 	private int perspicacia = wis.getModifier();
 	private int intimidacion = cha.getModifier();
@@ -54,6 +54,9 @@ public class Personaje extends Criatura {
     private String ideales;
     private String vinculos;
     private String defectos;
+    private Raza raza;
+    private Subraza subraza;
+    
     
     //Getters y setters
 	public int getStrsave() {
@@ -116,11 +119,11 @@ public class Personaje extends Criatura {
 	public void setAtletismo(int atletismo) {
 		this.atletismo = atletismo;
 	}
-	public int getEngaño() {
-		return engaño;
+	public int getEnganyo() {
+		return enganyo;
 	}
-	public void setEngaño(int engaño) {
-		this.engaño = engaño;
+	public void setEnganyo(int engaño) {
+		this.enganyo = engaño;
 	}
 	public int getHistoria() {
 		return historia;
@@ -224,7 +227,7 @@ public class Personaje extends Criatura {
 	public void setClasepj(Clase clase) {
 		this.clasepj = clasepj;
 	}
-	public Hechizo[] gethechizos() {
+	public Hechizo[] getHechizos() {
 		return hechizos;
 	}
 	public void setHechizos(Hechizo[] hechizos) {
@@ -278,10 +281,10 @@ public class Personaje extends Criatura {
 	public void setIdiomas(String idiomas) {
 		this.idiomas = idiomas;
 	}
-	public String getrasgosPersonalidad() {
+	public String getRasgosPersonalidad() {
 		return rasgosPersonalidad;
 	}
-	public void setrasgosPersonalidad(String rasgosPersonalidad) {
+	public void setRasgosPersonalidad(String rasgosPersonalidad) {
 		this.rasgosPersonalidad = rasgosPersonalidad;
 	}
 	public String getIdeales() {
@@ -302,10 +305,20 @@ public class Personaje extends Criatura {
 	public void setDefectos(String defectos) {
 		this.defectos = defectos;
 	}
+    public Raza getRaza() {
+		return raza;
+	}
+	public void setRaza(Raza raza) {
+		this.raza = raza;
+	}
+	public Subraza getSubraza() {
+		return subraza;
+	}
+	public void setSubraza(Subraza subraza) {
+		this.subraza = subraza;
+	}
 	
-	
-	
-    //Constructores
+	//Constructores
 	public Personaje(String name, int life, int aC, int speed, Stat str, Stat dex, Stat con, Stat intel, Stat wis,
 			Stat cha, int strsave, int dexsave, int consave, int intsave, int wissave, int chasave, int acrobacias,
 			int tratoAnimales, int arcana, int atletismo, int engaño, int historia, int perspicacia, int intimidacion,
@@ -313,7 +326,7 @@ public class Personaje extends Criatura {
 			int religion, int juegoManos, int sigilo, int supervivencia, int bonoCompetencia, int iniciativa,
 			Arma[] armas, Clase clasepj, Hechizo[] hechizos, int piezasCobre, int piezasPlata, int piezasOro,
 			int piezasElectrum, int piezasPlatino, String equipo, String tesoro, String idiomas,
-			String rasgosPersonalidad, String ideales, String vinculos, String defectos) {
+			String rasgosPersonalidad, String ideales, String vinculos, String defectos, Raza raza, Subraza subraza) {
 		super(name, life, aC, speed, str, dex, con, intel, wis, cha);
 		this.strsave = strsave;
 		this.dexsave = dexsave;
@@ -325,7 +338,7 @@ public class Personaje extends Criatura {
 		this.tratoAnimales = tratoAnimales;
 		this.arcana = arcana;
 		this.atletismo = atletismo;
-		this.engaño = engaño;
+		this.enganyo = engaño;
 		this.historia = historia;
 		this.perspicacia = perspicacia;
 		this.intimidacion = intimidacion;
@@ -356,6 +369,8 @@ public class Personaje extends Criatura {
 		this.ideales = ideales;
 		this.vinculos = vinculos;
 		this.defectos = defectos;
+		this.raza = raza;
+		this.subraza = subraza;
 	}
 	
 	public Personaje() {
@@ -370,7 +385,7 @@ public class Personaje extends Criatura {
 		this.tratoAnimales = 0;
 		this.arcana = 0;
 		this.atletismo = 0;
-		this.engaño = 0;
+		this.enganyo = 0;
 		this.historia = 0;
 		this.perspicacia = 0;
 		this.intimidacion = 0;
@@ -386,28 +401,34 @@ public class Personaje extends Criatura {
 		this.supervivencia = 0;
 		this.bonoCompetencia = 0;
 		this.iniciativa = 0;
-		this.armas = null;
-		this.clasepj = null;
-		this.hechizos = null;
+		Arma arma1 = new Arma(), arma2 = new Arma(), arma3 = new Arma();
+		Arma[] armas = {arma1, arma2, arma3};
+		this.armas = armas;
+		this.clasepj = new Clase();
+		Hechizo hechizo1 = new Hechizo(), hechizo2 = new Hechizo(), hechizo3 = new Hechizo();
+		Hechizo[] hechizos = {hechizo1, hechizo2, hechizo3};
+		this.hechizos = hechizos;
 		this.piezasCobre = 0;
 		this.piezasPlata = 0;
 		this.piezasOro = 0;
 		this.piezasElectrum = 0;
 		this.piezasPlatino = 0;
-		this.equipo = null;
-		this.tesoro = null;
-		this.idiomas = null;
-		this.rasgosPersonalidad = null;
-		this.ideales = null;
-		this.vinculos = null;
-		this.defectos = null;
+		this.equipo = "";
+		this.tesoro = "";
+		this.idiomas = "";
+		this.rasgosPersonalidad = "";
+		this.ideales = "";
+		this.vinculos = "";
+		this.defectos = "";
+		this.raza = new Raza();
+		this.subraza = new Subraza();
 	}
 	
 	public String toString() {
 		return "Personaje [strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave + ", intsave="
 				+ intsave + ", wissave=" + wissave + ", chasave=" + chasave + ", acrobacias=" + acrobacias
 				+ ", tratoAnimales=" + tratoAnimales + ", arcana=" + arcana + ", atletismo=" + atletismo + ", engaño="
-				+ engaño + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion=" + intimidacion
+				+ enganyo + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion=" + intimidacion
 				+ ", investigacion=" + investigacion + ", medicina=" + medicina + ", naturaleza=" + naturaleza
 				+ ", percepcion=" + percepcion + ", interpretacion=" + interpretacion + ", persuasion=" + persuasion
 				+ ", religion=" + religion + ", juegoManos=" + juegoManos + ", sigilo=" + sigilo + ", supervivencia="
@@ -419,7 +440,4 @@ public class Personaje extends Criatura {
 				+ idiomas + ", rasgosPersonalidad=" + rasgosPersonalidad + ", ideales=" + ideales + ", vinculos="
 				+ vinculos + ", defectos=" + defectos + "]";
 	}
-    
-	
-	 
 }
