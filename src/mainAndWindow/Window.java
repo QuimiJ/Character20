@@ -1,6 +1,6 @@
 package mainAndWindow;
 
-
+//segundo intento
 import clasesCriatura.*;
 import java.awt.EventQueue;
 
@@ -15,6 +15,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+import javax.swing.SpringLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Window {
 
@@ -90,10 +93,14 @@ public class Window {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1626, 949);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(20, 22, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 147, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -130,7 +137,10 @@ public class Window {
 		panel.add(lblNewLabl);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(20, 168, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 168, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 293, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -160,7 +170,10 @@ public class Window {
 		panel_1.add(lblNewLabel_14);
 		
 		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setBounds(20, 324, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1, 324, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1, 449, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1);
 		panel_1_1.setLayout(null);
 		
@@ -191,7 +204,10 @@ public class Window {
 		panel_1_1.add(lblNewLabel_15);
 		
 		JPanel panel_1_1_1 = new JPanel();
-		panel_1_1_1.setBounds(20, 460, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1_1, 460, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1_1, 585, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1_1);
 		panel_1_1_1.setLayout(null);
 		
@@ -222,7 +238,10 @@ public class Window {
 		panel_1_1_1.add(lblNewLabel_12);
 		
 		JPanel panel_1_1_1_1 = new JPanel();
-		panel_1_1_1_1.setBounds(20, 606, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1_1_1, 606, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1_1_1, 731, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1_1_1);
 		panel_1_1_1_1.setLayout(null);
 		
@@ -253,7 +272,10 @@ public class Window {
 		panel_1_1_1_1.add(lblNewLabel_16);
 		
 		JPanel panel_1_1_1_1_1 = new JPanel();
-		panel_1_1_1_1_1.setBounds(20, 752, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1_1_1_1, 752, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1_1_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1_1_1_1, 877, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1_1_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1_1_1_1);
 		panel_1_1_1_1_1.setLayout(null);
 		
@@ -284,7 +306,10 @@ public class Window {
 		panel_1_1_1_1_1.add(lblNewLabel_17);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(330, 22, 390, 200);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2, 330, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, 222, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2, 720, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -337,7 +362,10 @@ public class Window {
 		panel_2.add(radioButton_5);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(330, 287, 390, 590);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_3, 287, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_3, 330, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_3, 877, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_3, 720, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -640,7 +668,10 @@ public class Window {
 		panel_3.add(lblNewLabel_23_15_2);
 		
 		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBounds(760, 22, 390, 420);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1, 760, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1, 442, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1, 1150, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1);
 		panel_2_1.setLayout(null);
 		
@@ -729,7 +760,10 @@ public class Window {
 		panel_2_1.add(txtd);
 		
 		JPanel panel_2_1_1 = new JPanel();
-		panel_2_1_1.setBounds(760, 507, 390, 370);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1_1, 507, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1_1, 760, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1_1, 877, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1_1, 1150, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1_1);
 		panel_2_1_1.setLayout(null);
 		
@@ -812,7 +846,10 @@ public class Window {
 		panel_2_1_1.add(textPane);
 		
 		JPanel panel_2_1_2 = new JPanel();
-		panel_2_1_2.setBounds(1190, 22, 390, 230);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1_2, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1_2, 1190, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1_2, 252, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1_2, 1580, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1_2);
 		panel_2_1_2.setLayout(null);
 		
@@ -840,7 +877,10 @@ public class Window {
 		panel_2_1_2.add(textPane_1);
 		
 		JPanel panel_2_1_2_1 = new JPanel();
-		panel_2_1_2_1.setBounds(1190, 297, 390, 500);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1_2_1, 297, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1_2_1, 1190, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1_2_1, 797, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1_2_1, 1580, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1_2_1);
 		panel_2_1_2_1.setLayout(null);
 		
@@ -857,7 +897,10 @@ public class Window {
 		panel_2_1_2_1.add(txtpnCosasDeTortuga);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1160, 815, 420, 62);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_4, 6, SpringLayout.SOUTH, panel_2_1_2_1);
+		springLayout.putConstraint(SpringLayout.WEST, panel_4, 1160, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_4, 900, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, panel_2_1_2);
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
@@ -872,6 +915,26 @@ public class Window {
 		JButton btnAlmacenar = new JButton("Almacenar");
 		btnAlmacenar.setBounds(300, 10, 120, 42);
 		panel_4.add(btnAlmacenar);
+		
+		JButton btnFuturoUso = new JButton("Futuro uso");
+		btnFuturoUso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnFuturoUso.setBounds(150, 55, 130, 42);
+		panel_4.add(btnFuturoUso);
+		
+		JButton btnNewButton_1_1 = new JButton("Crear Personaje\r\n");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1_1.setBounds(0, 55, 130, 42);
+		panel_4.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_1_2 = new JButton("Futuro uso");
+		btnNewButton_1_2.setBounds(300, 55, 120, 42);
+		panel_4.add(btnNewButton_1_2);
 		
 		/*COSAS PARA EL ACTION LISTENER
 		//IMPORTANTE
@@ -899,5 +962,4 @@ public class Window {
 		
 		}*/
 	}
-	
 }
