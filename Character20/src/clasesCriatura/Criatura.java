@@ -2,16 +2,16 @@ package clasesCriatura;
 
 public class Criatura {
 	
-	protected String name;
-	protected int life;
-	protected int AC; //Armor Class
-	protected int speed;
-	protected Stat str;
-	protected Stat dex;
-	protected Stat con;
-	protected Stat intel;
-	protected Stat wis;
-	protected Stat cha;
+	public String name;
+	public int life;
+	public int AC; //Armor Class
+	public int speed;
+	public Stat str;
+	public Stat dex;
+	public Stat con;
+	public Stat intel;
+	public Stat wis;
+	public Stat cha;
 	
 	public Criatura(String name, int life, int aC, int speed, Stat str, Stat dex, Stat con,
 			Stat intel, Stat wis, Stat cha) {

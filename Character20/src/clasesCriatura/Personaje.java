@@ -374,7 +374,16 @@ public class Personaje extends Criatura {
 	}
 	
 	public Personaje() {
-		super();
+		this.name = "";
+		this.life = 1;
+		this.AC = 10;
+		this.speed = 30;
+		this.str = new Stat();
+		this.dex = new Stat();
+		this.con = new Stat();
+		this.intel = new Stat();
+		this.wis = new Stat();
+		this.cha = new Stat();
 		this.strsave = 0;
 		this.dexsave = 0;
 		this.consave = 0;
