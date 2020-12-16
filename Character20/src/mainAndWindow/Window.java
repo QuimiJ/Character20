@@ -93,6 +93,9 @@ public class Window {
 	 * Create the application.
 	 */
 	public Window() {
+		//Metodo que maneja un fichero properties que guarda las veces que se ha usado la aplicacion.
+		sumarPropertie();
+		//Metodo para inicializar la ventana
 		initialize();
 	}
 
@@ -912,7 +915,7 @@ public class Window {
 					@Override
 					public void run() {
 						try {
-							setLabelsTextFields(storeOrLoadProperties("load", character, textFieldIntroduceTuNombre.getText()));
+							setLabelsTextFields(storeOrLoadProperties("load", character, textFieldIntroduceTuNombre.getText()));	
 						} catch (Exception e) {
 							System.out.println("Ha ocurrido un problema.");
 						}
@@ -939,7 +942,7 @@ public class Window {
 		}
 		
 		Integer i = 0;
-				
+		
 		//Operacion store
 		//Hacer que se pueda actualizar el personaje
 		if (operation == "store") {
@@ -1230,6 +1233,27 @@ public class Window {
 		armas[1].setTipo(textFieldDanyoTipo2.getText());
 		armas[2].setTipo(textFieldDanyoTipo3.getText());
 		character.setArmas(armas);
+	}
+	
+	//Suma uno a un valor de fichero properties
+	public void sumarPropertie () {
+		Properties objetoP = new Properties();
+		try {
+			objetoP.load(new FileInputStream("timesOpen.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (objetoP.getProperty("TimesOpen") != null) {
+			objetoP.setProperty("TimesOpen", Integer.toString(1 + Integer.parseInt(objetoP.getProperty("TimesOpen"))));
+		} else {
+			objetoP.setProperty("TimesOpen", "1");
+		}
+		
+		try {
+			objetoP.store(new FileWriter("timesOpen.properties"), "Operation" + objetoP.getProperty("TimesOpen"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 	
 }
