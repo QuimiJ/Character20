@@ -8,7 +8,6 @@ public class Raza {
 	protected String tamanyo;
 	protected int velocidad;
 	
-	
 	public String getNombre() {
 		return nombre;
 	}
