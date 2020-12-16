@@ -479,6 +479,7 @@ public class CreationWindow extends JFrame {
 		LabelFinish.setBounds(182, 134, 132, 21);
 		panelFinish.add(LabelFinish);
 		
+		//esto no funciona como debe, necesita hilos
 		JLabel LabelResult = new JLabel(RaceSelected + " "+ ClassSelected + " "+BackgroundSelected);
 		LabelResult.setBounds(182, 165, 216, 13);
 		panelFinish.add(LabelResult);
