@@ -85,6 +85,7 @@ public class CharacterDB {
 		try {
 			Statement statement = con.createStatement();
 			
+			
 		} catch(SQLException e) {
 			System.err.println(e.getMessage());
 		}
@@ -93,6 +94,7 @@ public class CharacterDB {
 	private void selectDB() {
 		try {
 			Statement statement = con.createStatement();
+			
 			
 		} catch(SQLException e) {
 			System.err.println(e.getMessage());

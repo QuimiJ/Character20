@@ -2,6 +2,10 @@ package mainAndWindow;
 
 
 import clasesCriatura.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -11,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 import javax.swing.JPanel;
@@ -94,7 +99,7 @@ public class Window {
 	 */
 	public Window() {
 		//Metodo que maneja un fichero properties que guarda las veces que se ha usado la aplicacion.
-		sumarPropertie();
+		timesOpenProperties();
 		//Metodo para inicializar la ventana
 		initialize();
 	}
@@ -103,7 +108,7 @@ public class Window {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//Variable Personaje que sirve para almacenar la informacion que se muestra en la ventana
+		//La variable Personaje almacena la informacion que se muestra en la ventana
 		Personaje character = new Personaje();
 		
 		frame = new JFrame();
@@ -142,13 +147,11 @@ public class Window {
 		lStrSave.setBounds(180, 30, 65, 45);
 		panel.add(lStrSave);
 		
-		//
 		JLabel lMod = new JLabel("(Mods)");
 		lMod.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lMod.setBounds(115, 15, 65, 14);
 		panel.add(lMod);
-		//
 		
 		JLabel lSaves = new JLabel("(Saves)");
 		lSaves.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -888,9 +891,32 @@ public class Window {
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
-		JButton bEditorPersonaje = new JButton("Editor \r\n");
-		bEditorPersonaje.setBounds(0, 10, 130, 42);
-		panel_4.add(bEditorPersonaje);
+		JButton bBackground = new JButton("Modo nocturno \r\n");
+		bBackground.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Thread tBackground = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							boolean color = false;
+							color = backgroundProperties();
+							if (color == true) {
+								frame.getContentPane().setBackground(Color.BLACK);
+							} else if (color == false) {
+								frame.getContentPane().setBackground(new Color(238, 238, 238));
+							}
+						} catch (Exception e) {
+							System.out.println("No se ha podido cambiar el color de fondo.");
+						}
+					}
+				});
+				tBackground.start();
+				
+			}			
+		});
+		bBackground.setBounds(0, 10, 130, 42);
+		panel_4.add(bBackground);
 		
 		JButton bStoreProperties = new JButton("Store");
 		//RODEAR de un if que chequeé si se puede hacer el store 
@@ -1112,7 +1138,7 @@ public class Window {
 		return character;
 	}
 	
-	public static void setLabelsTextFields(Personaje character) {
+	public void setLabelsTextFields(Personaje character) {
 		textFieldIntroduceTuNombre.setText(character.getName());
 		textFieldPuntosGolpe.setText(Integer.toString(character.getLife()));
 		textFieldAC.setText(Integer.toString(character.getAC()));
@@ -1236,7 +1262,7 @@ public class Window {
 	}
 	
 	//Suma uno a un valor de fichero properties
-	public void sumarPropertie () {
+	public void timesOpenProperties () {
 		Properties objetoP = new Properties();
 		try {
 			objetoP.load(new FileInputStream("timesOpen.properties"));
@@ -1253,7 +1279,42 @@ public class Window {
 			objetoP.store(new FileWriter("timesOpen.properties"), "Operation" + objetoP.getProperty("TimesOpen"));
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		}
+	}
+	
+	//Metodo para cambiar el color de la pantalla a blanco y a negro intermitentemente
+	public boolean backgroundProperties () {
+		Properties objetoP = new Properties();
+		boolean color = false;
+		
+		try {
+			objetoP.load(new FileInputStream("background.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		//Segun el color de la pantalla, se pasa un booleano para que se cambie de color el fondo en el hilo
+		if (Objects.equals(objetoP.getProperty("color"), "WHITE")) {
+			objetoP.setProperty("color", "BLACK");
+			color = true;
+		} else if (Objects.equals(objetoP.getProperty("color"), "BLACK")) {
+			objetoP.setProperty("color", "WHITE");
+			color = false;
+		} else {		
+			objetoP.setProperty("color", "BLACK");
+			objetoP.setProperty("contador", "0");
+			color = true;
+		}
+			
+		//Contador para almacenar en el fichero las veces que se use el metodo
+		int n = Integer.parseInt(objetoP.getProperty("contador"));
+		n = n + 1;
+		try {
+			objetoP.store(new FileWriter("background.properties"), "Operation" + Integer.toString(n+1));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return color;
 	}
 	
 }
