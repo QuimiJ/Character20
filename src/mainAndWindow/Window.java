@@ -19,7 +19,7 @@ import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Window {
+public class Window extends JFrame {
 
 	private JFrame frame;
 	private JTextField TextField;
@@ -109,10 +109,39 @@ public class Window {
 		TextField.setHorizontalAlignment(SwingConstants.CENTER);
 		TextField.setText("18");
 		TextField.setBounds(40, 30, 65, 45);
+		final JLabel lblNewLabel = new JLabel("(4)");
+		final JLabel lblNewLabel_13 = new JLabel("(6)");
+		textField_6 = new JTextField();
+		TextField.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					String stat = TextField.getText();
+					int numero, modificador;
+					numero = Integer.parseInt(stat);
+					modificador = generateMod(numero);
+					String modificable = Integer.toString(modificador);
+					lblNewLabel.setText("(" + modificador + ")");
+					lblNewLabel_13.setText("(" + modificador + ")");
+					if (modificador >= 0) {
+						textField_6.setText("+" + modificable);
+					}else {
+						textField_6.setText(modificable);
+					}
+					
+				}catch(NumberFormatException i){
+					
+					System.out.println("Error de combersion numerico");
+				}
+				
+			}
+			
+		});
 		panel.add(TextField);
 		TextField.setColumns(14);
 		
-		JLabel lblNewLabel = new JLabel("(+4)");
+		
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(115, 30, 65, 45);
@@ -124,7 +153,7 @@ public class Window {
 		lblNewLabel_1.setBounds(80, 80, 110, 30);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_13 = new JLabel("(+6)");
+		
 		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_13.setBounds(180, 30, 65, 45);
@@ -149,10 +178,47 @@ public class Window {
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setText("15");
 		textField.setBounds(40, 30, 65, 45);
+		final JLabel lblNewLabel_2 = new JLabel("(3)");
+		final JLabel lblNewLabel_14 = new JLabel("(3)");
+		textField.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+			try {
+				String stat = textField.getText();
+				int numero, modificador;
+				numero = Integer.parseInt(stat);
+				modificador = generateMod(numero);
+				String modificable = Integer.toString(modificador);
+				int modificador2 = modificador + 10;
+				String modificable2 = Integer.toString(modificador2);
+				lblNewLabel_2.setText("(" + modificador + ")");
+				lblNewLabel_14.setText("(" + modificador + ")");
+				if (modificador >= 0) {
+					textField_13.setText("+" + modificable);
+					textField_20.setText("+" + modificable);
+					textField_23.setText(modificable2);
+					textField_24.setText("+" + modificable);
+				}else {
+					textField_13.setText(modificable);
+					textField_20.setText(modificable);
+					textField_23.setText(modificable2);
+					textField_24.setText(modificable);
+				}
+				
+			}catch(NumberFormatException i){
+				
+				System.out.println("Error de combersion numerico");
+			}
+		}
+			
+		});
+
+			
 		panel_1.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("(+3)");
+		
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_2.setBounds(115, 30, 65, 45);
@@ -163,7 +229,6 @@ public class Window {
 		lblNewLabel_3.setBounds(60, 80, 150, 30);
 		panel_1.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_14 = new JLabel("(+3)");
 		lblNewLabel_14.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_14.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_14.setBounds(180, 30, 65, 45);
@@ -185,7 +250,7 @@ public class Window {
 		panel_1_1.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("(+2)");
+		JLabel lblNewLabel_4 = new JLabel("(2)");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setBounds(115, 30, 65, 45);
@@ -197,7 +262,7 @@ public class Window {
 		lblNewLabel_5.setBounds(20, 80, 230, 30);
 		panel_1_1.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_15 = new JLabel("(+2)");
+		JLabel lblNewLabel_15 = new JLabel("(2)");
 		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_15.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_15.setBounds(180, 30, 65, 45);
@@ -449,7 +514,7 @@ public class Window {
 		panel_3.add(textField_5);
 		textField_5.setColumns(10);
 		
-		textField_6 = new JTextField();
+		
 		textField_6.setText("+5");
 		textField_6.setHorizontalAlignment(SwingConstants.CENTER);
 		textField_6.setColumns(10);
@@ -962,4 +1027,136 @@ public class Window {
 		
 		}*/
 	}
+	
+	public int generateMod(int score) {
+		int modifier;
+		
+		switch(score) {
+		case 1:
+			modifier = -5;
+			return modifier;
+		
+		case 2:
+			modifier = -4;
+			return modifier;
+			
+		case 3:
+			modifier = -4;
+			return modifier;
+			
+		case 4:
+			modifier = -3;
+			return modifier;
+			
+		case 5:
+			modifier = -3;
+			return modifier;
+			
+		case 6:
+			modifier = -2;
+			return modifier;
+			
+		case 7:
+			modifier = -2;
+			return modifier;
+			
+		case 8:
+			modifier = -1;
+			return modifier;
+			
+		case 9:
+			modifier = -1;
+			return modifier;
+			
+		case 10:
+			modifier = 0;
+			return modifier;
+			
+		case 11:
+			modifier = 0;
+			return modifier;
+			
+		case 12:
+			modifier = 1;
+			return modifier;
+			
+		case 13:
+			modifier = 1;
+			return modifier;
+			
+		case 14:
+			modifier = 2;
+			return modifier;
+			
+		case 15:
+			modifier = 2;
+			return modifier;
+			
+		case 16:
+			modifier = 3;
+			return modifier;
+			
+		case 17:
+			modifier = 3;
+			return modifier;
+			
+		case 18:
+			modifier = 4;
+			return modifier;
+			
+		case 19:
+			modifier = 4;
+			return modifier;
+			
+		case 20:
+			modifier = 5;
+			return modifier;
+			
+		case 21:
+			modifier = 5;
+			return modifier;	
+			
+		case 22:
+			modifier = 6;
+			return modifier;
+			
+		case 23:
+			modifier = 6;
+			return modifier;
+			
+		case 24:
+			modifier = 7;
+			return modifier;
+			
+		case 25:
+			modifier = 7;
+			return modifier;
+			
+		case 26:
+			modifier = 8;
+			return modifier;
+			
+		case 27:
+			modifier = 8;
+			return modifier;
+			
+		case 28:
+			modifier = 9;
+			return modifier;
+			
+		case 29:
+			modifier = 9;
+			return modifier;
+			
+		case 30:
+			modifier = 10;
+			return modifier;
+			
+		default:
+			modifier = 0;
+			return modifier;
+		}
+			
+	}
+
 }

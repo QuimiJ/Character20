@@ -23,54 +23,133 @@ public class Stat {
 	
 	public void setScore(int score) {
 		this.score = score;
-		if (score == 1) {
+		
+		switch(score) {
+		case 1:
 			this.modifier = -5;
-		}
-		if (score == 2 || score == 3) {
+			break;
+		
+		case 2:
 			this.modifier = -4;
-		}
-		if (score == 4 || score == 5) {
+			break;
+			
+		case 3:
+			this.modifier = -4;
+			break;
+			
+		case 4:
 			this.modifier = -3;
-		}
-		if (score == 6 || score == 7) {
+			break;
+			
+		case 5:
+			this.modifier = -3;
+			break;
+			
+		case 6:
 			this.modifier = -2;
-		}
-		if (score == 8 || score == 9) {
+			break;
+			
+		case 7:
+			this.modifier = -2;
+			break;
+			
+		case 8:
 			this.modifier = -1;
-		}
-		if (score == 10 || score == 11) {
+			break;
+			
+		case 9:
+			this.modifier = -1;
+			break;
+			
+		case 10:
 			this.modifier = 0;
-		}
-		if (score == 12 || score == 13) {
+			break;
+			
+		case 11:
+			this.modifier = 0;
+			break;
+			
+		case 12:
 			this.modifier = 1;
-		}
-		if (score == 14 || score == 15) {
+			break;
+			
+		case 13:
+			this.modifier = 1;
+			break;
+			
+		case 14:
 			this.modifier = 2;
-		}
-		if (score == 16 || score == 17) {
+			break;
+			
+		case 15:
+			this.modifier = 2;
+			break;
+			
+		case 16:
 			this.modifier = 3;
-		}
-		if (score == 18 || score == 19) {
+			break;
+			
+		case 17:
+			this.modifier = 3;
+			break;
+			
+		case 18:
 			this.modifier = 4;
-		}
-		if (score == 20 || score == 21) {
+			break;
+			
+		case 19:
+			this.modifier = 4;
+			break;
+			
+		case 20:
 			this.modifier = 5;
-		}
-		if (score == 22 || score == 23) {
+			break;
+			
+		case 21:
+			this.modifier = 5;
+			break;	
+			
+		case 22:
 			this.modifier = 6;
-		}
-		if (score == 24 || score == 25) {
+			break;
+			
+		case 23:
+			this.modifier = 6;
+			break;
+			
+		case 24:
 			this.modifier = 7;
-		}
-		if (score == 26 || score == 27) {
+			break;
+			
+		case 25:
+			this.modifier = 7;
+			break;
+			
+		case 26:
 			this.modifier = 8;
-		}
-		if (score == 28 || score == 29) {
+			break;
+			
+		case 27:
+			this.modifier = 8;
+			break;
+			
+		case 28:
 			this.modifier = 9;
-		}
-		if (score == 30) {
+			break;
+			
+		case 29:
+			this.modifier = 9;
+			break;
+			
+		case 30:
 			this.modifier = 10;
+			break;
+			
+		default:
+			this.modifier = 0;
+			break;
 		}
+			
 	}
 	
 	public int getModifier() {
