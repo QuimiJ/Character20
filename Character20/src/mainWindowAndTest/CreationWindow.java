@@ -1,4 +1,4 @@
-package mainAndWindow;
+package mainWindowAndTest;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

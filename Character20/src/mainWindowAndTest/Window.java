@@ -1,4 +1,4 @@
-package mainAndWindow;
+package mainWindowAndTest;
 
 
 import clasesCriatura.*;
@@ -29,7 +29,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 
-public class Window {
+public class Window extends JFrame {
 
 	private JFrame frame;
 	private static JTextField textFieldStr;
@@ -85,6 +85,8 @@ public class Window {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					//Metodo que maneja un fichero properties que guarda las veces que se ha usado la aplicacion.
+					timesOpenProperties();
 					Window window = new Window();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -98,8 +100,8 @@ public class Window {
 	 * Create the application.
 	 */
 	public Window() {
-		//Metodo que maneja un fichero properties que guarda las veces que se ha usado la aplicacion.
-		timesOpenProperties();
+		
+		
 		//Metodo para inicializar la ventana
 		initialize();
 	}
@@ -1184,9 +1186,11 @@ public class Window {
 		textFieldArma1.setText(character.getArmas()[0].getNombre());
 		textFieldArma2.setText(character.getArmas()[1].getNombre());
 		textFieldArma3.setText(character.getArmas()[2].getNombre());						
-		//El bonificador no esta en la clase Arma	
+		//El bonificador no esta en la clase Arma
 		textFieldDanyoTipo1.setText(character.getArmas()[0].getDanyo() + ", " + character.getArmas()[0].getTipo());
+		
 		textFieldDanyoTipo2.setText(character.getArmas()[1].getDanyo() + ", " + character.getArmas()[1].getTipo());
+		
 		textFieldDanyoTipo3.setText(character.getArmas()[2].getDanyo() + ", " + character.getArmas()[2].getTipo());
 		
 		//Pensar donde meter los hechizos
@@ -1262,7 +1266,7 @@ public class Window {
 	}
 	
 	//Suma uno a un valor de fichero properties
-	public void timesOpenProperties () {
+	public static void timesOpenProperties () {
 		Properties objetoP = new Properties();
 		try {
 			objetoP.load(new FileInputStream("timesOpen.properties"));
@@ -1293,7 +1297,7 @@ public class Window {
 			e.printStackTrace();
 		}
 		
-		//Segun el color de la pantalla, se pasa un booleano para que se cambie de color el fondo en el hilo
+		//Segun el color de la pantalla, se pasa un booleano para cambiar de color el fondo de la ventana
 		if (Objects.equals(objetoP.getProperty("color"), "WHITE")) {
 			objetoP.setProperty("color", "BLACK");
 			color = true;
