@@ -43,6 +43,125 @@ public class CreationWindow extends JFrame {
 			}
 		});
 	}
+	
+	/**
+	 * Sumas y restas de botones
+	 */
+	public static void botonSuma(JLabel LabelPointsLeft, int Score) {
+		String PointsLeft = LabelPointsLeft.getText();
+		int Points = Integer.parseInt(PointsLeft);
+		switch (Score) {
+		case 8:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+			
+		case 9:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+			
+		case 10:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+		
+		case 11:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+			
+		case 12:
+			Points--; 
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+			
+		case 13:
+			Points = Points-2;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+		
+		case 14:
+			Points = Points-2; 
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}
+			break;
+	};
+	
+	PointsLeft = String.valueOf(Points);
+	LabelPointsLeft.setText(PointsLeft);
+	}
+	
+	public static void botonResta(JLabel LabelPointsLeft, int Score) {
+		String PointsLeft = LabelPointsLeft.getText();
+		int Points = Integer.parseInt(PointsLeft);
+		switch (Score) {	
+		case 9:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+			
+		case 10:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+		
+		case 11:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+			
+		case 12:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+			
+		case 13:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+		
+		case 14:
+			Points = Points+2;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+			
+		case 15:
+			Points = Points+2;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}
+			break;
+	};
+	
+	PointsLeft = String.valueOf(Points);
+	LabelPointsLeft.setText(PointsLeft);
+	}
 
 	/**
 	 * Create the frame.
@@ -84,6 +203,10 @@ public class CreationWindow extends JFrame {
 		JComboBox comboSubrace = new JComboBox();
 		comboSubrace.setBackground(SystemColor.controlHighlight);
 		comboSubrace.setBounds(236, 134, 98, 21);
+		if (RaceSelected == "Dwarf") {
+			comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Hill", "Mountain"}));
+			
+		}
 		panelRaceClass.add(comboSubrace);
 		
 		JComboBox comboClass = new JComboBox();
@@ -113,27 +236,62 @@ public class CreationWindow extends JFrame {
 		lblNewLabel_4.setBounds(177, 86, 210, 13);
 		panelAbilityScores.add(lblNewLabel_4);
 		
+		//Puntos
+		JLabel LabelRemaining = new JLabel("Remaining");
+		LabelRemaining.setBounds(141, 148, 62, 13);
+		panelAbilityScores.add(LabelRemaining);
+				
+		JLabel LabelPoints = new JLabel("Points:");
+		LabelPoints.setBounds(151, 159, 52, 13);
+		panelAbilityScores.add(LabelPoints);
+				
+		final JLabel LabelPointsLeft = new JLabel("27");
+		String PointsLeft = LabelPointsLeft.getText();
+		int Points = Integer.parseInt(PointsLeft);
+		LabelPointsLeft.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		LabelPointsLeft.setBounds(161, 176, 52, 36);
+		panelAbilityScores.add(LabelPointsLeft);
+		
 		//Strength
 		JLabel LabelStr = new JLabel("Strength");
 		LabelStr.setBounds(231, 125, 74, 13);
 		panelAbilityScores.add(LabelStr);
 		
-		JButton BtnStrUp = new JButton("+");
-		BtnStrUp.setBounds(315, 121, 44, 21);
-		BtnStrUp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		panelAbilityScores.add(BtnStrUp);
-		
-		JLabel LabelStrNum = new JLabel("8");
+		final JLabel LabelStrNum = new JLabel("8");
 		LabelStrNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelStrNum.setBounds(364, 125, 23, 13);
 		panelAbilityScores.add(LabelStrNum);
 		
+		JButton BtnStrUp = new JButton("+");
+		BtnStrUp.setBounds(315, 121, 44, 21);
+		BtnStrUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String StrNum = LabelStrNum.getText();
+				int StrScore = Integer.parseInt(StrNum);
+				if (StrScore < 15) {
+					botonSuma(LabelPointsLeft, StrScore);
+					StrScore++;
+					StrNum = String.valueOf(StrScore);
+					LabelStrNum.setText(StrNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnStrUp);
+		
 		JButton BtnStrDown = new JButton("-");
 		BtnStrDown.setBounds(393, 121, 44, 21);
+		BtnStrDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String StrNum = LabelStrNum.getText();
+				int StrScore = Integer.parseInt(StrNum);
+				if (StrScore > 8) {
+					botonResta(LabelPointsLeft, StrScore);
+					StrScore--;
+					StrNum = String.valueOf(StrScore);
+					LabelStrNum.setText(StrNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnStrDown);
 		
 		//Dexterity
@@ -141,17 +299,41 @@ public class CreationWindow extends JFrame {
 		LabelDex.setBounds(231, 148, 74, 13);
 		panelAbilityScores.add(LabelDex);
 		
-		JButton BtnDexUp = new JButton("+");
-		BtnDexUp.setBounds(315, 144, 44, 21);
-		panelAbilityScores.add(BtnDexUp);
-		
-		JLabel LabelDexNum = new JLabel("8");
+		final JLabel LabelDexNum = new JLabel("8");
 		LabelDexNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelDexNum.setBounds(364, 148, 23, 13);
 		panelAbilityScores.add(LabelDexNum);
 		
+		JButton BtnDexUp = new JButton("+");
+		BtnDexUp.setBounds(315, 144, 44, 21);
+		BtnDexUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String DexNum = LabelDexNum.getText();
+				int DexScore = Integer.parseInt(DexNum);
+				if (DexScore < 15) {
+					botonSuma(LabelPointsLeft, DexScore);
+					DexScore++;
+					DexNum = String.valueOf(DexScore);
+					LabelDexNum.setText(DexNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnDexUp);
+		
 		JButton BtnDexDown = new JButton("-");
 		BtnDexDown.setBounds(393, 144, 44, 21);
+		BtnDexDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String DexNum = LabelDexNum.getText();
+				int DexScore = Integer.parseInt(DexNum);
+				if (DexScore > 8) {
+					botonResta(LabelPointsLeft, DexScore);
+					DexScore--;
+					DexNum = String.valueOf(DexScore);
+					LabelDexNum.setText(DexNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnDexDown);
 		
 		//Constitution
@@ -159,17 +341,41 @@ public class CreationWindow extends JFrame {
 		LabelCon.setBounds(231, 171, 74, 13);
 		panelAbilityScores.add(LabelCon);
 		
-		JButton BtnConUp = new JButton("+");
-		BtnConUp.setBounds(315, 167, 44, 21);
-		panelAbilityScores.add(BtnConUp);
-		
-		JLabel LabelConNum = new JLabel("8");
+		final JLabel LabelConNum = new JLabel("8");
 		LabelConNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelConNum.setBounds(364, 171, 23, 13);
 		panelAbilityScores.add(LabelConNum);
 		
+		JButton BtnConUp = new JButton("+");
+		BtnConUp.setBounds(315, 167, 44, 21);
+		BtnConUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ConNum = LabelConNum.getText();
+				int ConScore = Integer.parseInt(ConNum);
+				if (ConScore < 15) {
+					botonSuma(LabelPointsLeft, ConScore);
+					ConScore++;
+					ConNum = String.valueOf(ConScore);
+					LabelConNum.setText(ConNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnConUp);
+		
 		JButton BtnConDown = new JButton("-");
 		BtnConDown.setBounds(393, 167, 44, 21);
+		BtnConDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ConNum = LabelConNum.getText();
+				int ConScore = Integer.parseInt(ConNum);
+				if (ConScore > 8) {
+					botonResta(LabelPointsLeft, ConScore);
+					ConScore--;
+					ConNum = String.valueOf(ConScore);
+					LabelConNum.setText(ConNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnConDown);
 		
 		//Intelligence
@@ -177,17 +383,41 @@ public class CreationWindow extends JFrame {
 		LabelInt.setBounds(231, 194, 74, 13);
 		panelAbilityScores.add(LabelInt);
 		
-		JButton BtnIntUp = new JButton("+");
-		BtnIntUp.setBounds(315, 190, 44, 21);
-		panelAbilityScores.add(BtnIntUp);
-		
-		JLabel LabelIntNum = new JLabel("8");
+		final JLabel LabelIntNum = new JLabel("8");
 		LabelIntNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelIntNum.setBounds(364, 194, 23, 13);
 		panelAbilityScores.add(LabelIntNum);
 		
+		JButton BtnIntUp = new JButton("+");
+		BtnIntUp.setBounds(315, 190, 44, 21);
+		BtnIntUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String IntNum = LabelIntNum.getText();
+				int IntScore = Integer.parseInt(IntNum);
+				if (IntScore < 15) {
+					botonSuma(LabelPointsLeft, IntScore);
+					IntScore++;
+					IntNum = String.valueOf(IntScore);
+					LabelIntNum.setText(IntNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnIntUp);
+		
 		JButton BtnIntDown = new JButton("-");
 		BtnIntDown.setBounds(393, 190, 44, 21);
+		BtnIntDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String IntNum = LabelIntNum.getText();
+				int IntScore = Integer.parseInt(IntNum);
+				if (IntScore > 8) {
+					botonResta(LabelPointsLeft, IntScore);
+					IntScore--;
+					IntNum = String.valueOf(IntScore);
+					LabelIntNum.setText(IntNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnIntDown);
 		
 		//Wisdom
@@ -195,17 +425,41 @@ public class CreationWindow extends JFrame {
 		LabelWis.setBounds(231, 217, 74, 13);
 		panelAbilityScores.add(LabelWis);
 		
-		JButton BtnWisUp = new JButton("+");
-		BtnWisUp.setBounds(315, 213, 44, 21);
-		panelAbilityScores.add(BtnWisUp);
-		
-		JLabel LabelWisNum = new JLabel("8");
+		final JLabel LabelWisNum = new JLabel("8");
 		LabelWisNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelWisNum.setBounds(364, 217, 23, 13);
 		panelAbilityScores.add(LabelWisNum);
 		
+		JButton BtnWisUp = new JButton("+");
+		BtnWisUp.setBounds(315, 213, 44, 21);
+		BtnWisUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String WisNum = LabelWisNum.getText();
+				int WisScore = Integer.parseInt(WisNum);
+				if (WisScore < 15) {
+					botonSuma(LabelPointsLeft, WisScore);
+					WisScore++;
+					WisNum = String.valueOf(WisScore);
+					LabelWisNum.setText(WisNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnWisUp);
+		
 		JButton BtnWisDown = new JButton("-");
 		BtnWisDown.setBounds(393, 213, 44, 21);
+		BtnWisDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String WisNum = LabelWisNum.getText();
+				int WisScore = Integer.parseInt(WisNum);
+				if (WisScore > 8) {
+					botonResta(LabelPointsLeft, WisScore);
+					WisScore--;
+					WisNum = String.valueOf(WisScore);
+					LabelWisNum.setText(WisNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnWisDown);
 		
 		//Charisma
@@ -213,32 +467,42 @@ public class CreationWindow extends JFrame {
 		LabelCha.setBounds(231, 240, 74, 13);
 		panelAbilityScores.add(LabelCha);
 		
-		JButton BtnChaUp = new JButton("+");
-		BtnChaUp.setBounds(315, 236, 44, 21);
-		panelAbilityScores.add(BtnChaUp);
-		
-		JLabel LabelChaNum = new JLabel("8");
+		final JLabel LabelChaNum = new JLabel("8");
 		LabelChaNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelChaNum.setBounds(364, 240, 23, 13);
 		panelAbilityScores.add(LabelChaNum);
 		
+		JButton BtnChaUp = new JButton("+");
+		BtnChaUp.setBounds(315, 236, 44, 21);
+		BtnChaUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ChaNum = LabelChaNum.getText();
+				int ChaScore = Integer.parseInt(ChaNum);
+				if (ChaScore < 15) {
+					botonSuma(LabelPointsLeft, ChaScore);
+					ChaScore++;
+					ChaNum = String.valueOf(ChaScore);
+					LabelChaNum.setText(ChaNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnChaUp);
+
 		JButton BtnChaDown = new JButton("-");
 		BtnChaDown.setBounds(393, 236, 44, 21);
+		BtnChaDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ChaNum = LabelChaNum.getText();
+				int ChaScore = Integer.parseInt(ChaNum);
+				if (ChaScore > 8) {
+					botonResta(LabelPointsLeft, ChaScore);
+					ChaScore--;
+					ChaNum = String.valueOf(ChaScore);
+					LabelChaNum.setText(ChaNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnChaDown);
-		
-		//Puntos
-		JLabel LabelRemaining = new JLabel("Remaining");
-		LabelRemaining.setBounds(141, 148, 62, 13);
-		panelAbilityScores.add(LabelRemaining);
-		
-		JLabel LabelPoints = new JLabel("Points:");
-		LabelPoints.setBounds(151, 159, 52, 13);
-		panelAbilityScores.add(LabelPoints);
-		
-		JLabel LabelPointsLeft = new JLabel("27");
-		LabelPointsLeft.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		LabelPointsLeft.setBounds(161, 176, 32, 36);
-		panelAbilityScores.add(LabelPointsLeft);
 		
 		//PANEL PROFICIENCIES
 		JPanel panelProficiencies = new JPanel();
