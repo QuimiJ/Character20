@@ -23,6 +23,7 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 
 public class CreationWindow extends JFrame {
@@ -55,50 +56,43 @@ public class CreationWindow extends JFrame {
 			Points--;
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}  	break;
 			
 		case 9:
 			Points--;
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}	break;
 			
 		case 10:
 			Points--;
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}   break;
 		
 		case 11:
 			Points--;
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}	break;
 			
 		case 12:
 			Points--; 
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}	break;
 			
 		case 13:
 			Points = Points-2;
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}	break;
 		
 		case 14:
 			Points = Points-2; 
 			if (Points < 0) {
 				LabelPointsLeft.setForeground(Color.RED);
-			}
-			break;
+			}	break;
 	};
 	
 	PointsLeft = String.valueOf(Points);
@@ -113,50 +107,43 @@ public class CreationWindow extends JFrame {
 			Points++;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 			
 		case 10:
 			Points++;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 		
 		case 11:
 			Points++;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 			
 		case 12:
 			Points++;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 			
 		case 13:
 			Points++;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 		
 		case 14:
 			Points = Points+2;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 			
 		case 15:
 			Points = Points+2;
 			if (Points > 0) {
 				LabelPointsLeft.setForeground(Color.BLACK);
-			}
-			break;
+			}	break;
 	};
 	
 	PointsLeft = String.valueOf(Points);
@@ -177,32 +164,38 @@ public class CreationWindow extends JFrame {
 		panelRaceClass.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Race :");
-		lblNewLabel.setBounds(145, 115, 45, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(209, 133, 45, 22);
 		panelRaceClass.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Subrace :");
-		lblNewLabel_1.setBounds(145, 138, 66, 13);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(209, 172, 66, 13);
 		panelRaceClass.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Class :");
-		lblNewLabel_2.setBounds(145, 161, 45, 13);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(209, 208, 45, 13);
 		panelRaceClass.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Background :");
-		lblNewLabel_3.setBounds(145, 184, 81, 13);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_3.setBounds(209, 242, 103, 17);
 		panelRaceClass.add(lblNewLabel_3);
 		
 		JComboBox comboRace = new JComboBox();
+		comboRace.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboRace.setMaximumRowCount(9);
 		comboRace.setModel(new DefaultComboBoxModel(new String[] {"Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"}));
 		comboRace.setBackground(SystemColor.controlHighlight);
-		comboRace.setBounds(236, 111, 98, 21);
+		comboRace.setBounds(300, 131, 112, 26);
 		String RaceSelected = (String)comboRace.getSelectedItem();
 		panelRaceClass.add(comboRace);
 		
 		JComboBox comboSubrace = new JComboBox();
+		comboSubrace.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboSubrace.setBackground(SystemColor.controlHighlight);
-		comboSubrace.setBounds(236, 134, 98, 21);
+		comboSubrace.setBounds(300, 165, 112, 26);
 		if (RaceSelected == "Dwarf") {
 			comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Hill", "Mountain"}));
 			
@@ -210,18 +203,20 @@ public class CreationWindow extends JFrame {
 		panelRaceClass.add(comboSubrace);
 		
 		JComboBox comboClass = new JComboBox();
+		comboClass.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboClass.setModel(new DefaultComboBoxModel(new String[] {"Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"}));
 		comboClass.setMaximumRowCount(12);
 		comboClass.setBackground(SystemColor.controlHighlight);
-		comboClass.setBounds(236, 157, 98, 21);
+		comboClass.setBounds(300, 201, 112, 26);
 		String ClassSelected = (String)comboClass.getSelectedItem();
 		panelRaceClass.add(comboClass);
 		
 		JComboBox comboBackground = new JComboBox();
+		comboBackground.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBackground.setModel(new DefaultComboBoxModel(new String[] {"Acolyte", "Charlatan", "Criminal", "Entertainer", "Folk Hero", "Guild Artisan", "Hermit", "Noble", "Outlander", "Sage", "Sailor", "Soldier", "Urchin"}));
 		comboBackground.setMaximumRowCount(11);
 		comboBackground.setBackground(SystemColor.controlHighlight);
-		comboBackground.setBounds(236, 180, 98, 21);
+		comboBackground.setBounds(300, 237, 112, 26);
 		String BackgroundSelected = (String)comboBackground.getSelectedItem();
 		panelRaceClass.add(comboBackground);
 		
@@ -584,57 +579,149 @@ public class CreationWindow extends JFrame {
 		
 		//PANEL OPCIONES DE CLASE
 		
+		ButtonGroup clericGroup = new ButtonGroup();
+		
 		JPanel panelClericOptions = new JPanel();
 		panelClericOptions.setBackground(SystemColor.control);
 		getContentPane().add(panelClericOptions, "Class Options");
 		panelClericOptions.setLayout(null);
 		
+		final JLabel labelSubDetail = new JLabel("");
+		labelSubDetail.setHorizontalAlignment(SwingConstants.CENTER);
+		labelSubDetail.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelSubDetail.setBounds(174, 332, 279, 65);
+		panelClericOptions.add(labelSubDetail);
+		
 		JRadioButton rdbtnClericArcana = new JRadioButton("Arcana");
-		rdbtnClericArcana.setBounds(220, 47, 83, 15);
+		rdbtnClericArcana.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericArcana.setBounds(264, 48, 83, 20);
+		clericGroup.add(rdbtnClericArcana);
+		rdbtnClericArcana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Detect Magic, Magic Missile <br> Arcana Skill <br> Gain Two Wizard Cantrip  <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericArcana);
 		
 		JRadioButton rdbtnClericDeath = new JRadioButton("Death");
-		rdbtnClericDeath.setBounds(220, 62, 83, 15);
+		rdbtnClericDeath.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericDeath.setBounds(264, 70, 83, 20);
+		clericGroup.add(rdbtnClericDeath);
+		rdbtnClericDeath.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: False Life, Ray of Sickness <br> Martial Weapon Proficiency <br> Gain a Necromancy Cantrip<html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericDeath);
 		
 		JRadioButton rdbtnClericForge = new JRadioButton("Forge");
-		rdbtnClericForge.setBounds(220, 77, 83, 15);
+		rdbtnClericForge.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericForge.setBounds(264, 92, 83, 20);
+		rdbtnClericForge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Identify, Searing Smite <br> Heavy Armor, Smith Tool Proficiency <br> Imbue your gear with magic <html>");
+			}
+		});
+		clericGroup.add(rdbtnClericForge);
 		panelClericOptions.add(rdbtnClericForge);
 		
 		JRadioButton rdbtnClericGrave = new JRadioButton("Grave");
-		rdbtnClericGrave.setBounds(220, 92, 70, 15);
+		rdbtnClericGrave.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericGrave.setBounds(264, 114, 70, 20);
+		clericGroup.add(rdbtnClericGrave);
+		rdbtnClericGrave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Bane, False Life <br> Heal the dying more effectively <br> Sense nearby undead <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericGrave);
 		
 		JRadioButton rdbtnClericKnowledge = new JRadioButton("Knowledge");
-		rdbtnClericKnowledge.setBounds(220, 107, 100, 15);
+		rdbtnClericKnowledge.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericKnowledge.setBounds(264, 136, 100, 20);
+		rdbtnClericKnowledge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Command, Identify <br> Two Extra Languages <br> Two knowledge skills with double proficiency bonus <html>");
+			}
+		});
+		clericGroup.add(rdbtnClericKnowledge);
 		panelClericOptions.add(rdbtnClericKnowledge);
 		
 		JRadioButton rdbtnClericLife = new JRadioButton("Life");
-		rdbtnClericLife.setBounds(220, 122, 70, 15);
+		rdbtnClericLife.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericLife.setBounds(264, 158, 70, 20);
+		clericGroup.add(rdbtnClericLife);
+		rdbtnClericLife.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Bless, Cure Wounds <br> Heavy Armor Proficiency <br> More Potent Healing Spells <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericLife);
 		
 		JRadioButton rdbtnClericLight = new JRadioButton("Light");
-		rdbtnClericLight.setBounds(220, 137, 100, 15);
+		rdbtnClericLight.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericLight.setBounds(264, 180, 100, 20);
+		clericGroup.add(rdbtnClericLight);
+		rdbtnClericLight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Burning Hands, Fearie Fire <br> Bonus Cantrip: Light <br> Impose Disadvanatge when attacked <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericLight);
 		
 		JRadioButton rdbtnClericNature = new JRadioButton("Nature");
-		rdbtnClericNature.setBounds(220, 152, 83, 15);
+		rdbtnClericNature.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericNature.setBounds(264, 202, 83, 20);
+		clericGroup.add(rdbtnClericNature);
+		rdbtnClericNature.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Animal Friendship, Speak with Animals <br> Heavy Armor Proficicency <br> Gain a Druid Cantrip and a Skill <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericNature);
 		
 		JRadioButton rdbtnClericOrder = new JRadioButton("Order");
-		rdbtnClericOrder.setBounds(220, 167, 83, 15);
+		rdbtnClericOrder.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericOrder.setBounds(264, 224, 83, 20);
+		clericGroup.add(rdbtnClericOrder);
+		rdbtnClericOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Command, Heroism <br> Heavy Armor and Social Skill Proficiency <br> Giant Attacks When Spellcasting <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericOrder);
 		
 		JRadioButton rdbtnClericTempest = new JRadioButton("Tempest");
-		rdbtnClericTempest.setBounds(220, 182, 83, 15);
+		rdbtnClericTempest.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericTempest.setBounds(264, 246, 83, 20);
+		clericGroup.add(rdbtnClericTempest);
+		rdbtnClericTempest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Fog Cloud, Thunderwave <br> Heavy Armor and Martial Weapon Proficiencies <br> Shock attacker with Lightning <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericTempest);
 		
 		JRadioButton rdbtnClericTrickery = new JRadioButton("Trickery");
-		rdbtnClericTrickery.setBounds(220, 197, 83, 15);
+		rdbtnClericTrickery.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericTrickery.setBounds(264, 268, 83, 20);
+		clericGroup.add(rdbtnClericTrickery);
+		rdbtnClericTrickery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Charm Person, Disguise Self <br> Grant an Ally Advantage on Stealth <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericTrickery);
 		
 		JRadioButton rdbtnClericWar = new JRadioButton("War");
-		rdbtnClericWar.setBounds(220, 212, 83, 15);
+		rdbtnClericWar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericWar.setBounds(264, 290, 83, 20);
+		clericGroup.add(rdbtnClericWar);
+		rdbtnClericWar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Divine Favor, Shield of Faith <br> Heavy Armor and Martial Weapon Proficiencies <br> Attack as a Bonus Action <html>");
+			}
+		});
 		panelClericOptions.add(rdbtnClericWar);
 		
 		//PANEL EQUIPMENT
