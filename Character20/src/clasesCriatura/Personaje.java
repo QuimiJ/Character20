@@ -37,7 +37,6 @@ public class Personaje extends Criatura {
 	private int iniciativa = dex.getModifier();
     Arma[] armas;
     Clase clasepj;
-    Hechizo[] hechizos;
     
     //Pertenencias
     private int piezasCobre;
@@ -227,12 +226,6 @@ public class Personaje extends Criatura {
 	public void setClasepj(Clase clase) {
 		this.clasepj = clasepj;
 	}
-	public Hechizo[] getHechizos() {
-		return hechizos;
-	}
-	public void setHechizos(Hechizo[] hechizos) {
-		this.hechizos = hechizos;
-	}
 	public int getPiezasCobre() {
 		return piezasCobre;
 	}
@@ -324,7 +317,7 @@ public class Personaje extends Criatura {
 			int tratoAnimales, int arcana, int atletismo, int engaño, int historia, int perspicacia, int intimidacion,
 			int investigacion, int medicina, int naturaleza, int percepcion, int interpretacion, int persuasion,
 			int religion, int juegoManos, int sigilo, int supervivencia, int bonoCompetencia, int iniciativa,
-			Arma[] armas, Clase clasepj, Hechizo[] hechizos, int piezasCobre, int piezasPlata, int piezasOro,
+			Arma[] armas, Clase clasepj, int piezasCobre, int piezasPlata, int piezasOro,
 			int piezasElectrum, int piezasPlatino, String equipo, String tesoro, String idiomas,
 			String rasgosPersonalidad, String ideales, String vinculos, String defectos, Raza raza, Subraza subraza) {
 		super(name, life, aC, speed, str, dex, con, intel, wis, cha);
@@ -356,7 +349,6 @@ public class Personaje extends Criatura {
 		this.iniciativa = iniciativa;
 		this.armas = armas;
 		this.clasepj = clasepj;
-		this.hechizos = hechizos;
 		this.piezasCobre = piezasCobre;
 		this.piezasPlata = piezasPlata;
 		this.piezasOro = piezasOro;
@@ -414,9 +406,6 @@ public class Personaje extends Criatura {
 		Arma[] armas = {arma1, arma2, arma3};
 		this.armas = armas;
 		this.clasepj = new Clase();
-		Hechizo hechizo1 = new Hechizo(), hechizo2 = new Hechizo(), hechizo3 = new Hechizo();
-		Hechizo[] hechizos = {hechizo1, hechizo2, hechizo3};
-		this.hechizos = hechizos;
 		this.piezasCobre = 0;
 		this.piezasPlata = 0;
 		this.piezasOro = 0;
@@ -443,7 +432,7 @@ public class Personaje extends Criatura {
 				+ ", religion=" + religion + ", juegoManos=" + juegoManos + ", sigilo=" + sigilo + ", supervivencia="
 				+ supervivencia + ", bonoCompetencia=" + bonoCompetencia + ", iniciativa=" + iniciativa + ", armas="
 				+ (armas != null ? Arrays.asList(armas) : null) + ", clasepj=" + clasepj + ", hechizos="
-				+ (hechizos != null ? Arrays.asList(hechizos) : null) + ", piezasCobre=" + piezasCobre
+				+ ", piezasCobre=" + piezasCobre
 				+ ", piezasPlata=" + piezasPlata + ", piezasOro=" + piezasOro + ", piezasElectrum=" + piezasElectrum
 				+ ", piezasPlatino=" + piezasPlatino + ", equipo=" + equipo + ", tesoro=" + tesoro + ", idiomas="
 				+ idiomas + ", rasgosPersonalidad=" + rasgosPersonalidad + ", ideales=" + ideales + ", vinculos="

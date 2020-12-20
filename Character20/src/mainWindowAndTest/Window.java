@@ -1018,9 +1018,6 @@ public class Window extends JFrame {
 				objetoP.setProperty("WeaponOne" + Integer.toString(i), character.getArmas()[0].getNombre());
 				objetoP.setProperty("WeaponTwo" + Integer.toString(i), character.getArmas()[1].getNombre());
 				objetoP.setProperty("WeaponThree" + Integer.toString(i), character.getArmas()[2].getNombre());
-				objetoP.setProperty("SpellOne" + Integer.toString(i), character.getHechizos()[0].getSpellName());
-				objetoP.setProperty("SpellTwo" + Integer.toString(i), character.getHechizos()[1].getSpellName());
-				objetoP.setProperty("SpellThree" + Integer.toString(i), character.getHechizos()[2].getSpellName());
 				objetoP.setProperty("Class" + Integer.toString(i), character.getClasepj().getNombre());
 				objetoP.setProperty("Copper" + Integer.toString(i), Integer.toString(character.getPiezasCobre()));
 				objetoP.setProperty("Silver" + Integer.toString(i), Integer.toString(character.getPiezasPlata()));
@@ -1099,13 +1096,6 @@ public class Window extends JFrame {
 				armas[1].setNombre(objetoP.getProperty("WeaponTwo" + Integer.toString(i)));
 				armas[2].setNombre(objetoP.getProperty("WeaponThree" + Integer.toString(i)));
 				character.setArmas(armas);
-				//PROVISIONAL
-				Hechizo hechizo = new Hechizo(), hechizo2 = new Hechizo(), hechizo3 = new Hechizo();
-				Hechizo hechizos[] = {hechizo, hechizo2, hechizo3};
-				hechizos[0].setSpellName(objetoP.getProperty("SpellOne" + Integer.toString(i)));
-				hechizos[1].setSpellName(objetoP.getProperty("SpellTwo" + Integer.toString(i)));
-				hechizos[2].setSpellName(objetoP.getProperty("SpellThree" + Integer.toString(i)));
-				character.setHechizos(hechizos);
 				Clase clase = new Clase();
 				//PROVISIONAL
 				clase.setNombre(objetoP.getProperty("Class" + Integer.toString(i)));

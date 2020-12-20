@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Subraza extends Raza {
 	private String subNombre;
-	private Rasgo[] subRasgos;
+	private String[] subRasgos;
 	
 	public String getSubNombre() {
 		return subNombre;
@@ -12,14 +12,14 @@ public class Subraza extends Raza {
 	public void setSubNombre(String subNombre) {
 		this.subNombre = subNombre;
 	}
-	public Rasgo[] getSubRasgos() {
+	public String[] getSubRasgos() {
 		return subRasgos;
 	}
-	public void setSubRasgos(Rasgo[] subRasgos) {
+	public void setSubRasgos(String[] subRasgos) {
 		this.subRasgos = subRasgos;
 	}
 	
-	public Subraza(String nombre, Rasgo[] rasgos, String tamanyo, int velocidad, String subNombre, Rasgo[] subRasgos) {
+	public Subraza(String nombre, String[] rasgos, String tamanyo, int velocidad, String subNombre, String[] subRasgos) {
 		super(nombre, rasgos, tamanyo, velocidad);
 		this.subNombre = subNombre;
 		this.subRasgos = subRasgos;
@@ -28,8 +28,7 @@ public class Subraza extends Raza {
 	public Subraza() {
 		super();
 		this.subNombre = "";
-		Rasgo rasgo = new Rasgo();
-		Rasgo[] rasgos = {rasgo};
+		String[] rasgos = {""};
 		this.subRasgos = rasgos;
 	}
 	

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Raza {
 	protected String nombre;
-	protected Rasgo[] rasgos;
+	protected String[] rasgos;
 	protected String tamanyo;
 	protected int velocidad;
 	
@@ -14,10 +14,10 @@ public class Raza {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Rasgo[] getRasgos() {
+	public String[] getRasgos() {
 		return rasgos;
 	}
-	public void setRasgos(Rasgo[] rasgos) {
+	public void setRasgos(String[] rasgos) {
 		this.rasgos = rasgos;
 	}
 	public String getTamanyo() {
@@ -33,7 +33,7 @@ public class Raza {
 		this.velocidad = velocidad;
 	}
 	
-	public Raza(String nombre, Rasgo[] rasgos, String tamanyo, int velocidad) {
+	public Raza(String nombre, String[] rasgos, String tamanyo, int velocidad) {
 		super();
 		this.nombre = nombre;
 		this.rasgos = rasgos;
@@ -44,8 +44,7 @@ public class Raza {
 	public Raza() {
 		super();
 		this.nombre = "";
-		Rasgo rasgo = new Rasgo();
-		Rasgo[] rasgos = {rasgo};
+		String[] rasgos = {""};
 		this.rasgos = rasgos;
 		this.tamanyo = "";
 		this.velocidad = 0;

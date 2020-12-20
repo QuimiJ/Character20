@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Clase {
 	String nombre;
 	String hitdie;
-	Rasgo[] rasgos;
+	String[] rasgos;
 	boolean simpleproficiency;
 	boolean martialproficiency;
 	
@@ -21,10 +21,10 @@ public class Clase {
 	public void setHitdie(String hitdie) {
 		this.hitdie = hitdie;
 	}
-	public Rasgo[] getRasgos() {
+	public String[] getRasgos() {
 		return rasgos;
 	}
-	public void setRasgos(Rasgo[] rasgos) {
+	public void setRasgos(String[] rasgos) {
 		this.rasgos = rasgos;
 	}
 	public boolean isSimpleproficiency() {
@@ -40,7 +40,7 @@ public class Clase {
 		this.martialproficiency = martialproficiency;
 	}
 	
-	public Clase(String nombre, String hitdie, Rasgo[] rasgos, boolean simpleproficiency, boolean martialproficiency) {
+	public Clase(String nombre, String hitdie, String[] rasgos, boolean simpleproficiency, boolean martialproficiency) {
 		super();
 		this.nombre = nombre;
 		this.hitdie = hitdie;
