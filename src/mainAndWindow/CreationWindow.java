@@ -183,41 +183,105 @@ public class CreationWindow extends JFrame {
 		lblNewLabel_3.setBounds(209, 242, 103, 17);
 		panelRaceClass.add(lblNewLabel_3);
 		
-		JComboBox comboRace = new JComboBox();
+		final JComboBox comboSubrace = new JComboBox();
+		comboSubrace.setMaximumRowCount(10);
+		comboSubrace.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		comboSubrace.setBackground(SystemColor.controlHighlight);
+		comboSubrace.setBounds(300, 165, 112, 26);
+		panelRaceClass.add(comboSubrace);
+		
+		final JLabel LabelResult = new JLabel();
+		final String RaceSelected = null;
+		final String ClassSelected = null;
+		final String BackgroundSelected = null;
+		
+		final JComboBox comboRace = new JComboBox();
 		comboRace.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboRace.setMaximumRowCount(9);
 		comboRace.setModel(new DefaultComboBoxModel(new String[] {"Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"}));
 		comboRace.setBackground(SystemColor.controlHighlight);
+		comboRace.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String RaceSelected = (String)comboRace.getSelectedItem();
+				switch (RaceSelected){
+				
+				case "Dragonborn": 
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+				
+				case "Dwarf":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Hill", "Mountain"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Elf":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"High Elf", "Wood Elf", "Drow"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Gnome":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Forest", "Rock"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Halfling":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Lightfoot", "Stout"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Half-Elf":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Half-Orc":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Human":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Normal", "Variant"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Tiefling":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				}
+			}
+		});
 		comboRace.setBounds(300, 131, 112, 26);
-		String RaceSelected = (String)comboRace.getSelectedItem();
 		panelRaceClass.add(comboRace);
 		
-		JComboBox comboSubrace = new JComboBox();
-		comboSubrace.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		comboSubrace.setBackground(SystemColor.controlHighlight);
-		comboSubrace.setBounds(300, 165, 112, 26);
-		if (RaceSelected == "Dwarf") {
-			comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Hill", "Mountain"}));
-			
-		}
-		panelRaceClass.add(comboSubrace);
-		
-		JComboBox comboClass = new JComboBox();
+		final JComboBox comboClass = new JComboBox();
 		comboClass.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboClass.setModel(new DefaultComboBoxModel(new String[] {"Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"}));
 		comboClass.setMaximumRowCount(12);
 		comboClass.setBackground(SystemColor.controlHighlight);
 		comboClass.setBounds(300, 201, 112, 26);
-		String ClassSelected = (String)comboClass.getSelectedItem();
+		comboClass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ClassSelected = (String)comboClass.getSelectedItem();
+				LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+			}
+		});
 		panelRaceClass.add(comboClass);
 		
-		JComboBox comboBackground = new JComboBox();
+		final JComboBox comboBackground = new JComboBox();
 		comboBackground.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBackground.setModel(new DefaultComboBoxModel(new String[] {"Acolyte", "Charlatan", "Criminal", "Entertainer", "Folk Hero", "Guild Artisan", "Hermit", "Noble", "Outlander", "Sage", "Sailor", "Soldier", "Urchin"}));
 		comboBackground.setMaximumRowCount(11);
 		comboBackground.setBackground(SystemColor.controlHighlight);
 		comboBackground.setBounds(300, 237, 112, 26);
-		String BackgroundSelected = (String)comboBackground.getSelectedItem();
+		comboBackground.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String BackgroundSelected =  (String)comboBackground.getSelectedItem();
+				LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+			}
+		});
 		panelRaceClass.add(comboBackground);
 		
 		//PANEL ABILITY SCORES
@@ -848,7 +912,7 @@ public class CreationWindow extends JFrame {
 		panelFinish.add(LabelFinish);
 		
 		//esto no funciona como debe, necesita hilos
-		JLabel LabelResult = new JLabel(RaceSelected + " "+ ClassSelected + " "+BackgroundSelected);
+		
 		LabelResult.setBounds(182, 165, 216, 13);
 		panelFinish.add(LabelResult);
 		
