@@ -735,14 +735,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect1.setBounds(237, 48, 103, 13);
 		panelClericEquipment.add(LabelSelect1);
 		
+		ButtonGroup clericWeapons = new ButtonGroup();
+		
 		JRadioButton rdbtnMace = new JRadioButton("Mace");
 		rdbtnMace.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnMace.setBounds(237, 67, 103, 21);
+		clericWeapons.add(rdbtnMace);
 		panelClericEquipment.add(rdbtnMace);
 		
 		JRadioButton rdbtnWarhammer = new JRadioButton("Warhammer");
 		rdbtnWarhammer.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnWarhammer.setBounds(237, 85, 103, 21);
+		clericWeapons.add(rdbtnWarhammer);
 		panelClericEquipment.add(rdbtnWarhammer);
 		
 		JLabel LabelSelect2 = new JLabel("\u2022 Select:");
@@ -750,14 +754,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect2.setBounds(237, 120, 103, 13);
 		panelClericEquipment.add(LabelSelect2);
 		
+		ButtonGroup clericArmor = new ButtonGroup();
+		
 		JRadioButton rdbtnScaleMail = new JRadioButton("Scale mail");
 		rdbtnScaleMail.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnScaleMail.setBounds(237, 139, 103, 21);
+		clericArmor.add(rdbtnScaleMail);
 		panelClericEquipment.add(rdbtnScaleMail);
 		
 		JRadioButton rdbtnLeatherArmor = new JRadioButton("Leather armor");
 		rdbtnLeatherArmor.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnLeatherArmor.setBounds(237, 157, 103, 21);
+		clericArmor.add(rdbtnLeatherArmor);
 		panelClericEquipment.add(rdbtnLeatherArmor);
 		
 		JLabel LabelSelect3 = new JLabel("\u2022 Select:");
@@ -765,14 +773,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect3.setBounds(237, 192, 103, 13);
 		panelClericEquipment.add(LabelSelect3);
 		
+		ButtonGroup clericWeapon1 = new ButtonGroup();
+		
 		JRadioButton rdbtnLightCrossbow = new JRadioButton("Light crossbow, bolts (20)");
 		rdbtnLightCrossbow.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnLightCrossbow.setBounds(237, 211, 143, 21);
+		clericWeapon1.add(rdbtnLightCrossbow);
 		panelClericEquipment.add(rdbtnLightCrossbow);
 		
 		JRadioButton rdbtnSimpleWeapon = new JRadioButton("Simple Weapon");
 		rdbtnSimpleWeapon.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnSimpleWeapon.setBounds(237, 229, 103, 21);
+		clericWeapon1.add(rdbtnSimpleWeapon);
 		panelClericEquipment.add(rdbtnSimpleWeapon);
 		
 		JLabel LabelSelect4 = new JLabel("\u2022 Select:");
@@ -780,14 +792,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect4.setBounds(237, 264, 103, 13);
 		panelClericEquipment.add(LabelSelect4);
 		
+		ButtonGroup clericItem = new ButtonGroup();
+		
 		JRadioButton rdbtnPriest = new JRadioButton("Priest's pouch");
 		rdbtnPriest.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnPriest.setBounds(237, 283, 143, 21);
+		clericItem.add(rdbtnPriest);
 		panelClericEquipment.add(rdbtnPriest);
 		
 		JRadioButton rdbtnExplorer = new JRadioButton("Explorer's pack");
 		rdbtnExplorer.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnExplorer.setBounds(237, 301, 103, 21);
+		clericItem.add(rdbtnExplorer);
 		panelClericEquipment.add(rdbtnExplorer);
 		
 		JLabel LabelShield = new JLabel("\u2022 Shield");
@@ -798,6 +814,7 @@ public class CreationWindow extends JFrame {
 		JLabel LabelSymbol = new JLabel("\u2022 Holy symbol");
 		LabelSymbol.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		LabelSymbol.setBounds(237, 352, 103, 21);
+		
 		panelClericEquipment.add(LabelSymbol);
 		
 		//PANEL NAME
