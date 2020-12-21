@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Personaje extends Criatura {
 	
+	private int nivel;
+	
 	//Saves
 	private int strsave = str.getModifier();
 	private int dexsave = dex.getModifier();
@@ -56,8 +58,13 @@ public class Personaje extends Criatura {
     private Raza raza;
     private Subraza subraza;
     
-    
-    //Getters y setters
+    public int getNivel() {
+		return nivel;
+	}
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+	//Getters y setters
 	public int getStrsave() {
 		return strsave;
 	}
@@ -313,7 +320,7 @@ public class Personaje extends Criatura {
 	
 	//Constructores
 	public Personaje(String name, int life, int aC, int speed, Stat str, Stat dex, Stat con, Stat intel, Stat wis,
-			Stat cha, int strsave, int dexsave, int consave, int intsave, int wissave, int chasave, int acrobacias,
+			Stat cha, int nivel, int strsave, int dexsave, int consave, int intsave, int wissave, int chasave, int acrobacias,
 			int tratoAnimales, int arcana, int atletismo, int engaño, int historia, int perspicacia, int intimidacion,
 			int investigacion, int medicina, int naturaleza, int percepcion, int interpretacion, int persuasion,
 			int religion, int juegoManos, int sigilo, int supervivencia, int bonoCompetencia, int iniciativa,
@@ -321,6 +328,7 @@ public class Personaje extends Criatura {
 			int piezasElectrum, int piezasPlatino, String equipo, String tesoro, String idiomas,
 			String rasgosPersonalidad, String ideales, String vinculos, String defectos, Raza raza, Subraza subraza) {
 		super(name, life, aC, speed, str, dex, con, intel, wis, cha);
+		this.nivel = nivel;
 		this.strsave = strsave;
 		this.dexsave = dexsave;
 		this.consave = consave;
@@ -366,6 +374,7 @@ public class Personaje extends Criatura {
 	}
 	
 	public Personaje() {
+		this.nivel = 1;
 		this.name = "";
 		this.life = 1;
 		this.AC = 10;
@@ -423,7 +432,7 @@ public class Personaje extends Criatura {
 	}
 	
 	public String toString() {
-		return "Personaje [strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave + ", intsave="
+		return "Personaje [nivel=" + nivel + ", strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave + ", intsave="
 				+ intsave + ", wissave=" + wissave + ", chasave=" + chasave + ", acrobacias=" + acrobacias
 				+ ", tratoAnimales=" + tratoAnimales + ", arcana=" + arcana + ", atletismo=" + atletismo + ", engaño="
 				+ enganyo + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion=" + intimidacion

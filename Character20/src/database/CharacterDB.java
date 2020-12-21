@@ -4,13 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.ResultSet;
 
 public class CharacterDB {
 
 	private static Connection con;
-	
-	protected void BD() {
+
+	private void BD() {
 		// TODO
 		Thread hilo = new Thread(new Runnable() {
 
@@ -22,23 +21,20 @@ public class CharacterDB {
 						updateDB();
 						
 						selectDB();
-					//}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				closeDB();	
+				closeDB();
 			}
 		});
 		hilo.start();
 	}
 	
-	private void iniciaDB() throws ClassNotFoundException {
-		//PROBLEMA AQUI
-		Class.forName("com.mysql.sqlite.jdbc.driver");
+	private void iniciaDB() {
 		con = null;
 		
 		try {
-			con = DriverManager.getConnection("jdbc:sqlite:character.db");
+			con = DriverManager.getConnection("characterdb.cnlndfzdifgd.us-east-2.rds.amazonaws.com");
 		} catch(SQLException e) {
 			System.err.println(e.getMessage());
 		}

@@ -987,6 +987,7 @@ public class Window extends JFrame {
 				objetoP.setProperty("Int" + Integer.toString(i), character.getIntel().scoreToString());
 				objetoP.setProperty("Wis" + Integer.toString(i), character.getWis().scoreToString());
 				objetoP.setProperty("Char" + Integer.toString(i), character.getCha().scoreToString());
+				objetoP.setProperty("Nivel" + Integer.toString(i), Integer.toString(character.getNivel()));
 				objetoP.setProperty("StrSave" + Integer.toString(i), Integer.toString(character.getStrsave()));
 				objetoP.setProperty("DexSave" + Integer.toString(i), Integer.toString(character.getDexsave()));
 				objetoP.setProperty("ConSave" + Integer.toString(i), Integer.toString(character.getConsave()));
@@ -1061,6 +1062,7 @@ public class Window extends JFrame {
 				character.getIntel().setScore(Integer.parseInt(objetoP.getProperty("Int" + Integer.toString(i))));
 				character.getWis().setScore(Integer.parseInt(objetoP.getProperty("Wis" + Integer.toString(i))));
 				character.getCha().setScore(Integer.parseInt(objetoP.getProperty("Char" + Integer.toString(i))));
+				character.setNivel(Integer.parseInt(objetoP.getProperty("Nivel" + Integer.toString(i))));
 				character.setStrsave(Integer.parseInt(objetoP.getProperty("StrSave" + Integer.toString(i))));
 				character.setDexsave(Integer.parseInt(objetoP.getProperty("DexSave" + Integer.toString(i))));
 				character.setConsave(Integer.parseInt(objetoP.getProperty("ConSave" + Integer.toString(i))));
@@ -1183,7 +1185,6 @@ public class Window extends JFrame {
 		
 		textFieldDanyoTipo3.setText(character.getArmas()[2].getDanyo() + ", " + character.getArmas()[2].getTipo());
 		
-		//Pensar donde meter los hechizos
 		
 		//Hay que meter este bloque en uno de los jTextField grandes								
 		/*character.setPiezasCobre(Integer.parseInt(objetoP.getProperty("Copper")));
@@ -1299,7 +1300,7 @@ public class Window extends JFrame {
 			objetoP.setProperty("contador", "0");
 			color = true;
 		}
-			
+		
 		//Contador para almacenar en el fichero las veces que se use el metodo
 		int n = Integer.parseInt(objetoP.getProperty("contador"));
 		n = n + 1;
