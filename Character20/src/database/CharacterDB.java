@@ -2,69 +2,65 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CharacterDB {
 
-	private static Connection con;
+	private Connection con;
 
-	private void BD() {
-		// TODO
-		Thread hilo = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				iniciaDB();
-				
-				try {
-						updateDB();
-						
-						selectDB();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				closeDB();
-			}
-		});
-		hilo.start();
-	}
-	
-	private void iniciaDB() {
-		con = null;
-		
+	public CharacterDB() throws CharacterDBException {
 		try {
-			con = DriverManager.getConnection("characterdb.cnlndfzdifgd.us-east-2.rds.amazonaws.com");
-		} catch(SQLException e) {
-			System.err.println(e.getMessage());
+			Class.forName("org.sqlite.JDBC");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new CharacterDBException("Error al cargar el driver.", e);
 		}
 	}
 	
-	private void updateDB() {
+	public void iniciaDB() throws CharacterDBException {
 		try {
-			Statement statement = con.createStatement();
-			
-			
-		} catch(SQLException e) {
-			System.err.println(e.getMessage());
+			con = DriverManager.getConnection("jdbc:sqlite:characterDB.db");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CharacterDBException("Error al inciar la base de datos.", e);
 		}
 	}
 	
-	private void selectDB() {
+	//Por hacer
+	public void updateDB() throws CharacterDBException {
 		try {
-			Statement statement = con.createStatement();
+			Statement stmt = con.createStatement();
 			
 			
-		} catch(SQLException e) {
-			System.err.println(e.getMessage());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CharacterDBException("Error al actualizar la base de datos.", e);
 		}
 	}
 	
-	private void closeDB() {
+	//Por hacer
+	public void selectDB() throws CharacterDBException {
+		try {
+			Statement stmt = con.createStatement();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CharacterDBException("No se ha podido recoger informacion de la base de datos.", e);
+		}
+	}
+	
+	public void closeDB() throws CharacterDBException {
 		try {
 			con.close();
-		} catch(SQLException e) {
-			System.err.println(e.getMessage());
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CharacterDBException("No se ha podido cerrar la conexion a la base de datos.", e);
 		}
 	}
 }

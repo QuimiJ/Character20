@@ -100,8 +100,6 @@ public class Window extends JFrame {
 	 * Create the application.
 	 */
 	public Window() {
-		
-		
 		//Metodo para inicializar la ventana
 		initialize();
 	}
