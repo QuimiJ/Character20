@@ -34,7 +34,7 @@ public class TestMethodsWindow extends Window {
 		tTextField.setText("3");
 		tTextField2.setText("Espada");
 		//Uso del metodo a chequear
-		tCharacter = storeOrLoadProperties("load", tCharacter, "test");
+		tCharacter = storeOrLoadDB("load", tCharacter, "test");
 		assertEquals(Integer.toString(tCharacter.getSpeed()), tLabel.getText());
 		assertEquals(Integer.toString(tCharacter.getIntsave()), tTextField.getText());
 		assertEquals(tCharacter.getArmas()[0].getNombre(), tTextField2.getText());

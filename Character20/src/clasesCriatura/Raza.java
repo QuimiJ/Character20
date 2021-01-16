@@ -44,7 +44,8 @@ public class Raza {
 	public Raza() {
 		super();
 		this.nombre = "";
-		String[] rasgos = {""};
+		String rasgs[] = {"", "", ""};
+		String[] rasgos = rasgs;
 		this.rasgos = rasgos;
 		this.tamanyo = "";
 		this.velocidad = 0;

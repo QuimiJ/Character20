@@ -53,7 +53,8 @@ public class Clase {
 		super();
 		this.nombre = "";
 		this.hitdie = "";
-		this.rasgos = null;
+		String rasgs[] = {"", "", ""};
+		this.rasgos = rasgs;
 		this.simpleproficiency = false;
 		this.martialproficiency = false;
 	}

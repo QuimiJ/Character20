@@ -2,12 +2,11 @@ package mainWindowAndTest;
 
 
 import clasesCriatura.*;
-
+import database.CharacterDB;
+import database.CharacterDBException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -20,6 +19,7 @@ import java.util.Properties;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -32,6 +32,7 @@ import javax.swing.JButton;
 public class Window extends JFrame {
 
 	private JFrame frame;
+	private static CharacterDB characterDB;
 	private static JTextField textFieldStr;
 	private static JTextField textFieldDex;
 	private static JTextField textFieldCon;
@@ -924,7 +925,7 @@ public class Window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {		
 				getLabelsTextFields(character);
-				storeOrLoadProperties("store", character, "");		
+				storeOrLoadDB("store", character, "");		
 			}
 		});
 		bStoreProperties.setBounds(300, 10, 120, 42);
@@ -941,7 +942,7 @@ public class Window extends JFrame {
 					@Override
 					public void run() {
 						try {
-							setLabelsTextFields(storeOrLoadProperties("load", character, textFieldIntroduceTuNombre.getText()));	
+							setLabelsTextFields(storeOrLoadDB("load", character, textFieldIntroduceTuNombre.getText()));	
 						} catch (Exception e) {
 							System.out.println("Ha ocurrido un problema.");
 						}
@@ -956,178 +957,26 @@ public class Window extends JFrame {
 	
 	//Recibe un String operation que controla que operacion ejectuta el metodo (store o load),
 	//Un Personaje character si el método va a ejecutar load (de lo contrario recibira null)
-	//Y, si la operacion es store, un String nCharacter para indicar al programa el nombre del personaje que tiene que cargarse
-	//El metodo devuelve un objeto Personaje para realizar el load
-	public static Personaje storeOrLoadProperties(String operation, Personaje character, String nCharacter) {
-		Properties objetoP = new Properties();
+	//Y, si la operacion es store, un String nCharacter para indicar al programa el nombre del personaje a cargarse
+	//El metodo devuelve un objeto Personaje para realizar load
+	public static Personaje storeOrLoadDB(String operation, Personaje character, String nCharacter) {
+		//Conexion a la BD con un metodo estatico.
+		//(El metodo tiene los try catch pertinentes asi que no se han puesto aqui)
+		connectDB();
 		
-		try {
-			objetoP.load(new FileInputStream("characters.properties"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		Integer i = 0;
-		
+		//Ambas operaciones ejecutan los metodos estaticos de la base de datos.
 		//Operacion store
-		//Hacer que se pueda actualizar el personaje
 		if (operation == "store") {
-		for (i = 0; i < 200; i++) {
-			if (objetoP.getProperty("Number" + Integer.toString(i)) == null) {
-				objetoP.setProperty("Number" + Integer.toString(i), Integer.toString(i));
-				objetoP.setProperty("Name" + Integer.toString(i), character.getName());
-				objetoP.setProperty("Life" + Integer.toString(i), Integer.toString(character.getLife()));
-				objetoP.setProperty("AC" + Integer.toString(i), Integer.toString(character.getAC()));
-				objetoP.setProperty("Speed" + Integer.toString(i), Integer.toString(character.getSpeed()));
-				objetoP.setProperty("Str" + Integer.toString(i), character.getStr().scoreToString());
-				objetoP.setProperty("Dex" + Integer.toString(i), character.getDex().scoreToString());
-				objetoP.setProperty("Con" + Integer.toString(i), character.getCon().scoreToString());
-				objetoP.setProperty("Int" + Integer.toString(i), character.getIntel().scoreToString());
-				objetoP.setProperty("Wis" + Integer.toString(i), character.getWis().scoreToString());
-				objetoP.setProperty("Char" + Integer.toString(i), character.getCha().scoreToString());
-				objetoP.setProperty("Nivel" + Integer.toString(i), Integer.toString(character.getNivel()));
-				objetoP.setProperty("StrSave" + Integer.toString(i), Integer.toString(character.getStrsave()));
-				objetoP.setProperty("DexSave" + Integer.toString(i), Integer.toString(character.getDexsave()));
-				objetoP.setProperty("ConSave" + Integer.toString(i), Integer.toString(character.getConsave()));
-				objetoP.setProperty("IntSave" + Integer.toString(i), Integer.toString(character.getIntsave()));
-				objetoP.setProperty("WisSave" + Integer.toString(i), Integer.toString(character.getWissave()));
-				objetoP.setProperty("CharSave" + Integer.toString(i), Integer.toString(character.getChasave()));
-				
-				objetoP.setProperty("Acrobacias" + Integer.toString(i), Integer.toString(character.getAcrobacias()));
-				objetoP.setProperty("TratoConAnimales" + Integer.toString(i), Integer.toString(character.getTratoAnimales()));
-				objetoP.setProperty("Arcana" + Integer.toString(i), Integer.toString(character.getArcana()));
-				objetoP.setProperty("Atletismo" + Integer.toString(i), Integer.toString(character.getAtletismo()));
-				objetoP.setProperty("Engaño" + Integer.toString(i), Integer.toString(character.getEnganyo()));
-				objetoP.setProperty("Historia" + Integer.toString(i), Integer.toString(character.getHistoria()));
-				objetoP.setProperty("Perspicacia" + Integer.toString(i), Integer.toString(character.getPerspicacia()));
-				objetoP.setProperty("Intimidacion" + Integer.toString(i), Integer.toString(character.getIntimidacion()));
-				objetoP.setProperty("Investigacion" + Integer.toString(i), Integer.toString(character.getInvestigacion()));
-				objetoP.setProperty("Medicina" + Integer.toString(i), Integer.toString(character.getInvestigacion()));
-				objetoP.setProperty("Naturaleza" + Integer.toString(i), Integer.toString(character.getNaturaleza()));
-				objetoP.setProperty("Percepcion" + Integer.toString(i), Integer.toString(character.getPercepcion()));
-				objetoP.setProperty("Interpretacion" + Integer.toString(i), Integer.toString(character.getInterpretacion()));
-				objetoP.setProperty("Persuasion" + Integer.toString(i), Integer.toString(character.getPersuasion()));
-				objetoP.setProperty("Religion" + Integer.toString(i), Integer.toString(character.getReligion()));
-				objetoP.setProperty("JuegoManos" + Integer.toString(i), Integer.toString(character.getJuegoManos()));
-				objetoP.setProperty("Sigilo" + Integer.toString(i), Integer.toString(character.getSigilo()));
-				objetoP.setProperty("Supervivencia" + Integer.toString(i), Integer.toString(character.getSupervivencia()));
-				
-				objetoP.setProperty("BonoCompetencia" + Integer.toString(i), Integer.toString(character.getBonoCompetencia()));
-				objetoP.setProperty("Iniciativa" + Integer.toString(i), Integer.toString(character.getIniciativa()));
-				objetoP.setProperty("WeaponOne" + Integer.toString(i), character.getArmas()[0].getNombre());
-				objetoP.setProperty("WeaponTwo" + Integer.toString(i), character.getArmas()[1].getNombre());
-				objetoP.setProperty("WeaponThree" + Integer.toString(i), character.getArmas()[2].getNombre());
-				objetoP.setProperty("Class" + Integer.toString(i), character.getClasepj().getNombre());
-				objetoP.setProperty("Copper" + Integer.toString(i), Integer.toString(character.getPiezasCobre()));
-				objetoP.setProperty("Silver" + Integer.toString(i), Integer.toString(character.getPiezasPlata()));
-				objetoP.setProperty("Gold" + Integer.toString(i), Integer.toString(character.getPiezasOro()));
-				objetoP.setProperty("Platinum" + Integer.toString(i), Integer.toString(character.getPiezasPlatino()));
-				objetoP.setProperty("Electrum" + Integer.toString(i), Integer.toString(character.getPiezasElectrum()));
-				objetoP.setProperty("Equipment" + Integer.toString(i), character.getEquipo());
-				objetoP.setProperty("Treasure" + Integer.toString(i), character.getTesoro());
-				objetoP.setProperty("Language" + Integer.toString(i), character.getIdiomas());
-				objetoP.setProperty("PersonalityTraits" + Integer.toString(i), character.getRasgosPersonalidad());
-				objetoP.setProperty("Ideals" + Integer.toString(i), character.getIdeales());
-				objetoP.setProperty("Bonds" + Integer.toString(i), character.getVinculos());
-				objetoP.setProperty("Flaws" + Integer.toString(i), character.getDefectos());		
-				objetoP.setProperty("Race" + Integer.toString(i), character.getSubraza().getNombre());
-				objetoP.setProperty("Subrace" + Integer.toString(i), character.getRaza().getNombre());
-				
-				System.out.println("Character saved.");
-
-				try {
-					objetoP.store(new FileWriter("characters.properties"), "Operation" + objetoP.getProperty("Number" + Integer.toString(i)));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-						
-				i=200;
-			}
-		}
-		}
-				
+			storeDB(character);
+		}		
 		//Operacion load
-		if (operation == "load") {
-			for (i = 0; i < 200; i++) {
-			if (nCharacter.equals(objetoP.getProperty("Name" + Integer.toString(i)))) {
-				character.setName(objetoP.getProperty("Name" + Integer.toString(i)));
-				character.setLife(Integer.parseInt(objetoP.getProperty("Life" + Integer.toString(i))));
-				character.setAC(Integer.parseInt(objetoP.getProperty("AC" + Integer.toString(i))));
-				character.setSpeed(Integer.parseInt(objetoP.getProperty("Speed" + Integer.toString(i))));
-				character.getStr().setScore(Integer.parseInt(objetoP.getProperty("Str" + Integer.toString(i))));
-				character.getDex().setScore(Integer.parseInt(objetoP.getProperty("Dex" + Integer.toString(i))));
-				character.getCon().setScore(Integer.parseInt(objetoP.getProperty("Con" + Integer.toString(i))));
-				character.getIntel().setScore(Integer.parseInt(objetoP.getProperty("Int" + Integer.toString(i))));
-				character.getWis().setScore(Integer.parseInt(objetoP.getProperty("Wis" + Integer.toString(i))));
-				character.getCha().setScore(Integer.parseInt(objetoP.getProperty("Char" + Integer.toString(i))));
-				character.setNivel(Integer.parseInt(objetoP.getProperty("Nivel" + Integer.toString(i))));
-				character.setStrsave(Integer.parseInt(objetoP.getProperty("StrSave" + Integer.toString(i))));
-				character.setDexsave(Integer.parseInt(objetoP.getProperty("DexSave" + Integer.toString(i))));
-				character.setConsave(Integer.parseInt(objetoP.getProperty("ConSave" + Integer.toString(i))));
-				character.setIntsave(Integer.parseInt(objetoP.getProperty("IntSave" + Integer.toString(i))));
-				character.setWissave(Integer.parseInt(objetoP.getProperty("WisSave" + Integer.toString(i))));
-				character.setChasave(Integer.parseInt(objetoP.getProperty("CharSave" + Integer.toString(i))));
-				
-				character.setAcrobacias(Integer.parseInt(objetoP.getProperty("Acrobacias" + Integer.toString(i))));
-				character.setTratoAnimales(Integer.parseInt(objetoP.getProperty("TratoConAnimales" + Integer.toString(i))));
-				character.setArcana(Integer.parseInt(objetoP.getProperty("Arcana" + Integer.toString(i))));
-				character.setAtletismo(Integer.parseInt(objetoP.getProperty("Atletismo" + Integer.toString(i))));
-				character.setEnganyo(Integer.parseInt(objetoP.getProperty("Engaño" + Integer.toString(i))));
-				character.setHistoria(Integer.parseInt(objetoP.getProperty("Historia" + Integer.toString(i))));
-				character.setPerspicacia(Integer.parseInt(objetoP.getProperty("Perspicacia" + Integer.toString(i))));
-				character.setIntimidacion(Integer.parseInt(objetoP.getProperty("Intimidacion" + Integer.toString(i))));
-				character.setInvestigacion(Integer.parseInt(objetoP.getProperty("Investigacion" + Integer.toString(i))));
-				character.setMedicina(Integer.parseInt(objetoP.getProperty("Medicina" + Integer.toString(i))));
-				character.setNaturaleza(Integer.parseInt(objetoP.getProperty("Naturaleza" + Integer.toString(i))));
-				character.setPercepcion(Integer.parseInt(objetoP.getProperty("Percepcion" + Integer.toString(i))));
-				character.setInterpretacion(Integer.parseInt(objetoP.getProperty("Interpretacion" + Integer.toString(i))));
-				character.setPersuasion(Integer.parseInt(objetoP.getProperty("Persuasion" + Integer.toString(i))));
-				character.setReligion(Integer.parseInt(objetoP.getProperty("Religion" + Integer.toString(i))));
-				character.setJuegoManos(Integer.parseInt(objetoP.getProperty("JuegoManos" + Integer.toString(i))));
-				character.setSigilo(Integer.parseInt(objetoP.getProperty("Sigilo" + Integer.toString(i))));
-				character.setSupervivencia(Integer.parseInt(objetoP.getProperty("Supervivencia" + Integer.toString(i))));
-				
-				character.setBonoCompetencia(Integer.parseInt(objetoP.getProperty("BonoCompetencia" + Integer.toString(i))));
-				character.setIniciativa(Integer.parseInt(objetoP.getProperty("Iniciativa" + Integer.toString(i))));
-				//PROVISIONAL
-				Arma arma = new Arma(), arma2 = new Arma(), arma3 = new Arma();
-				Arma armas[] = {arma, arma2, arma3};
-				armas[0].setNombre(objetoP.getProperty("WeaponOne" + Integer.toString(i)));
-				armas[1].setNombre(objetoP.getProperty("WeaponTwo" + Integer.toString(i)));
-				armas[2].setNombre(objetoP.getProperty("WeaponThree" + Integer.toString(i)));
-				character.setArmas(armas);
-				Clase clase = new Clase();
-				//PROVISIONAL
-				clase.setNombre(objetoP.getProperty("Class" + Integer.toString(i)));
-				character.setClasepj(clase);
-				character.setPiezasCobre(Integer.parseInt(objetoP.getProperty("Copper" + Integer.toString(i))));
-				character.setPiezasPlata(Integer.parseInt(objetoP.getProperty("Silver" + Integer.toString(i))));
-				character.setPiezasOro(Integer.parseInt(objetoP.getProperty("Gold" + Integer.toString(i))));
-				character.setPiezasPlatino(Integer.parseInt(objetoP.getProperty("Platinum" + Integer.toString(i))));
-				character.setPiezasElectrum(Integer.parseInt(objetoP.getProperty("Electrum" + Integer.toString(i))));
-				character.setEquipo(objetoP.getProperty("Equipment" + Integer.toString(i)));
-				character.setTesoro(objetoP.getProperty("Treasure" + Integer.toString(i)));
-				character.setIdiomas(objetoP.getProperty("Language" + Integer.toString(i)));
-				character.setRasgosPersonalidad(objetoP.getProperty("PersonalityTraits" + Integer.toString(i)));
-				character.setIdeales(objetoP.getProperty("Ideals" + Integer.toString(i)));
-				character.setVinculos(objetoP.getProperty("Bonds" + Integer.toString(i)));
-				character.setDefectos(objetoP.getProperty("Flaws" + Integer.toString(i)));
-				Raza raza = new Raza();
-				Subraza subraza = new Subraza();
-				//PROVISIONAL
-				raza.setNombre(objetoP.getProperty("Race" + Integer.toString(i)));
-				subraza.setNombre(objetoP.getProperty("Subrace" + Integer.toString(i)));
-				character.setRaza(raza);
-				character.setSubraza(subraza);
-				
-				System.out.println("Character loaded.");
-				
-				i = 200;
-			}		
+		else if (operation == "load") {
+			character = loadDB(nCharacter);
+			closeDB();
+			return character;
 		}
-		return character;
-	}
-		return character;
+			closeDB();
+			return character;
 	}
 	
 	public void setLabelsTextFields(Personaje character) {
@@ -1182,29 +1031,6 @@ public class Window extends JFrame {
 		textFieldDanyoTipo2.setText(character.getArmas()[1].getDanyo() + ", " + character.getArmas()[1].getTipo());
 		
 		textFieldDanyoTipo3.setText(character.getArmas()[2].getDanyo() + ", " + character.getArmas()[2].getTipo());
-		
-		
-		//Hay que meter este bloque en uno de los jTextField grandes								
-		/*character.setPiezasCobre(Integer.parseInt(objetoP.getProperty("Copper")));
-		character.setPiezasPlata(Integer.parseInt(objetoP.getProperty("Silver")));
-		character.setPiezasOro(Integer.parseInt(objetoP.getProperty("Gold")));
-		character.setPiezasPlatino(Integer.parseInt(objetoP.getProperty("Platinum")));
-		character.setPiezasElectrum(Integer.parseInt(objetoP.getProperty("Electrum")));
-		
-		character.setTesoro(objetoP.getProperty("Treasure"));
-		character.setIdiomas(objetoP.getProperty("Language"));
-		character.setRasgosPersonalidad(objetoP.getProperty("PersonalityTraits"));
-		character.setIdeales(objetoP.getProperty("Ideals"));
-		character.setVinculos(objetoP.getProperty("Bonds"));
-		character.setDefectos(objetoP.getProperty("Flaws"));
-		Raza raza = new Raza();
-		Subraza subraza = new Subraza();
-		//PROVISIONAL
-		raza.setNombre(objetoP.getProperty("Race"));
-		subraza.setNombre(objetoP.getProperty("Subrace"));
-		character.setRaza(raza);
-		character.setSubraza(subraza);
-		*/
 	}
 	
 	public static void getLabelsTextFields(Personaje character) {
@@ -1310,4 +1136,43 @@ public class Window extends JFrame {
 		return color;
 	}
 	
+	public static void connectDB() {
+		try {
+			characterDB = new CharacterDB();
+			characterDB.openDB();
+		} catch (CharacterDBException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	//Se pasa un Personaje cuyo contenido se almacena en la BD.
+	public static void storeDB(Personaje character) {
+		try {
+			characterDB.insertDB(character);
+		} catch (CharacterDBException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	//Se pasa un String nombre y se devuelve el Personaje de la base de datos con ese nombre.
+	public static Personaje loadDB(String nombre) {
+		Personaje character = new Personaje();
+		
+		try {
+			character = characterDB.selectDB(nombre);
+			return character;
+			
+		} catch (CharacterDBException e) {
+			System.err.println(e.getMessage());
+		}
+		return character;
+	}
+	
+	public static void closeDB() {
+		try {
+			characterDB.closeDB();
+		} catch (CharacterDBException e) {
+			System.err.println(e.getMessage());
+		}
+	}
 }
