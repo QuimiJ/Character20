@@ -9,7 +9,6 @@ public class Arma {
 	private String danyo;
 	private String tipo;
 	
-	
 	//Getters y Setters
 	public String getNombre() {
 		return nombre;

@@ -1,7 +1,10 @@
 package clasesCriatura;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+//Personaje es la clase mas importante en cuanto a datos y hereda de Criatura
 public class Personaje extends Criatura {
 	
 	private int nivel;
@@ -37,7 +40,7 @@ public class Personaje extends Criatura {
 	//Otros
 	private int bonoCompetencia;
 	private int iniciativa = dex.getModifier();
-    Arma[] armas;
+    List<Arma> armas;
     Clase clasepj;
     
     //Pertenencias
@@ -221,10 +224,10 @@ public class Personaje extends Criatura {
 	public void setIniciativa(int iniciativa) {
 		this.iniciativa = iniciativa;
 	}
-	public Arma[] getArmas() {
+	public List<Arma> getArmas() {
 		return armas;
 	}
-	public void setArmas(Arma[] armas) {
+	public void setArmas(List<Arma> armas) {
 		this.armas = armas;
 	}
 	public Clase getClasepj() {
@@ -324,7 +327,7 @@ public class Personaje extends Criatura {
 			int tratoAnimales, int arcana, int atletismo, int engaño, int historia, int perspicacia, int intimidacion,
 			int investigacion, int medicina, int naturaleza, int percepcion, int interpretacion, int persuasion,
 			int religion, int juegoManos, int sigilo, int supervivencia, int bonoCompetencia, int iniciativa,
-			Arma[] armas, Clase clasepj, int piezasCobre, int piezasPlata, int piezasOro,
+			List<Arma> armas, Clase clasepj, int piezasCobre, int piezasPlata, int piezasOro,
 			int piezasElectrum, int piezasPlatino, String equipo, String tesoro, String idiomas,
 			String rasgosPersonalidad, String ideales, String vinculos, String defectos, Raza raza, Subraza subraza) {
 		super(name, life, aC, speed, str, dex, con, intel, wis, cha);
@@ -412,7 +415,10 @@ public class Personaje extends Criatura {
 		this.bonoCompetencia = 0;
 		this.iniciativa = 0;
 		Arma arma1 = new Arma(), arma2 = new Arma(), arma3 = new Arma();
-		Arma[] armas = {arma1, arma2, arma3};
+		List<Arma> armas = new ArrayList<Arma>();
+		armas.add(arma1);
+		armas.add(arma2);
+		armas.add(arma3);
 		this.armas = armas;
 		this.clasepj = new Clase();
 		this.piezasCobre = 0;
@@ -431,20 +437,20 @@ public class Personaje extends Criatura {
 		this.subraza = new Subraza();
 	}
 	
+	@Override
 	public String toString() {
-		return "Personaje [nivel=" + nivel + ", strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave + ", intsave="
-				+ intsave + ", wissave=" + wissave + ", chasave=" + chasave + ", acrobacias=" + acrobacias
-				+ ", tratoAnimales=" + tratoAnimales + ", arcana=" + arcana + ", atletismo=" + atletismo + ", engaño="
-				+ enganyo + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion=" + intimidacion
-				+ ", investigacion=" + investigacion + ", medicina=" + medicina + ", naturaleza=" + naturaleza
-				+ ", percepcion=" + percepcion + ", interpretacion=" + interpretacion + ", persuasion=" + persuasion
-				+ ", religion=" + religion + ", juegoManos=" + juegoManos + ", sigilo=" + sigilo + ", supervivencia="
-				+ supervivencia + ", bonoCompetencia=" + bonoCompetencia + ", iniciativa=" + iniciativa + ", armas="
-				+ (armas != null ? Arrays.asList(armas) : null) + ", clasepj=" + clasepj + ", hechizos="
-				+ ", piezasCobre=" + piezasCobre
+		return "Personaje [nivel=" + nivel + ", strsave=" + strsave + ", dexsave=" + dexsave + ", consave=" + consave
+				+ ", intsave=" + intsave + ", wissave=" + wissave + ", chasave=" + chasave + ", acrobacias="
+				+ acrobacias + ", tratoAnimales=" + tratoAnimales + ", arcana=" + arcana + ", atletismo=" + atletismo
+				+ ", enganyo=" + enganyo + ", historia=" + historia + ", perspicacia=" + perspicacia + ", intimidacion="
+				+ intimidacion + ", investigacion=" + investigacion + ", medicina=" + medicina + ", naturaleza="
+				+ naturaleza + ", percepcion=" + percepcion + ", interpretacion=" + interpretacion + ", persuasion="
+				+ persuasion + ", religion=" + religion + ", juegoManos=" + juegoManos + ", sigilo=" + sigilo
+				+ ", supervivencia=" + supervivencia + ", bonoCompetencia=" + bonoCompetencia + ", iniciativa="
+				+ iniciativa + ", armas=" + armas + ", clasepj=" + clasepj + ", piezasCobre=" + piezasCobre
 				+ ", piezasPlata=" + piezasPlata + ", piezasOro=" + piezasOro + ", piezasElectrum=" + piezasElectrum
 				+ ", piezasPlatino=" + piezasPlatino + ", equipo=" + equipo + ", tesoro=" + tesoro + ", idiomas="
 				+ idiomas + ", rasgosPersonalidad=" + rasgosPersonalidad + ", ideales=" + ideales + ", vinculos="
-				+ vinculos + ", defectos=" + defectos + "]";
+				+ vinculos + ", defectos=" + defectos + ", raza=" + raza + ", subraza=" + subraza + "]";
 	}
 }

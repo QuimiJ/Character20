@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import clasesCriatura.*;
 
@@ -109,49 +111,25 @@ public class CharacterDB {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		
-			try (PreparedStatement stmt2 = con.prepareStatement("INSERT OR REPLACE INTO Arma("
-					+ "c_arma, nombre, marcial, danyo, tipo)"
-					+ "VALUES (?, ?, ?, ?, ?)"
-					)) {
-				stmt2.setString(1, "arma1" + character.getName());
-				stmt2.setString(2, character.getArmas()[0].getNombre());
-				stmt2.setBoolean(3, character.getArmas()[0].isMarcial());
-				stmt2.setString(4, character.getArmas()[0].getDanyo());
-				stmt2.setString(5, character.getArmas()[0].getTipo());
-				stmt2.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
+
+			for (int i = 0; i < character.getArmas().size(); i++) {
+				for (Arma ar : character.getArmas()) {
+					try (PreparedStatement stmt2 = con.prepareStatement("INSERT OR REPLACE INTO Arma("
+							+ "c_arma, nombre, marcial, danyo, tipo)"
+							+ "VALUES (?, ?, ?, ?, ?)"
+							)) {
+						stmt2.setString(1, "arma" + i + character.getName());
+						stmt2.setString(2, ar.getNombre());
+						stmt2.setBoolean(3, ar.isMarcial());
+						stmt2.setString(4, ar.getDanyo());
+						stmt2.setString(5, ar.getTipo());
+						stmt2.executeUpdate();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 			}
-			
-			try (PreparedStatement stmt3 = con.prepareStatement("INSERT OR REPLACE INTO Arma("
-					+ "c_arma, nombre, marcial, danyo, tipo)"
-					+ "VALUES (?, ?, ?, ?, ?)"
-					)) {
-				stmt3.setString(1, "arma2" + character.getName());
-				stmt3.setString(2, character.getArmas()[1].getNombre());
-				stmt3.setBoolean(3, character.getArmas()[1].isMarcial());
-				stmt3.setString(4, character.getArmas()[1].getDanyo());
-				stmt3.setString(5, character.getArmas()[1].getTipo());
-				stmt3.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			try (PreparedStatement stmt4 = con.prepareStatement("INSERT OR REPLACE INTO Arma("
-					+ "c_arma, nombre, marcial, danyo, tipo)"
-					+ "VALUES (?, ?, ?, ?, ?)"
-					)) {
-				stmt4.setString(1, "arma3" + character.getName());
-				stmt4.setString(2, character.getArmas()[2].getNombre());
-				stmt4.setBoolean(3, character.getArmas()[2].isMarcial());
-				stmt4.setString(4, character.getArmas()[2].getDanyo());
-				stmt4.setString(5, character.getArmas()[2].getTipo());
-				stmt4.executeUpdate();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
+
 			try (PreparedStatement stmt5 = con.prepareStatement("INSERT OR REPLACE INTO Clase("
 					+ "c_clase, nombre, hitdie, rasgo1, rasgo2, rasgo3, simpleProficiency, martialProficiency)"
 					+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
@@ -225,15 +203,18 @@ public class CharacterDB {
 					character.setIniciativa(rs.getInt("iniciativa"));
 					
 					//
-					Arma arma = new Arma(), arma2 = new Arma(), arma3 = new Arma();
-					Arma armas[] = {arma, arma2, arma3};
+					Arma arma1 = new Arma(), arma2 = new Arma(), arma3 = new Arma();
+					List<Arma> armas = new ArrayList<Arma>();
+					armas.add(arma1);
+					armas.add(arma2);
+					armas.add(arma3);
 					try (PreparedStatement stmt2 = con.prepareStatement("SELECT * FROM Arma  WHERE c_arma = " + "'" + rs.getString("c_arma1") + "'")) {
 						try (ResultSet rs2 = stmt2.executeQuery()) {
 						while(rs2.next()) {
-							armas[0].setNombre(rs2.getString("nombre"));
-							armas[0].setMarcial(rs2.getBoolean("marcial"));
-							armas[0].setDanyo(rs2.getString("danyo"));
-							armas[0].setTipo(rs2.getString("tipo"));
+							arma1.setNombre(rs2.getString("nombre"));
+							arma1.setMarcial(rs2.getBoolean("marcial"));
+							arma1.setDanyo(rs2.getString("danyo"));
+							arma1.setTipo(rs2.getString("tipo"));
 						}
 						}
 					} catch (Exception e) {
@@ -243,10 +224,10 @@ public class CharacterDB {
 					try (PreparedStatement stmt3 = con.prepareStatement("SELECT * FROM Arma WHERE c_arma == " + "'" + rs.getString("c_arma2") + "'")) {
 						try (ResultSet rs3 = stmt3.executeQuery()) {
 						while(rs3.next()) {
-							armas[1].setNombre(rs3.getString("nombre"));
-							armas[1].setMarcial(rs3.getBoolean("marcial"));
-							armas[1].setDanyo(rs3.getString("danyo"));
-							armas[1].setTipo(rs3.getString("tipo"));
+							arma2.setNombre(rs3.getString("nombre"));
+							arma2.setMarcial(rs3.getBoolean("marcial"));
+							arma2.setDanyo(rs3.getString("danyo"));
+							arma2.setTipo(rs3.getString("tipo"));
 						}
 						}
 					} catch (Exception e) {
@@ -256,10 +237,10 @@ public class CharacterDB {
 					try (PreparedStatement stmt4 = con.prepareStatement("SELECT * FROM Arma WHERE c_arma == " + "'" + rs.getString("c_arma3") + "'")) {
 						try (ResultSet rs4 = stmt4.executeQuery()) {
 						while(rs4.next()) {
-							armas[2].setNombre(rs4.getString("nombre"));
-							armas[2].setMarcial(rs4.getBoolean("marcial"));
-							armas[2].setDanyo(rs4.getString("danyo"));
-							armas[2].setTipo(rs4.getString("tipo"));
+							arma3.setNombre(rs4.getString("nombre"));
+							arma3.setMarcial(rs4.getBoolean("marcial"));
+							arma3.setDanyo(rs4.getString("danyo"));
+							arma3.setTipo(rs4.getString("tipo"));
 						}
 						}
 					} catch (Exception e) {

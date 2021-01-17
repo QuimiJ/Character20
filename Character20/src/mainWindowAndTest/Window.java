@@ -4,22 +4,21 @@ package mainWindowAndTest;
 import clasesCriatura.*;
 import database.CharacterDB;
 import database.CharacterDBException;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -788,15 +787,15 @@ public class Window extends JFrame {
 		panel_2_1_1.add(lDanyoTipo);
 		
 		textFieldArma1 = new JTextField();
-		textFieldArma1.setText(character.getArmas()[0].getNombre());
+		textFieldArma1.setText(character.getArmas().get(0).getNombre());
 		textFieldArma1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textFieldArma1.setBounds(10, 35, 140, 20);
 		panel_2_1_1.add(textFieldArma1);
 		textFieldArma1.setColumns(10);
 		
-		textFieldDanyoTipo1 = new JTextField(character.getArmas()[0].getDanyo() + "   " + character.getArmas()[0].getTipo());
+		textFieldDanyoTipo1 = new JTextField(character.getArmas().get(0).getDanyo() + "   " + character.getArmas().get(0).getTipo());
 		textFieldDanyoTipo1.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textFieldDanyoTipo1.setText(character.getArmas()[0].getDanyo() + "   " + character.getArmas()[1].getTipo());
+		textFieldDanyoTipo1.setText(character.getArmas().get(0).getDanyo() + "   " + character.getArmas().get(0).getTipo());
 		textFieldDanyoTipo1.setColumns(10);
 		textFieldDanyoTipo1.setBounds(240, 35, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo1);
@@ -808,7 +807,7 @@ public class Window extends JFrame {
 		textFieldBonificador1.setBounds(170, 35, 50, 20);
 		panel_2_1_1.add(textFieldBonificador1);
 		
-		textFieldArma2 = new JTextField(character.getArmas()[1].getNombre());
+		textFieldArma2 = new JTextField(character.getArmas().get(1).getNombre());
 		textFieldArma2.setColumns(10);
 		textFieldArma2.setBounds(10, 65, 140, 20);
 		panel_2_1_1.add(textFieldArma2);
@@ -818,12 +817,12 @@ public class Window extends JFrame {
 		textFieldBonificador2.setBounds(170, 65, 50, 20);
 		panel_2_1_1.add(textFieldBonificador2);
 		
-		textFieldDanyoTipo2 = new JTextField(character.getArmas()[1].getDanyo() + "   " + character.getArmas()[1].getTipo());
+		textFieldDanyoTipo2 = new JTextField(character.getArmas().get(1).getDanyo() + "   " + character.getArmas().get(1).getTipo());
 		textFieldDanyoTipo2.setColumns(10);
 		textFieldDanyoTipo2.setBounds(240, 65, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo2);
 		
-		textFieldArma3 = new JTextField(character.getArmas()[2].getNombre());
+		textFieldArma3 = new JTextField(character.getArmas().get(2).getNombre());
 		textFieldArma3.setColumns(10);
 		textFieldArma3.setBounds(10, 95, 140, 20);
 		panel_2_1_1.add(textFieldArma3);
@@ -833,7 +832,7 @@ public class Window extends JFrame {
 		textFieldBonificador3.setBounds(170, 95, 50, 20);
 		panel_2_1_1.add(textFieldBonificador3);
 		
-		textFieldDanyoTipo3 = new JTextField(character.getArmas()[2].getDanyo() + "   " + character.getArmas()[2].getTipo());
+		textFieldDanyoTipo3 = new JTextField(character.getArmas().get(2).getDanyo() + "   " + character.getArmas().get(2).getTipo());
 		textFieldDanyoTipo3.setColumns(10);
 		textFieldDanyoTipo3.setBounds(240, 95, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo3);
@@ -1016,21 +1015,19 @@ public class Window extends JFrame {
 		textFieldSigilo.setText(Integer.toString(character.getSigilo()));
 		textFieldSupervivencia.setText(Integer.toString(character.getSupervivencia()));
 		
-		//ATENCION textFieldBonoCompetencia no se ha implementado en la ventana
+		//textFieldBonoCompetencia no se ha implementado en la ventana
 		//textFieldBonoCompetencia.setText(Integer.toString(personaje.getBonoCompetencia()));
 		textFieldIniciativa.setText(Integer.toString(character.getIniciativa()));
 		
 		//¿En que text field se mete el equipo?
 		//character.setEquipo(objetoP.getProperty("Equipment"));
-		textFieldArma1.setText(character.getArmas()[0].getNombre());
-		textFieldArma2.setText(character.getArmas()[1].getNombre());
-		textFieldArma3.setText(character.getArmas()[2].getNombre());						
-		//El bonificador no esta en la clase Arma
-		textFieldDanyoTipo1.setText(character.getArmas()[0].getDanyo() + ", " + character.getArmas()[0].getTipo());
+		textFieldArma1.setText(character.getArmas().get(0).getNombre());
+		textFieldArma2.setText(character.getArmas().get(1).getNombre());
+		textFieldArma3.setText(character.getArmas().get(2).getNombre());						
 		
-		textFieldDanyoTipo2.setText(character.getArmas()[1].getDanyo() + ", " + character.getArmas()[1].getTipo());
-		
-		textFieldDanyoTipo3.setText(character.getArmas()[2].getDanyo() + ", " + character.getArmas()[2].getTipo());
+		textFieldDanyoTipo1.setText(character.getArmas().get(0).getDanyo() + ", " + character.getArmas().get(0).getTipo());
+		textFieldDanyoTipo2.setText(character.getArmas().get(1).getDanyo() + ", " + character.getArmas().get(1).getTipo());
+		textFieldDanyoTipo3.setText(character.getArmas().get(2).getDanyo() + ", " + character.getArmas().get(2).getTipo());
 	}
 	
 	public static void getLabelsTextFields(Personaje character) {
@@ -1069,14 +1066,14 @@ public class Window extends JFrame {
 		character.setSigilo(Integer.parseInt(textFieldSigilo.getText()));
 		character.setSupervivencia(Integer.parseInt(textFieldSupervivencia.getText()));
 		character.setIniciativa(Integer.parseInt(textFieldIniciativa.getText()));
-		Arma arma = new Arma(), arma2 = new Arma(), arma3 = new Arma();
-		Arma armas[] = {arma, arma2, arma3};
-		armas[0].setNombre(textFieldArma1.getText());
-		armas[1].setNombre(textFieldArma2.getText());
-		armas[2].setNombre(textFieldArma3.getText());
-		armas[0].setTipo(textFieldDanyoTipo1.getText());
-		armas[1].setTipo(textFieldDanyoTipo2.getText());
-		armas[2].setTipo(textFieldDanyoTipo3.getText());
+		Arma arma1 = new Arma(), arma2 = new Arma(), arma3 = new Arma();
+		List<Arma> armas = new ArrayList<Arma>();
+		arma1.setNombre(textFieldArma1.getText());
+		arma2.setNombre(textFieldArma2.getText());
+		arma3.setNombre(textFieldArma3.getText());
+		arma1.setTipo(textFieldDanyoTipo1.getText());
+		arma2.setTipo(textFieldDanyoTipo2.getText());
+		arma3.setTipo(textFieldDanyoTipo3.getText());
 		character.setArmas(armas);
 	}
 	

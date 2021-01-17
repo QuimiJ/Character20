@@ -1,11 +1,14 @@
 package clasesCriatura;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+//Un Personaje tiene una Clase
 public class Clase {
 	String nombre;
 	String hitdie;
-	String[] rasgos;
+	String rasgos[];
 	boolean simpleproficiency;
 	boolean martialproficiency;
 	
@@ -53,18 +56,16 @@ public class Clase {
 		super();
 		this.nombre = "";
 		this.hitdie = "";
-		String rasgs[] = {"", "", ""};
-		this.rasgos = rasgs;
+		String rasgos[] = {"", "", ""};
+		this.rasgos = rasgos;
 		this.simpleproficiency = false;
 		this.martialproficiency = false;
 	}
 	
+	@Override
 	public String toString() {
-		return "Clase [nombre=" + nombre + ", hitdie=" + hitdie + ", rasgos="
-				+ (rasgos != null ? Arrays.asList(rasgos) : null) + ", simpleproficiency=" + simpleproficiency
-				+ ", martialproficiency=" + martialproficiency + "]";
+		return "Clase [nombre=" + nombre + ", hitdie=" + hitdie + ", rasgos=" + Arrays.toString(rasgos)
+				+ ", simpleproficiency=" + simpleproficiency + ", martialproficiency=" + martialproficiency + "]";
 	}
 
-	
-	
 }

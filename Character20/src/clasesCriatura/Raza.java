@@ -1,10 +1,13 @@
 package clasesCriatura;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+//Un Personaje tiene una Raza
 public class Raza {
 	protected String nombre;
-	protected String[] rasgos;
+	protected List<String> rasgos;
 	protected String tamanyo;
 	protected int velocidad;
 	
@@ -14,10 +17,10 @@ public class Raza {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String[] getRasgos() {
+	public List<String> getRasgos() {
 		return rasgos;
 	}
-	public void setRasgos(String[] rasgos) {
+	public void setRasgos(List<String> rasgos) {
 		this.rasgos = rasgos;
 	}
 	public String getTamanyo() {
@@ -33,7 +36,7 @@ public class Raza {
 		this.velocidad = velocidad;
 	}
 	
-	public Raza(String nombre, String[] rasgos, String tamanyo, int velocidad) {
+	public Raza(String nombre, List<String> rasgos, String tamanyo, int velocidad) {
 		super();
 		this.nombre = nombre;
 		this.rasgos = rasgos;
@@ -44,17 +47,17 @@ public class Raza {
 	public Raza() {
 		super();
 		this.nombre = "";
-		String rasgs[] = {"", "", ""};
-		String[] rasgos = rasgs;
+		String rasgs = "";
+		List<String> rasgos = new ArrayList<String>();
+		rasgos.add(rasgs);
 		this.rasgos = rasgos;
 		this.tamanyo = "";
 		this.velocidad = 0;
 	}
 	
+	@Override
 	public String toString() {
-		return "Raza [nombre=" + nombre + ", rasgos=" + (rasgos != null ? Arrays.asList(rasgos) : null) + ", tamanyo="
-				+ tamanyo + ", velocidad=" + velocidad + "]";
+		return "Raza [nombre=" + nombre + ", rasgos=" + rasgos + ", tamanyo=" + tamanyo + ", velocidad=" + velocidad
+				+ "]";
 	}
-	
-
 }
