@@ -1,6 +1,5 @@
 package mainWindowAndTest;
 
-
 import clasesCriatura.*;
 import database.CharacterDB;
 import database.CharacterDBException;
@@ -26,6 +25,7 @@ import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
+import javax.swing.SpringLayout;
 import javax.swing.JButton;
 import mainWindowAndTest.CreationWindow;
 
@@ -73,6 +73,30 @@ public class mainAndWindow extends JFrame {
 	private static JTextField textFieldBonificador2;
 	private static JTextField textFieldBonificador3;
 	private static JTextField textFieldIntroduceTuNombre;
+	private static JLabel lStrMod;
+	private static JLabel lDexMod;
+	private static JLabel lConMod;
+	private static JLabel lIntMod;
+	private static JLabel lWisMod;
+	private static JLabel lCarMod;
+	private static JCheckBox checkBoxAcrobacias;
+	private static JCheckBox checkBoxAtletismo;
+	private static JCheckBox checkBoxArcana;
+	private static JCheckBox checkBoxJuegoManos;
+	private static JCheckBox checkBoxMedicina;
+	private static JCheckBox checkBoxIntimidacion;
+	private static JCheckBox checkBoxNaturaleza;
+	private static JCheckBox checkBoxPersuasion;
+	private static JCheckBox checkBoxInvestigacion;
+	private static JCheckBox checkBoxPerspicacia;
+	private static JCheckBox checkBoxHistoria;
+	private static JCheckBox checkBoxEnganyo;
+	private static JCheckBox checkBoxInterpretacion;
+	private static JCheckBox checkBoxPercepcion;
+	private static JCheckBox checkBoxReligion;
+	private static JCheckBox checkBoxSigilo;
+	private static JCheckBox checkBoxSupervivencia;
+	private static JCheckBox checkBoxAnimales;
 	private static JLabel lStrSave;
 	private static JLabel lDexSave;
 	private static JLabel lConSave;
@@ -103,6 +127,7 @@ public class mainAndWindow extends JFrame {
 	public mainAndWindow() {
 		//Metodo para inicializar la ventana
 		initialize();
+		actualizar();
 	}
 
 	/**
@@ -115,22 +140,29 @@ public class mainAndWindow extends JFrame {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1626, 949);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		SpringLayout springLayout = new SpringLayout();
+		frame.getContentPane().setLayout(springLayout);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(20, 22, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel, 147, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		textFieldStr = new JTextField();
 		textFieldStr.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		textFieldStr.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldStr.setText(Integer.toString(character.getStr().getScore()));
+		textFieldStr.setText("18");
 		textFieldStr.setBounds(40, 30, 65, 45);
+		lStrMod = new JLabel(Integer.toString(character.getStr().getModifier()));
+		lStrSave =  new JLabel(Integer.toString(character.getStrsave()));
+		textFieldAtletismo = new JTextField();
 		panel.add(textFieldStr);
 		textFieldStr.setColumns(14);
 		
-		JLabel lStrMod = new JLabel(Integer.toString(character.getStr().getModifier()));
+		
 		lStrMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lStrMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lStrMod.setBounds(115, 30, 65, 45);
@@ -142,7 +174,7 @@ public class mainAndWindow extends JFrame {
 		lStr.setBounds(80, 80, 110, 30);
 		panel.add(lStr);
 		
-		lStrSave = new JLabel(Integer.toString(character.getStrsave()));
+		
 		lStrSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lStrSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lStrSave.setBounds(180, 30, 65, 45);
@@ -154,56 +186,65 @@ public class mainAndWindow extends JFrame {
 		lMod.setBounds(115, 15, 65, 14);
 		panel.add(lMod);
 		
-		JLabel lSaves = new JLabel("(Saves)");
-		lSaves.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lSaves.setHorizontalAlignment(SwingConstants.CENTER);
-		lSaves.setBounds(180, 15, 65, 14);
-		panel.add(lSaves);
+		JLabel LSaves = new JLabel("(Saves)");
+		LSaves.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		LSaves.setHorizontalAlignment(SwingConstants.CENTER);
+		LSaves.setBounds(180, 15, 65, 14);
+		panel.add(LSaves);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(20, 168, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1, 168, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1, 293, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		textFieldDex = new JTextField();
 		textFieldDex.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		textFieldDex.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldDex.setText(Integer.toString(character.getDex().getScore()));
+		textFieldDex.setText("15");
 		textFieldDex.setBounds(40, 30, 65, 45);
+		lDexMod = new JLabel(Integer.toString(character.getDex().getModifier()));
+		lDexSave = new JLabel(Integer.toString(character.getDexsave()));
+			
 		panel_1.add(textFieldDex);
 		textFieldDex.setColumns(10);
 		
-		JLabel lDexMod = new JLabel(Integer.toString(character.getDex().getModifier()));
+		
 		lDexMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lDexMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lDexMod.setBounds(115, 30, 65, 45);
 		panel_1.add(lDexMod);
 		
 		JLabel lDex = new JLabel("DESTREZA");
-		lDex.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lDex.setFont(new Font("Tahoma", Font.ITALIC, 30));
 		lDex.setBounds(60, 80, 150, 30);
 		panel_1.add(lDex);
 		
-		lDexSave = new JLabel(Integer.toString(character.getDexsave()));
 		lDexSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lDexSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lDexSave.setBounds(180, 30, 65, 45);
 		panel_1.add(lDexSave);
 		
 		JPanel panel_1_1 = new JPanel();
-		panel_1_1.setBounds(20, 324, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1, 324, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1, 449, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1);
 		panel_1_1.setLayout(null);
 		
 		textFieldCon = new JTextField();
-		textFieldCon.setText(Integer.toString(character.getCon().getScore()));
+		textFieldCon.setText("14");
 		textFieldCon.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		textFieldCon.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldCon.setBounds(40, 30, 65, 45);
+		lConMod = new JLabel(Integer.toString( character.getDex().getModifier()));
+		lConSave = new JLabel(Integer.toString(character.getConsave()));
 		panel_1_1.add(textFieldCon);
 		textFieldCon.setColumns(10);
 		
-		JLabel lConMod = new JLabel(Integer.toString( character.getDex().getModifier()));
 		lConMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lConMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lConMod.setBounds(115, 30, 65, 45);
@@ -215,26 +256,29 @@ public class mainAndWindow extends JFrame {
 		lCon.setBounds(20, 80, 230, 30);
 		panel_1_1.add(lCon);
 		
-		lConSave = new JLabel(Integer.toString(character.getConsave()));
 		lConSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lConSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lConSave.setBounds(180, 30, 65, 45);
 		panel_1_1.add(lConSave);
 		
 		JPanel panel_1_1_1 = new JPanel();
-		panel_1_1_1.setBounds(20, 460, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1_1, 460, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1_1, 585, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1_1);
 		panel_1_1_1.setLayout(null);
 		
 		textFieldInt = new JTextField();
-		textFieldInt.setText(Integer.toString(character.getIntel().getScore()));
+		textFieldInt.setText("8");
 		textFieldInt.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldInt.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		textFieldInt.setBounds(40, 30, 65, 45);
+		lIntMod = new JLabel(Integer.toString(character.getIntel().getModifier()));
+		lIntSave = new JLabel(Integer.toString(character.getIntsave()));
 		panel_1_1_1.add(textFieldInt);
 		textFieldInt.setColumns(10);
 		
-		JLabel lIntMod = new JLabel(Integer.toString(character.getIntel().getModifier()));
 		lIntMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lIntMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lIntMod.setBounds(115, 30, 65, 45);
@@ -246,26 +290,29 @@ public class mainAndWindow extends JFrame {
 		lInt.setBounds(20, 80, 230, 30);
 		panel_1_1_1.add(lInt);
 		
-		lIntSave = new JLabel(Integer.toString(character.getIntsave()));
 		lIntSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lIntSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lIntSave.setBounds(180, 30, 65, 45);
 		panel_1_1_1.add(lIntSave);
 		
 		JPanel panel_1_1_1_1 = new JPanel();
-		panel_1_1_1_1.setBounds(20, 606, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1_1_1, 606, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1_1_1, 731, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1_1_1);
 		panel_1_1_1_1.setLayout(null);
 		
 		textFieldWis = new JTextField();
-		textFieldWis.setText(Integer.toString(character.getWis().getScore()));
+		textFieldWis.setText("16");
 		textFieldWis.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldWis.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		textFieldWis.setBounds(40, 30, 65, 45);
+		lWisMod = new JLabel(Integer.toString(character.getWis().getModifier()));
+		lWisSave = new JLabel(Integer.toString(character.getWissave()));
 		panel_1_1_1_1.add(textFieldWis);
 		textFieldWis.setColumns(10);
 		
-		JLabel lWisMod = new JLabel(Integer.toString(character.getWis().getModifier()));
 		lWisMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lWisMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lWisMod.setBounds(115, 30, 65, 45);
@@ -277,26 +324,29 @@ public class mainAndWindow extends JFrame {
 		lWis.setBounds(20, 80, 230, 30);
 		panel_1_1_1_1.add(lWis);
 		
-		lWisSave = new JLabel(Integer.toString(character.getWissave()));
 		lWisSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lWisSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lWisSave.setBounds(180, 30, 65, 45);
 		panel_1_1_1_1.add(lWisSave);
 		
 		JPanel panel_1_1_1_1_1 = new JPanel();
-		panel_1_1_1_1_1.setBounds(20, 752, 270, 125);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_1_1_1_1_1, 752, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_1_1_1_1_1, 20, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_1_1_1_1_1, 877, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_1_1_1_1_1, 290, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_1_1_1_1_1);
 		panel_1_1_1_1_1.setLayout(null);
 		
 		textFieldCar = new JTextField();
 		textFieldCar.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldCar.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		textFieldCar.setText(Integer.toString(character.getCha().getScore()));
+		textFieldCar.setText("8");
 		textFieldCar.setBounds(40, 30, 65, 45);
+		lCarMod = new JLabel(Integer.toString(character.getCha().getModifier()));
+		lCarSave = new JLabel("(-1)");
 		panel_1_1_1_1_1.add(textFieldCar);
 		textFieldCar.setColumns(10);
 		
-		JLabel lCarMod = new JLabel(Integer.toString(character.getCha().getModifier()));
 		lCarMod.setHorizontalAlignment(SwingConstants.CENTER);
 		lCarMod.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lCarMod.setBounds(115, 30, 64, 45);
@@ -308,14 +358,16 @@ public class mainAndWindow extends JFrame {
 		lCha.setBounds(20, 80, 230, 30);
 		panel_1_1_1_1_1.add(lCha);
 		
-		lCarSave = new JLabel(Integer.toString(character.getChasave()));
 		lCarSave.setHorizontalAlignment(SwingConstants.CENTER);
 		lCarSave.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lCarSave.setBounds(180, 30, 65, 45);
 		panel_1_1_1_1_1.add(lCarSave);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(330, 22, 390, 200);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2, 330, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2, 222, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2, 720, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -333,12 +385,12 @@ public class mainAndWindow extends JFrame {
 		
 		JLabel lSalvaciones = new JLabel("SALVACIONES");
 		lSalvaciones.setHorizontalAlignment(SwingConstants.CENTER);
-		lSalvaciones.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 25));
+		lSalvaciones.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		lSalvaciones.setBounds(47, 134, 300, 30);
 		panel_2.add(lSalvaciones);
 		
 		JLabel lContraMuerte = new JLabel("CONTRA MUERTE");
-		lContraMuerte.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 25));
+		lContraMuerte.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 25));
 		lContraMuerte.setHorizontalAlignment(SwingConstants.CENTER);
 		lContraMuerte.setBounds(47, 165, 300, 30);
 		panel_2.add(lContraMuerte);
@@ -368,196 +420,197 @@ public class mainAndWindow extends JFrame {
 		panel_2.add(rButtonSave3);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(330, 287, 390, 590);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_3, 287, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_3, 330, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_3, 877, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_3, 720, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		
-		JLabel lSkills = new JLabel("HABILIDADES");
-		lSkills.setHorizontalAlignment(SwingConstants.CENTER);
-		lSkills.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 30));
-		lSkills.setBounds(20, 560, 350, 30);
-		panel_3.add(lSkills);
+		JLabel lblNewLabel_22 = new JLabel("HABILIDADES");
+		lblNewLabel_22.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_22.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
+		lblNewLabel_22.setBounds(20, 560, 350, 30);
+		panel_3.add(lblNewLabel_22);
 		
-		JCheckBox checkBox = new JCheckBox("");
-		checkBox.setBounds(15, 27, 21, 23);
-		panel_3.add(checkBox);
+		checkBoxAcrobacias = new JCheckBox("");
+		checkBoxAcrobacias.setBounds(15, 27, 21, 23);
+		panel_3.add(checkBoxAcrobacias);
 		
-		JCheckBox checkBox_1 = new JCheckBox("");
-		checkBox_1.setSelected(true);
-		checkBox_1.setBounds(15, 57, 21, 23);
-		panel_3.add(checkBox_1);
+		checkBoxAtletismo = new JCheckBox("");
+		checkBoxAtletismo.setBounds(15, 57, 21, 23);
+		panel_3.add(checkBoxAtletismo);
 		
-		JCheckBox checkBox_2 = new JCheckBox("");
-		checkBox_2.setBounds(15, 87, 21, 23);
-		panel_3.add(checkBox_2);
+		checkBoxArcana = new JCheckBox("");
+		checkBoxArcana.setBounds(15, 87, 21, 23);
+		panel_3.add(checkBoxArcana);
 		
-		JCheckBox checkBox_3 = new JCheckBox("");
-		checkBox_3.setBounds(15, 267, 21, 23);
-		panel_3.add(checkBox_3);
+		checkBoxJuegoManos = new JCheckBox("");
+		checkBoxJuegoManos.setBounds(15, 267, 21, 23);
+		panel_3.add(checkBoxJuegoManos);
 		
-		JCheckBox checkBox_4 = new JCheckBox("");
-		checkBox_4.setBounds(15, 297, 21, 23);
-		panel_3.add(checkBox_4);
+		checkBoxMedicina = new JCheckBox("");
+		checkBoxMedicina.setBounds(15, 297, 21, 23);
+		panel_3.add(checkBoxMedicina);
 		
-		JCheckBox checkBox_5 = new JCheckBox("");
-		checkBox_5.setBounds(15, 207, 21, 23);
-		panel_3.add(checkBox_5);
+		checkBoxIntimidacion = new JCheckBox("");
+		checkBoxIntimidacion.setBounds(15, 207, 21, 23);
+		panel_3.add(checkBoxIntimidacion);
 		
-		JCheckBox checkBox_6 = new JCheckBox("");
-		checkBox_6.setBounds(15, 327, 21, 23);
-		panel_3.add(checkBox_6);
+		checkBoxNaturaleza = new JCheckBox("");
+		checkBoxNaturaleza.setBounds(15, 327, 21, 23);
+		panel_3.add(checkBoxNaturaleza);
 		
-		JCheckBox checkBox_7 = new JCheckBox("");
-		checkBox_7.setBounds(15, 417, 21, 23);
-		panel_3.add(checkBox_7);
+		checkBoxPersuasion = new JCheckBox("");
+		checkBoxPersuasion.setBounds(15, 417, 21, 23);
+		panel_3.add(checkBoxPersuasion);
 		
-		JCheckBox checkBox_8 = new JCheckBox("");
-		checkBox_8.setBounds(15, 237, 21, 23);
-		panel_3.add(checkBox_8);
+		checkBoxInvestigacion = new JCheckBox("");
+		checkBoxInvestigacion.setBounds(15, 237, 21, 23);
+		panel_3.add(checkBoxInvestigacion);
 		
-		JCheckBox checkBox_9 = new JCheckBox("");
-		checkBox_9.setBounds(15, 387, 21, 23);
-		panel_3.add(checkBox_9);
+		checkBoxPerspicacia = new JCheckBox("");
+		checkBoxPerspicacia.setBounds(15, 387, 21, 23);
+		panel_3.add(checkBoxPerspicacia);
 		
-		JCheckBox checkBox_10 = new JCheckBox("");
-		checkBox_10.setSelected(true);
-		checkBox_10.setBounds(15, 147, 21, 23);
-		panel_3.add(checkBox_10);
+		checkBoxHistoria = new JCheckBox("");
+		checkBoxHistoria.setBounds(15, 147, 21, 23);
+		panel_3.add(checkBoxHistoria);
 		
-		JCheckBox checkBox_11 = new JCheckBox("");
-		checkBox_11.setBounds(15, 117, 21, 23);
-		panel_3.add(checkBox_11);
+		checkBoxEnganyo = new JCheckBox("");
+		checkBoxEnganyo.setBounds(15, 117, 21, 23);
+		panel_3.add(checkBoxEnganyo);
 		
-		JCheckBox checkBox_12 = new JCheckBox("");
-		checkBox_12.setBounds(15, 177, 21, 23);
-		panel_3.add(checkBox_12);
+		checkBoxInterpretacion = new JCheckBox("");
+		checkBoxInterpretacion.setBounds(15, 177, 21, 23);
+		panel_3.add(checkBoxInterpretacion);
 		
-		JCheckBox checkBox_13 = new JCheckBox("");
-		checkBox_13.setSelected(true);
-		checkBox_13.setBounds(15, 357, 21, 23);
-		panel_3.add(checkBox_13);
+		checkBoxPercepcion = new JCheckBox("");
 		
-		JCheckBox checkBox_14 = new JCheckBox("");
-		checkBox_14.setBounds(15, 447, 21, 23);
-		panel_3.add(checkBox_14);
+		checkBoxPercepcion.setBounds(15, 357, 21, 23);
+		panel_3.add(checkBoxPercepcion);
 		
-		JCheckBox checkBox_15 = new JCheckBox("");
-		checkBox_15.setBounds(15, 477, 21, 23);
-		panel_3.add(checkBox_15);
+		checkBoxReligion = new JCheckBox("");
+		checkBoxReligion.setBounds(15, 447, 21, 23);
+		panel_3.add(checkBoxReligion);
+		
+		checkBoxSigilo = new JCheckBox("");
+		checkBoxSigilo.setBounds(15, 477, 21, 23);
+		panel_3.add(checkBoxSigilo);
 		
 		textFieldAcrobacias = new JTextField();
-		textFieldAcrobacias.setText(Integer.toString(character.getAcrobacias()));
 		textFieldAcrobacias.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldAcrobacias.setText("+2");
 		textFieldAcrobacias.setBounds(40, 27, 25, 20);
 		panel_3.add(textFieldAcrobacias);
 		textFieldAcrobacias.setColumns(10);
 		
-		textFieldAtletismo = new JTextField();
-		textFieldAtletismo.setText(Integer.toString(character.getAtletismo()));
+		
+		textFieldAtletismo.setText("+5");
 		textFieldAtletismo.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldAtletismo.setColumns(10);
 		textFieldAtletismo.setBounds(40, 57, 25, 20);
 		panel_3.add(textFieldAtletismo);
 		
 		textFieldArcana = new JTextField();
-		textFieldArcana.setText(Integer.toString(character.getArcana()));
+		textFieldArcana.setText("-1");
 		textFieldArcana.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldArcana.setColumns(10);
 		textFieldArcana.setBounds(40, 87, 25, 20);
 		panel_3.add(textFieldArcana);
 		
 		textFieldEnganyo = new JTextField();
-		textFieldEnganyo.setText(Integer.toString(character.getEnganyo()));
+		textFieldEnganyo.setText("-1");
 		textFieldEnganyo.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldEnganyo.setColumns(10);
 		textFieldEnganyo.setBounds(40, 117, 25, 20);
 		panel_3.add(textFieldEnganyo);
 		
 		textFieldHistoria = new JTextField();
-		textFieldHistoria.setText(Integer.toString(character.getHistoria()));
+		textFieldHistoria.setText("-1");
 		textFieldHistoria.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldHistoria.setColumns(10);
 		textFieldHistoria.setBounds(40, 147, 25, 20);
 		panel_3.add(textFieldHistoria);
 		
 		textFieldInterpretacion = new JTextField();
-		textFieldInterpretacion.setText(Integer.toString(character.getInterpretacion()));
+		textFieldInterpretacion.setText("+2");
 		textFieldInterpretacion.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldInterpretacion.setColumns(10);
 		textFieldInterpretacion.setBounds(40, 177, 25, 20);
 		panel_3.add(textFieldInterpretacion);
 		
 		textFieldIntimidacion = new JTextField();
-		textFieldIntimidacion.setText(Integer.toString(character.getIntimidacion()));
+		textFieldIntimidacion.setText("+1");
 		textFieldIntimidacion.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldIntimidacion.setColumns(10);
 		textFieldIntimidacion.setBounds(40, 207, 25, 20);
 		panel_3.add(textFieldIntimidacion);
 		
 		textFieldInvestigacion = new JTextField();
-		textFieldInvestigacion.setText(Integer.toString(character.getInvestigacion()));
+		textFieldInvestigacion.setText("+2");
 		textFieldInvestigacion.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldInvestigacion.setColumns(10);
 		textFieldInvestigacion.setBounds(40, 237, 25, 20);
 		panel_3.add(textFieldInvestigacion);
 		
 		textFieldJuegoManos = new JTextField();
-		textFieldJuegoManos.setText(Integer.toString(character.getJuegoManos()));
+		textFieldJuegoManos.setText("-1");
 		textFieldJuegoManos.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldJuegoManos.setColumns(10);
 		textFieldJuegoManos.setBounds(40, 267, 25, 20);
 		panel_3.add(textFieldJuegoManos);
 		
 		textFieldMedicina = new JTextField();
-		textFieldMedicina.setText(Integer.toString(character.getMedicina()));
+		textFieldMedicina.setText("+2");
 		textFieldMedicina.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldMedicina.setColumns(10);
 		textFieldMedicina.setBounds(40, 297, 25, 20);
 		panel_3.add(textFieldMedicina);
 		
 		textFieldNaturaleza = new JTextField();
-		textFieldNaturaleza.setText(Integer.toString(character.getNaturaleza()));
+		textFieldNaturaleza.setText("+2");
 		textFieldNaturaleza.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldNaturaleza.setColumns(10);
 		textFieldNaturaleza.setBounds(40, 327, 25, 20);
 		panel_3.add(textFieldNaturaleza);
 		
 		textFieldPercepcion = new JTextField();
-		textFieldPercepcion.setText(Integer.toString(character.getPercepcion()));
+		textFieldPercepcion.setText("+7");
 		textFieldPercepcion.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPercepcion.setColumns(10);
 		textFieldPercepcion.setBounds(40, 357, 25, 20);
 		panel_3.add(textFieldPercepcion);
 		
 		textFieldPerspicacia = new JTextField();
-		textFieldPerspicacia.setText(Integer.toString(character.getPerspicacia()));
+		textFieldPerspicacia.setText("+1");
 		textFieldPerspicacia.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPerspicacia.setColumns(10);
 		textFieldPerspicacia.setBounds(40, 387, 25, 20);
 		panel_3.add(textFieldPerspicacia);
 		
 		textFieldPersuasion = new JTextField();
-		textFieldPersuasion.setText(Integer.toString(character.getPersuasion()));
+		textFieldPersuasion.setText("+2");
 		textFieldPersuasion.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPersuasion.setColumns(10);
 		textFieldPersuasion.setBounds(40, 417, 25, 20);
 		panel_3.add(textFieldPersuasion);
 		
 		textFieldReligion = new JTextField();
-		textFieldReligion.setText(Integer.toString(character.getReligion()));
+		textFieldReligion.setText("+3");
 		textFieldReligion.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldReligion.setColumns(10);
 		textFieldReligion.setBounds(40, 447, 25, 20);
 		panel_3.add(textFieldReligion);
 		
 		textFieldSigilo = new JTextField();
-		textFieldSigilo.setText(Integer.toString(character.getSigilo()));
+		textFieldSigilo.setText("+2");
 		textFieldSigilo.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldSigilo.setColumns(10);
 		textFieldSigilo.setBounds(40, 477, 25, 20);
 		panel_3.add(textFieldSigilo);
 		
-		JLabel lAcrobacias = new JLabel("Acrobacias (SAB)");
+		JLabel lAcrobacias = new JLabel("Acrobacias (DES)");
 		lAcrobacias.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lAcrobacias.setBounds(100, 27, 270, 20);
 		panel_3.add(lAcrobacias);
@@ -567,12 +620,12 @@ public class mainAndWindow extends JFrame {
 		lAtletismo.setBounds(100, 57, 270, 20);
 		panel_3.add(lAtletismo);
 		
-		JLabel lArcana = new JLabel("Conocimiento Arcano (INT)");
+		JLabel lArcana = new JLabel("Conocimiento Arcano(INT)");
 		lArcana.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lArcana.setBounds(100, 87, 270, 20);
 		panel_3.add(lArcana);
 		
-		JLabel lEnganyo = new JLabel("Enganyo (CAR)");
+		JLabel lEnganyo = new JLabel("Enga\u00F1o (CAR)");
 		lEnganyo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lEnganyo.setBounds(100, 117, 270, 20);
 		panel_3.add(lEnganyo);
@@ -637,24 +690,23 @@ public class mainAndWindow extends JFrame {
 		lSigilo.setBounds(100, 477, 270, 20);
 		panel_3.add(lSigilo);
 		
-		JCheckBox checkBox_15_1 = new JCheckBox("");
-		checkBox_15_1.setSelected(true);
-		checkBox_15_1.setBounds(15, 507, 21, 23);
-		panel_3.add(checkBox_15_1);
+		checkBoxSupervivencia = new JCheckBox("");
+		checkBoxSupervivencia.setBounds(15, 507, 21, 23);
+		panel_3.add(checkBoxSupervivencia);
 		
-		JCheckBox checkBox_15_2 = new JCheckBox("");
-		checkBox_15_2.setBounds(15, 537, 21, 23);
-		panel_3.add(checkBox_15_2);
+		checkBoxAnimales = new JCheckBox("");
+		checkBoxAnimales.setBounds(15, 537, 21, 23);
+		panel_3.add(checkBoxAnimales);
 		
 		textFieldSupervivencia = new JTextField();
-		textFieldSupervivencia.setText(Integer.toString(character.getSupervivencia()));
+		textFieldSupervivencia.setText("+3");
 		textFieldSupervivencia.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldSupervivencia.setColumns(10);
 		textFieldSupervivencia.setBounds(40, 507, 25, 20);
 		panel_3.add(textFieldSupervivencia);
 		
 		textFieldAnimales = new JTextField();
-		textFieldAnimales.setText(Integer.toString(character.getTratoAnimales()));
+		textFieldAnimales.setText("+3");
 		textFieldAnimales.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldAnimales.setColumns(10);
 		textFieldAnimales.setBounds(40, 537, 25, 20);
@@ -671,11 +723,14 @@ public class mainAndWindow extends JFrame {
 		panel_3.add(lAnimales);
 		
 		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBounds(760, 22, 390, 420);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1, 760, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1, 442, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1, 1150, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1);
 		panel_2_1.setLayout(null);
 		
-		JLabel lAC = new JLabel("Clase de armadura");
+		JLabel lAC = new JLabel("clase de armadura");
 		lAC.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lAC.setHorizontalAlignment(SwingConstants.CENTER);
 		lAC.setBounds(10, 20, 110, 30);
@@ -683,7 +738,7 @@ public class mainAndWindow extends JFrame {
 		
 		textFieldAC = new JTextField();
 		textFieldAC.setFont(new Font("Tahoma", Font.PLAIN, 65));
-		textFieldAC.setText(Integer.toString(character.getAC()));
+		textFieldAC.setText("17");
 		textFieldAC.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldAC.setBounds(10, 55, 110, 110);
 		panel_2_1.add(textFieldAC);
@@ -696,7 +751,7 @@ public class mainAndWindow extends JFrame {
 		panel_2_1.add(lIniciativa);
 		
 		textFieldIniciativa = new JTextField();
-		textFieldIniciativa.setText(Integer.toString(character.getIniciativa()));
+		textFieldIniciativa.setText("+3");
 		textFieldIniciativa.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldIniciativa.setFont(new Font("Tahoma", Font.PLAIN, 65));
 		textFieldIniciativa.setColumns(10);
@@ -710,7 +765,7 @@ public class mainAndWindow extends JFrame {
 		panel_2_1.add(lSpeed);
 		
 		textFieldSpeed = new JTextField();
-		textFieldSpeed.setText(Integer.toString(character.getSpeed()));
+		textFieldSpeed.setText("30");
 		textFieldSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldSpeed.setFont(new Font("Tahoma", Font.PLAIN, 65));
 		textFieldSpeed.setColumns(10);
@@ -736,7 +791,7 @@ public class mainAndWindow extends JFrame {
 		panel_2_1.add(lDadosGolpe);
 		
 		textFieldPuntosGolpe = new JTextField();
-		textFieldPuntosGolpe.setText(Integer.toString(character.getLife()));
+		textFieldPuntosGolpe.setText("81");
 		textFieldPuntosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldPuntosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 65));
 		textFieldPuntosGolpe.setColumns(10);
@@ -752,7 +807,7 @@ public class mainAndWindow extends JFrame {
 		panel_2_1.add(textFieldVidaTemporal);
 		
 		textFieldDadosGolpe = new JTextField();
-		textFieldDadosGolpe.setText(character.getClasepj().getHitdie());
+		textFieldDadosGolpe.setText("1D12");
 		textFieldDadosGolpe.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldDadosGolpe.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		textFieldDadosGolpe.setColumns(10);
@@ -760,12 +815,15 @@ public class mainAndWindow extends JFrame {
 		panel_2_1.add(textFieldDadosGolpe);
 		
 		JPanel panel_2_1_1 = new JPanel();
-		panel_2_1_1.setBounds(760, 507, 390, 370);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1_1, 507, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1_1, 760, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1_1, 877, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1_1, 1150, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1_1);
 		panel_2_1_1.setLayout(null);
 		
 		JLabel lArmasEquipo = new JLabel("ARMAS Y EQUIPO");
-		lArmasEquipo.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 30));
+		lArmasEquipo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 30));
 		lArmasEquipo.setHorizontalAlignment(SwingConstants.CENTER);
 		lArmasEquipo.setBounds(20, 340, 350, 30);
 		panel_2_1_1.add(lArmasEquipo);
@@ -813,43 +871,46 @@ public class mainAndWindow extends JFrame {
 		textFieldArma2.setBounds(10, 65, 140, 20);
 		panel_2_1_1.add(textFieldArma2);
 		
-		textFieldBonificador2 = new JTextField();
-		textFieldBonificador2.setColumns(10);
-		textFieldBonificador2.setBounds(170, 65, 50, 20);
-		panel_2_1_1.add(textFieldBonificador2);
+		textFieldArma3 = new JTextField(character.getArmas().get(2).getNombre());
+		textFieldArma3.setColumns(10);
+		textFieldArma3.setBounds(10, 95, 140, 20);
+		panel_2_1_1.add(textFieldArma3);
 		
 		textFieldDanyoTipo2 = new JTextField(character.getArmas().get(1).getDanyo() + "   " + character.getArmas().get(1).getTipo());
 		textFieldDanyoTipo2.setColumns(10);
 		textFieldDanyoTipo2.setBounds(240, 65, 140, 20);
 		panel_2_1_1.add(textFieldDanyoTipo2);
 		
-		textFieldArma3 = new JTextField(character.getArmas().get(2).getNombre());
-		textFieldArma3.setColumns(10);
-		textFieldArma3.setBounds(10, 95, 140, 20);
-		panel_2_1_1.add(textFieldArma3);
+		textFieldDanyoTipo3 = new JTextField(character.getArmas().get(2).getDanyo() + "   " + character.getArmas().get(2).getTipo());
+		textFieldDanyoTipo3.setColumns(10);
+		textFieldDanyoTipo3.setBounds(240, 95, 140, 20);
+		panel_2_1_1.add(textFieldDanyoTipo3);
+		
+		textFieldBonificador2 = new JTextField();
+		textFieldBonificador2.setColumns(10);
+		textFieldBonificador2.setBounds(170, 65, 50, 20);
+		panel_2_1_1.add(textFieldBonificador2);
 		
 		textFieldBonificador3 = new JTextField();
 		textFieldBonificador3.setColumns(10);
 		textFieldBonificador3.setBounds(170, 95, 50, 20);
 		panel_2_1_1.add(textFieldBonificador3);
 		
-		textFieldDanyoTipo3 = new JTextField(character.getArmas().get(2).getDanyo() + "   " + character.getArmas().get(2).getTipo());
-		textFieldDanyoTipo3.setColumns(10);
-		textFieldDanyoTipo3.setBounds(240, 95, 140, 20);
-		panel_2_1_1.add(textFieldDanyoTipo3);
-		
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(10, 125, 370, 210);
 		panel_2_1_1.add(textPane);
 		
 		JPanel panel_2_1_2 = new JPanel();
-		panel_2_1_2.setBounds(1190, 22, 390, 230);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1_2, 22, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1_2, 1190, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1_2, 252, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1_2, 1580, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1_2);
 		panel_2_1_2.setLayout(null);
 		
 		JLabel lPersonaje = new JLabel("PERSONAJE");
 		lPersonaje.setHorizontalAlignment(SwingConstants.CENTER);
-		lPersonaje.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 20));
+		lPersonaje.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		lPersonaje.setBounds(20, 210, 350, 20);
 		panel_2_1_2.add(lPersonaje);
 		
@@ -859,25 +920,28 @@ public class mainAndWindow extends JFrame {
 		panel_2_1_2.add(lNombreDosPuntos);
 		
 		textFieldIntroduceTuNombre = new JTextField();
-		textFieldIntroduceTuNombre.setToolTipText("Introduce tu nombre...");
+		textFieldIntroduceTuNombre.setToolTipText("introduce tu nombre..");
 		textFieldIntroduceTuNombre.setBounds(90, 10, 280, 20);
 		panel_2_1_2.add(textFieldIntroduceTuNombre);
 		textFieldIntroduceTuNombre.setColumns(10);
 		
 		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setToolTipText("Caracteristicas del personaje");
+		textPane_1.setToolTipText("caracteristicas del personaje");
 		textPane_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textPane_1.setBounds(20, 40, 350, 165);
 		panel_2_1_2.add(textPane_1);
 		
 		JPanel panel_2_1_2_1 = new JPanel();
-		panel_2_1_2_1.setBounds(1190, 297, 390, 500);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_2_1_2_1, 297, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, panel_2_1_2_1, 1190, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_2_1_2_1, 797, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_2_1_2_1, 1580, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(panel_2_1_2_1);
 		panel_2_1_2_1.setLayout(null);
 		
 		JLabel lRasgos = new JLabel("RASGOS Y ATRIBUTOS");
 		lRasgos.setHorizontalAlignment(SwingConstants.CENTER);
-		lRasgos.setFont(new Font("Tahoma", Font.BOLD | Font.BOLD, 20));
+		lRasgos.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 20));
 		lRasgos.setBounds(20, 480, 350, 20);
 		panel_2_1_2_1.add(lRasgos);
 		
@@ -888,11 +952,14 @@ public class mainAndWindow extends JFrame {
 		panel_2_1_2_1.add(txtpnCosasDeTortuga);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1160, 815, 420, 62);
+		springLayout.putConstraint(SpringLayout.NORTH, panel_4, 6, SpringLayout.SOUTH, panel_2_1_2_1);
+		springLayout.putConstraint(SpringLayout.WEST, panel_4, 1160, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, panel_4, 900, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, panel_4, 0, SpringLayout.EAST, panel_2_1_2);
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
-		JButton bEditor = new JButton("Editor");
+		JButton bEditor = new JButton("Editor \r\n");
 		bEditor.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -910,10 +977,42 @@ public class mainAndWindow extends JFrame {
 				tEditor.start();
 			}			
 		});
-		bEditor.setBounds(0, 10, 100, 42);
+		bEditor.setBounds(0, 10, 130, 42);
 		panel_4.add(bEditor);
 		
-		JButton bBackground = new JButton("Modo nocturno \r\n");
+		JButton bStore = new JButton("Store");
+		bStore.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {		
+				getLabelsTextFields(character);
+				storeOrLoadDB("store", character, "");			
+			}
+		});
+		bStore.setBounds(80, 55, 130, 42);
+		panel_4.add(bStore);
+		
+		JButton bLoad = new JButton("Load");
+		//RODEAR de un if que chequeé si se puede hacer el load
+		//Implementar un jTextField para introducir el nombre del personaje que se va a cargar
+		bLoad.addActionListener(new ActionListener() {
+		
+			public void actionPerformed(ActionEvent arg0) {
+				Thread tLoad = new Thread(new Runnable() {
+					public void run() {
+						try {
+							setLabelsTextFields(storeOrLoadDB("load", character, textFieldIntroduceTuNombre.getText()));	
+						} catch (Exception e) {
+							System.out.println("Ha ocurrido un problema.");
+						}
+					}
+				});
+				tLoad.start();
+			}
+		});
+		bLoad.setBounds(220, 55, 130, 42);
+		panel_4.add(bLoad);
+		
+		JButton bBackground = new JButton("M. nocturno \r\n");
 		bBackground.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -934,44 +1033,29 @@ public class mainAndWindow extends JFrame {
 					}
 				});
 				tBackground.start();
+				
 			}			
 		});
-		bBackground.setBounds(100, 10, 100, 42);
+		bBackground.setBounds(300, 10, 120, 42);
 		panel_4.add(bBackground);
 		
-		JButton bLoadProperties = new JButton("Load");
-		//RODEAR de un if que chequeé si se puede hacer el load
-		//Implementar un jTextField para introducir el nombre del personaje que se va a cargar
-		bLoadProperties.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				Thread tStore = new Thread(new Runnable() {
-					@Override
+		JButton bActualizar = new JButton("Actualizar\r\n");
+		bActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Thread tActualizar = new Thread(new Runnable() {
 					public void run() {
 						try {
-							setLabelsTextFields(storeOrLoadDB("load", character, textFieldIntroduceTuNombre.getText()));	
+							actualizar();
 						} catch (Exception e) {
 							System.out.println("Ha ocurrido un problema.");
 						}
 					}
 				});
-				tStore.start();
+				tActualizar.start();
 			}
 		});
-		bLoadProperties.setBounds(200, 10, 100, 42);
-		panel_4.add(bLoadProperties);	
-		
-		JButton bStoreProperties = new JButton("Store");
-		//RODEAR de un if que chequeé si se puede hacer el store 
-		bStoreProperties.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {		
-				getLabelsTextFields(character);
-				storeOrLoadDB("store", character, "");		
-			}
-		});
-		bStoreProperties.setBounds(300, 10, 100, 42);
-		panel_4.add(bStoreProperties);
+		bActualizar.setBounds(150, 10, 130, 42);
+		panel_4.add(bActualizar);
 	}
 	
 	//Recibe un String operation que controla que operacion ejectuta el metodo (store o load),
@@ -1191,5 +1275,763 @@ public class mainAndWindow extends JFrame {
 		} catch (CharacterDBException e) {
 			System.err.println(e.getMessage());
 		}
+	}
+	
+	//Metodo para generar un modificador (estadistica de un Personaje) en funcion de score
+	public static int generateMod(int score) {
+		int modifier;
+		
+		switch(score) {
+		case 1:
+			modifier = -5;
+			return modifier;
+		
+		case 2:
+			modifier = -4;
+			return modifier;
+			
+		case 3:
+			modifier = -4;
+			return modifier;
+			
+		case 4:
+			modifier = -3;
+			return modifier;
+			
+		case 5:
+			modifier = -3;
+			return modifier;
+			
+		case 6:
+			modifier = -2;
+			return modifier;
+			
+		case 7:
+			modifier = -2;
+			return modifier;
+			
+		case 8:
+			modifier = -1;
+			return modifier;
+			
+		case 9:
+			modifier = -1;
+			return modifier;
+			
+		case 10:
+			modifier = 0;
+			return modifier;
+			
+		case 11:
+			modifier = 0;
+			return modifier;
+			
+		case 12:
+			modifier = 1;
+			return modifier;
+			
+		case 13:
+			modifier = 1;
+			return modifier;
+			
+		case 14:
+			modifier = 2;
+			return modifier;
+			
+		case 15:
+			modifier = 2;
+			return modifier;
+			
+		case 16:
+			modifier = 3;
+			return modifier;
+			
+		case 17:
+			modifier = 3;
+			return modifier;
+			
+		case 18:
+			modifier = 4;
+			return modifier;
+			
+		case 19:
+			modifier = 4;
+			return modifier;
+			
+		case 20:
+			modifier = 5;
+			return modifier;
+			
+		case 21:
+			modifier = 5;
+			return modifier;	
+			
+		case 22:
+			modifier = 6;
+			return modifier;
+			
+		case 23:
+			modifier = 6;
+			return modifier;
+			
+		case 24:
+			modifier = 7;
+			return modifier;
+			
+		case 25:
+			modifier = 7;
+			return modifier;
+			
+		case 26:
+			modifier = 8;
+			return modifier;
+			
+		case 27:
+			modifier = 8;
+			return modifier;
+			
+		case 28:
+			modifier = 9;
+			return modifier;
+			
+		case 29:
+			modifier = 9;
+			return modifier;
+			
+		case 30:
+			modifier = 10;
+			return modifier;
+			
+		default:
+			modifier = 0;
+			return modifier;
+		}
+	}
+	
+	//Metodo para actualizar los textField de modifiers y saves y los comboBox de Habilidades
+	public static void actualizar() {
+				try {
+					String stat = textFieldStr.getText();
+					int numero, modificador;
+					numero = Integer.parseInt(stat);
+					modificador = generateMod(numero);
+					String modificable = Integer.toString(modificador);
+					lStrMod.setText("(" + modificador + ")");
+					lStrSave.setText("(" + modificador + ")");
+					if (modificador >= 0) {
+						textFieldAtletismo.setText("+" + modificable);
+					}else {
+						textFieldAtletismo.setText(modificable);
+					}
+					
+				}catch(NumberFormatException i){
+					
+					System.out.println("Error de conversion numerico");
+				}
+
+			try {
+				String stat = textFieldDex.getText();
+				int numero, modificador;
+				numero = Integer.parseInt(stat);
+				modificador = generateMod(numero);
+				String modificable = Integer.toString(modificador);
+				int modificador2 = modificador + 10;
+				String modificable2 = Integer.toString(modificador2);
+				lDexMod.setText("(" + modificador + ")");
+				lDexSave.setText("(" + modificador + ")");
+				if (modificador >= 0) {
+					textFieldAcrobacias.setText("+" + modificable);
+					textFieldJuegoManos.setText("+" + modificable);
+					textFieldSigilo.setText("+" + modificable);
+					textFieldAC.setText(modificable2);
+					textFieldIniciativa.setText("+" + modificable);
+				}else {
+					textFieldAcrobacias.setText(modificable);
+					textFieldJuegoManos.setText(modificable);
+					textFieldSigilo.setText(modificable);
+					textFieldAC.setText(modificable2);
+					textFieldIniciativa.setText(modificable);
+				}
+				
+			}catch(NumberFormatException i){
+				
+				System.out.println("Error de conversion numerico");
+			}
+		
+				try {
+					String stat = textFieldCon.getText();
+					int numero, modificador;
+					numero = Integer.parseInt(stat);
+					modificador = generateMod(numero);
+					String modificable = Integer.toString(modificador);
+					lConMod.setText("(" + modificador + ")");
+					lConSave.setText("(" + modificador + ")");
+					
+				}catch(NumberFormatException i){
+					
+					System.out.println("Error de conversion numerico");
+				}
+				
+				try {
+					String stat = textFieldInt.getText();
+					int numero, modificador;
+					numero = Integer.parseInt(stat);
+					modificador = generateMod(numero);
+					String modificable = Integer.toString(modificador);
+					lIntMod.setText("(" + modificador + ")");
+					lIntSave.setText("(" + modificador + ")");
+					if (modificador >= 0) {
+						textFieldArcana.setText("+" + modificable);
+						textFieldHistoria.setText("+" + modificable);
+						textFieldInvestigacion.setText("+" + modificable);
+						textFieldNaturaleza.setText("+" + modificable);
+						textFieldReligion.setText("+" + modificable);
+					}else {
+						textFieldArcana.setText(modificable);
+						textFieldHistoria.setText(modificable);
+						textFieldInvestigacion.setText(modificable);
+						textFieldNaturaleza.setText(modificable);
+						textFieldReligion.setText(modificable);
+					}
+					
+				}catch(NumberFormatException i){
+					
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					String stat = textFieldWis.getText();
+					int numero, modificador;
+					numero = Integer.parseInt(stat);
+					modificador = generateMod(numero);
+					String modificable = Integer.toString(modificador);
+					lWisMod.setText("(" + modificador + ")");
+					lWisSave.setText("(" + modificador + ")");
+					if (modificador >= 0) {
+						textFieldMedicina.setText("+" + modificable);
+						textFieldPercepcion.setText("+" + modificable);
+						textFieldPerspicacia.setText("+" + modificable);
+						textFieldSupervivencia.setText("+" + modificable);
+						textFieldAnimales.setText("+" + modificable);
+					}else {
+						textFieldAcrobacias.setText(modificable);
+						textFieldMedicina.setText(modificable);
+						textFieldPercepcion.setText(modificable);
+						textFieldPerspicacia.setText(modificable);
+						textFieldSupervivencia.setText(modificable);
+						textFieldAnimales.setText(modificable);
+					}
+			
+				}catch(NumberFormatException i){
+			
+					System.out.println("Error de conversion numerico");
+				}	
+	
+				try {
+					String stat = textFieldCar.getText();
+					int numero, modificador;
+					numero = Integer.parseInt(stat);
+					modificador = generateMod(numero);
+					String modificable = Integer.toString(modificador);
+					lCarMod.setText("(" + modificador + ")");
+					lCarSave.setText("(" + modificador + ")");
+					if (modificador >= 0) {
+						textFieldEnganyo.setText("+" + modificable);
+						textFieldInterpretacion.setText("+" + modificable);
+						textFieldIntimidacion.setText("+" + modificable);
+						textFieldPersuasion.setText("+" + modificable);
+					}else {
+						textFieldEnganyo.setText(modificable);
+						textFieldInterpretacion.setText(modificable);
+						textFieldIntimidacion.setText(modificable);
+						textFieldPersuasion.setText(modificable);
+					}
+					
+				}catch(NumberFormatException i){
+					
+					System.out.println("Error de conversion numerico");
+				}
+				
+			
+				try {
+					boolean estaLleno = checkBoxAcrobacias.isSelected();
+					int numero = Integer.parseInt(textFieldAcrobacias.getText());
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldAcrobacias.setText("+" + numero);
+						}else {
+							textFieldAcrobacias.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldAcrobacias.setText("+" + numero);
+						}else {
+							textFieldAcrobacias.setText(sNumero);
+						}
+					}
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxAtletismo.isSelected();
+					int numero = Integer.parseInt(textFieldAtletismo.getText());
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldAtletismo.setText("+" + numero);
+						}else {
+							textFieldAtletismo.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldAtletismo.setText("+" + numero);
+						}else {
+							textFieldAtletismo.setText(sNumero);
+						}
+					}
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxArcana.isSelected();
+					int numero = Integer.parseInt(textFieldArcana.getText());
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldArcana.setText("+" + numero);
+						}else {
+							textFieldArcana.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldArcana.setText("+" + numero);
+						}else {
+							textFieldArcana.setText(sNumero);
+						}
+					}
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxJuegoManos.isSelected();
+					int numero = Integer.parseInt(textFieldJuegoManos.getText());//13
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldJuegoManos.setText("+" + numero);
+						}else {
+							textFieldJuegoManos.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldJuegoManos.setText("+" + numero);
+						}else {
+							textFieldJuegoManos.setText(sNumero);
+						}
+					}
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxMedicina.isSelected();
+					int numero = Integer.parseInt(textFieldMedicina.getText());//14
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldMedicina.setText("+" + numero);
+						}else {
+							textFieldMedicina.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldMedicina.setText("+" + numero);
+						}else {
+							textFieldMedicina.setText(sNumero);
+						}
+					}
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxIntimidacion.isSelected();
+					int numero = Integer.parseInt(textFieldIntimidacion.getText());//11
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldIntimidacion.setText("+" + numero);
+						}else {
+							textFieldIntimidacion.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldIntimidacion.setText("+" + numero);
+						}else {
+							textFieldIntimidacion.setText(sNumero);
+						}
+					}
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxNaturaleza.isSelected();
+					int numero = Integer.parseInt(textFieldNaturaleza.getText());//15
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldNaturaleza.setText("+" + numero);
+						}else {
+							textFieldNaturaleza.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldNaturaleza.setText("+" + numero);
+						}else {
+							textFieldNaturaleza.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxPersuasion.isSelected();
+					int numero = Integer.parseInt(textFieldPersuasion.getText());//18
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldPersuasion.setText("+" + numero);
+						}else {
+							textFieldPersuasion.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldPersuasion.setText("+" + numero);
+						}else {
+							textFieldPersuasion.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxInvestigacion.isSelected();
+					int numero = Integer.parseInt(textFieldInvestigacion.getText());//12
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldInvestigacion.setText("+" + numero);
+						}else {
+							textFieldInvestigacion.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldInvestigacion.setText("+" + numero);
+						}else {
+							textFieldInvestigacion.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxPerspicacia.isSelected();
+					int numero = Integer.parseInt(textFieldPerspicacia.getText());//17
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldPerspicacia.setText("+" + numero);
+						}else {
+							textFieldPerspicacia.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldPerspicacia.setText("+" + numero);
+						}else {
+							textFieldPerspicacia.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxHistoria.isSelected();
+					int numero = Integer.parseInt(textFieldHistoria.getText());//9
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldHistoria.setText("+" + numero);
+						}else {
+							textFieldHistoria.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldHistoria.setText("+" + numero);
+						}else {
+							textFieldHistoria.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxEnganyo.isSelected();
+					int numero = Integer.parseInt(textFieldEnganyo.getText());//8
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldEnganyo.setText("+" + numero);
+						}else {
+							textFieldEnganyo.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldEnganyo.setText("+" + numero);
+						}else {
+							textFieldEnganyo.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxInterpretacion.isSelected();
+					int numero = Integer.parseInt(textFieldInterpretacion.getText());//10
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldInterpretacion.setText("+" + numero);
+						}else {
+							textFieldInterpretacion.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldInterpretacion.setText("+" + numero);
+						}else {
+							textFieldInterpretacion.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxPercepcion.isSelected();
+					int numero = Integer.parseInt(textFieldPercepcion.getText());//16
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldPercepcion.setText("+" + numero);
+						}else {
+							textFieldPercepcion.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldPercepcion.setText("+" + numero);
+						}else {
+							textFieldPercepcion.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxReligion.isSelected();
+					int numero = Integer.parseInt(textFieldReligion.getText());//19
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldReligion.setText("+" + numero);
+						}else {
+							textFieldReligion.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldReligion.setText("+" + numero);
+						}else {
+							textFieldReligion.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxSigilo.isSelected();
+					int numero = Integer.parseInt(textFieldSigilo.getText());//20
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldSigilo.setText("+" + numero);
+						}else {
+							textFieldSigilo.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldSigilo.setText("+" + numero);
+						}else {
+							textFieldSigilo.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+			
+				try {
+					boolean estaLleno = checkBoxSupervivencia.isSelected();
+					int numero = Integer.parseInt(textFieldSupervivencia.getText());//19
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldSupervivencia.setText("+" + numero);
+						}else {
+							textFieldSupervivencia.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldSupervivencia.setText("+" + numero);
+						}else {
+							textFieldSupervivencia.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}
+				
+			
+				try {
+					boolean estaLleno = checkBoxAnimales.isSelected();
+					int numero = Integer.parseInt(textFieldAnimales.getText());//19
+					if(estaLleno) {
+						numero = numero + 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldAnimales.setText("+" + numero);
+						}else {
+							textFieldAnimales.setText(sNumero);
+						}
+						
+					}else {
+						numero = numero - 2;
+						String sNumero = Integer.toString(numero);
+						if(numero >= 0) {
+							textFieldAnimales.setText("+" + numero);
+						}else {
+							textFieldAnimales.setText(sNumero);
+						}
+					}
+
+					
+				}catch(NumberFormatException i) {
+					System.out.println("Error de conversion numerico");
+				}	
 	}
 }
