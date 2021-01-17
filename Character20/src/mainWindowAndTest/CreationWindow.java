@@ -2,10 +2,13 @@ package mainWindowAndTest;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import clasesCriatura.Personaje;
+import mainWindowAndTest.mainAndWindow;
+
 import java.awt.CardLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -23,31 +26,128 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 
+//Ventana editor de personajes que se abre desde un boton en mainAndWindow
 public class CreationWindow extends JFrame {
-	private JTextField textField;
-
+	private JTextField textFieldName;
+	public static String rasgo;
+	
 	/**
-	 * Launch the application.
+	 * Sumas y restas de botones
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CreationWindow frame = new CreationWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public static void botonSuma(JLabel LabelPointsLeft, int Score) {
+		String PointsLeft = LabelPointsLeft.getText();
+		int Points = Integer.parseInt(PointsLeft);
+		switch (Score) {
+		case 8:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}  	break;
+			
+		case 9:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}	break;
+			
+		case 10:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}   break;
+		
+		case 11:
+			Points--;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}	break;
+			
+		case 12:
+			Points--; 
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}	break;
+			
+		case 13:
+			Points = Points-2;
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}	break;
+		
+		case 14:
+			Points = Points-2; 
+			if (Points < 0) {
+				LabelPointsLeft.setForeground(Color.RED);
+			}	break;
+	};
+	
+	PointsLeft = String.valueOf(Points);
+	LabelPointsLeft.setText(PointsLeft);
 	}
-
+	
+	public static void botonResta(JLabel LabelPointsLeft, int Score) {
+		String PointsLeft = LabelPointsLeft.getText();
+		int Points = Integer.parseInt(PointsLeft);
+		switch (Score) {	
+		case 9:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+			
+		case 10:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+		
+		case 11:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+			
+		case 12:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+			
+		case 13:
+			Points++;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+		
+		case 14:
+			Points = Points+2;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+			
+		case 15:
+			Points = Points+2;
+			if (Points > 0) {
+				LabelPointsLeft.setForeground(Color.BLACK);
+			}	break;
+	};
+	
+	PointsLeft = String.valueOf(Points);
+	LabelPointsLeft.setText(PointsLeft);
+	}
+	
+	//Metodo para actualizar las label de mainAndWindow (la ventana inicial)
+	public static void setExternalLabels(Personaje character) {
+		mainAndWindow.setLabelsTextFields(character);
+	}
+	
 	/**
 	 * Create the frame.
 	 */
-	public CreationWindow() {
+	public CreationWindow(Personaje character) {
 		getContentPane().setBackground(SystemColor.info);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -58,48 +158,125 @@ public class CreationWindow extends JFrame {
 		panelRaceClass.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Race :");
-		lblNewLabel.setBounds(145, 115, 45, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(209, 133, 45, 22);
 		panelRaceClass.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Subrace :");
-		lblNewLabel_1.setBounds(145, 138, 66, 13);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(209, 172, 66, 13);
 		panelRaceClass.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Class :");
-		lblNewLabel_2.setBounds(145, 161, 45, 13);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_2.setBounds(209, 208, 45, 13);
 		panelRaceClass.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Background :");
-		lblNewLabel_3.setBounds(145, 184, 81, 13);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_3.setBounds(209, 242, 103, 17);
 		panelRaceClass.add(lblNewLabel_3);
 		
-		JComboBox comboRace = new JComboBox();
+		final JComboBox comboSubrace = new JComboBox();
+		comboSubrace.setName("");
+		comboSubrace.setMaximumRowCount(10);
+		comboSubrace.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		comboSubrace.setBackground(SystemColor.controlHighlight);
+		comboSubrace.setBounds(300, 165, 112, 26);
+		panelRaceClass.add(comboSubrace);
+		
+		final JLabel LabelResult = new JLabel();
+		final String RaceSelected = null;
+		final String ClassSelected = null;
+		final String BackgroundSelected = null;
+		
+		final JComboBox comboRace = new JComboBox();
+		comboRace.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboRace.setMaximumRowCount(9);
 		comboRace.setModel(new DefaultComboBoxModel(new String[] {"Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"}));
 		comboRace.setBackground(SystemColor.controlHighlight);
-		comboRace.setBounds(236, 111, 98, 21);
-		String RaceSelected = (String)comboRace.getSelectedItem();
+		comboRace.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String RaceSelected = (String)comboRace.getSelectedItem();
+				switch (RaceSelected){
+				
+				case "Dragonborn": 
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+				
+				case "Dwarf":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Hill", "Mountain"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Elf":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"High Elf", "Wood Elf", "Drow"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Gnome":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Forest", "Rock"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Halfling":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Lightfoot", "Stout"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Half-Elf":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Half-Orc":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Human":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {"Normal", "Variant"}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				case "Tiefling":
+					comboSubrace.setModel(new DefaultComboBoxModel(new String[] {}));
+					LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+					break;
+					
+				}
+			}
+		});
+		comboRace.setBounds(300, 131, 112, 26);
 		panelRaceClass.add(comboRace);
 		
-		JComboBox comboSubrace = new JComboBox();
-		comboSubrace.setBackground(SystemColor.controlHighlight);
-		comboSubrace.setBounds(236, 134, 98, 21);
-		panelRaceClass.add(comboSubrace);
-		
-		JComboBox comboClass = new JComboBox();
+		final JComboBox comboClass = new JComboBox();
+		comboClass.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboClass.setModel(new DefaultComboBoxModel(new String[] {"Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"}));
 		comboClass.setMaximumRowCount(12);
 		comboClass.setBackground(SystemColor.controlHighlight);
-		comboClass.setBounds(236, 157, 98, 21);
-		String ClassSelected = (String)comboClass.getSelectedItem();
+		comboClass.setBounds(300, 201, 112, 26);
+		comboClass.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ClassSelected = (String)comboClass.getSelectedItem();
+				LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+			}
+		});
 		panelRaceClass.add(comboClass);
 		
-		JComboBox comboBackground = new JComboBox();
+		final JComboBox comboBackground = new JComboBox();
+		comboBackground.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBackground.setModel(new DefaultComboBoxModel(new String[] {"Acolyte", "Charlatan", "Criminal", "Entertainer", "Folk Hero", "Guild Artisan", "Hermit", "Noble", "Outlander", "Sage", "Sailor", "Soldier", "Urchin"}));
 		comboBackground.setMaximumRowCount(11);
 		comboBackground.setBackground(SystemColor.controlHighlight);
-		comboBackground.setBounds(236, 180, 98, 21);
-		String BackgroundSelected = (String)comboBackground.getSelectedItem();
+		comboBackground.setBounds(300, 237, 112, 26);
+		comboBackground.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String BackgroundSelected =  (String)comboBackground.getSelectedItem();
+				LabelResult.setText(RaceSelected + " " + ClassSelected + " " + BackgroundSelected);
+			}
+		});
 		panelRaceClass.add(comboBackground);
 		
 		//PANEL ABILITY SCORES
@@ -113,27 +290,62 @@ public class CreationWindow extends JFrame {
 		lblNewLabel_4.setBounds(177, 86, 210, 13);
 		panelAbilityScores.add(lblNewLabel_4);
 		
+		//Puntos
+		JLabel LabelRemaining = new JLabel("Remaining");
+		LabelRemaining.setBounds(141, 148, 62, 13);
+		panelAbilityScores.add(LabelRemaining);
+				
+		JLabel LabelPoints = new JLabel("Points:");
+		LabelPoints.setBounds(151, 159, 52, 13);
+		panelAbilityScores.add(LabelPoints);
+				
+		final JLabel LabelPointsLeft = new JLabel("27");
+		String PointsLeft = LabelPointsLeft.getText();
+		int Points = Integer.parseInt(PointsLeft);
+		LabelPointsLeft.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		LabelPointsLeft.setBounds(161, 176, 52, 36);
+		panelAbilityScores.add(LabelPointsLeft);
+		
 		//Strength
 		JLabel LabelStr = new JLabel("Strength");
 		LabelStr.setBounds(231, 125, 74, 13);
 		panelAbilityScores.add(LabelStr);
 		
-		JButton BtnStrUp = new JButton("+");
-		BtnStrUp.setBounds(315, 121, 44, 21);
-		BtnStrUp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		panelAbilityScores.add(BtnStrUp);
-		
-		JLabel LabelStrNum = new JLabel("8");
+		final JLabel LabelStrNum = new JLabel("8");
 		LabelStrNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelStrNum.setBounds(364, 125, 23, 13);
 		panelAbilityScores.add(LabelStrNum);
 		
+		JButton BtnStrUp = new JButton("+");
+		BtnStrUp.setBounds(315, 121, 44, 21);
+		BtnStrUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String StrNum = LabelStrNum.getText();
+				int StrScore = Integer.parseInt(StrNum);
+				if (StrScore < 15) {
+					botonSuma(LabelPointsLeft, StrScore);
+					StrScore++;
+					StrNum = String.valueOf(StrScore);
+					LabelStrNum.setText(StrNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnStrUp);
+		
 		JButton BtnStrDown = new JButton("-");
 		BtnStrDown.setBounds(393, 121, 44, 21);
+		BtnStrDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String StrNum = LabelStrNum.getText();
+				int StrScore = Integer.parseInt(StrNum);
+				if (StrScore > 8) {
+					botonResta(LabelPointsLeft, StrScore);
+					StrScore--;
+					StrNum = String.valueOf(StrScore);
+					LabelStrNum.setText(StrNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnStrDown);
 		
 		//Dexterity
@@ -141,17 +353,41 @@ public class CreationWindow extends JFrame {
 		LabelDex.setBounds(231, 148, 74, 13);
 		panelAbilityScores.add(LabelDex);
 		
-		JButton BtnDexUp = new JButton("+");
-		BtnDexUp.setBounds(315, 144, 44, 21);
-		panelAbilityScores.add(BtnDexUp);
-		
-		JLabel LabelDexNum = new JLabel("8");
+		final JLabel LabelDexNum = new JLabel("8");
 		LabelDexNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelDexNum.setBounds(364, 148, 23, 13);
 		panelAbilityScores.add(LabelDexNum);
 		
+		JButton BtnDexUp = new JButton("+");
+		BtnDexUp.setBounds(315, 144, 44, 21);
+		BtnDexUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String DexNum = LabelDexNum.getText();
+				int DexScore = Integer.parseInt(DexNum);
+				if (DexScore < 15) {
+					botonSuma(LabelPointsLeft, DexScore);
+					DexScore++;
+					DexNum = String.valueOf(DexScore);
+					LabelDexNum.setText(DexNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnDexUp);
+		
 		JButton BtnDexDown = new JButton("-");
 		BtnDexDown.setBounds(393, 144, 44, 21);
+		BtnDexDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String DexNum = LabelDexNum.getText();
+				int DexScore = Integer.parseInt(DexNum);
+				if (DexScore > 8) {
+					botonResta(LabelPointsLeft, DexScore);
+					DexScore--;
+					DexNum = String.valueOf(DexScore);
+					LabelDexNum.setText(DexNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnDexDown);
 		
 		//Constitution
@@ -159,17 +395,41 @@ public class CreationWindow extends JFrame {
 		LabelCon.setBounds(231, 171, 74, 13);
 		panelAbilityScores.add(LabelCon);
 		
-		JButton BtnConUp = new JButton("+");
-		BtnConUp.setBounds(315, 167, 44, 21);
-		panelAbilityScores.add(BtnConUp);
-		
-		JLabel LabelConNum = new JLabel("8");
+		final JLabel LabelConNum = new JLabel("8");
 		LabelConNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelConNum.setBounds(364, 171, 23, 13);
 		panelAbilityScores.add(LabelConNum);
 		
+		JButton BtnConUp = new JButton("+");
+		BtnConUp.setBounds(315, 167, 44, 21);
+		BtnConUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ConNum = LabelConNum.getText();
+				int ConScore = Integer.parseInt(ConNum);
+				if (ConScore < 15) {
+					botonSuma(LabelPointsLeft, ConScore);
+					ConScore++;
+					ConNum = String.valueOf(ConScore);
+					LabelConNum.setText(ConNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnConUp);
+		
 		JButton BtnConDown = new JButton("-");
 		BtnConDown.setBounds(393, 167, 44, 21);
+		BtnConDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ConNum = LabelConNum.getText();
+				int ConScore = Integer.parseInt(ConNum);
+				if (ConScore > 8) {
+					botonResta(LabelPointsLeft, ConScore);
+					ConScore--;
+					ConNum = String.valueOf(ConScore);
+					LabelConNum.setText(ConNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnConDown);
 		
 		//Intelligence
@@ -177,17 +437,41 @@ public class CreationWindow extends JFrame {
 		LabelInt.setBounds(231, 194, 74, 13);
 		panelAbilityScores.add(LabelInt);
 		
-		JButton BtnIntUp = new JButton("+");
-		BtnIntUp.setBounds(315, 190, 44, 21);
-		panelAbilityScores.add(BtnIntUp);
-		
-		JLabel LabelIntNum = new JLabel("8");
+		final JLabel LabelIntNum = new JLabel("8");
 		LabelIntNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelIntNum.setBounds(364, 194, 23, 13);
 		panelAbilityScores.add(LabelIntNum);
 		
+		JButton BtnIntUp = new JButton("+");
+		BtnIntUp.setBounds(315, 190, 44, 21);
+		BtnIntUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String IntNum = LabelIntNum.getText();
+				int IntScore = Integer.parseInt(IntNum);
+				if (IntScore < 15) {
+					botonSuma(LabelPointsLeft, IntScore);
+					IntScore++;
+					IntNum = String.valueOf(IntScore);
+					LabelIntNum.setText(IntNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnIntUp);
+		
 		JButton BtnIntDown = new JButton("-");
 		BtnIntDown.setBounds(393, 190, 44, 21);
+		BtnIntDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String IntNum = LabelIntNum.getText();
+				int IntScore = Integer.parseInt(IntNum);
+				if (IntScore > 8) {
+					botonResta(LabelPointsLeft, IntScore);
+					IntScore--;
+					IntNum = String.valueOf(IntScore);
+					LabelIntNum.setText(IntNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnIntDown);
 		
 		//Wisdom
@@ -195,17 +479,41 @@ public class CreationWindow extends JFrame {
 		LabelWis.setBounds(231, 217, 74, 13);
 		panelAbilityScores.add(LabelWis);
 		
-		JButton BtnWisUp = new JButton("+");
-		BtnWisUp.setBounds(315, 213, 44, 21);
-		panelAbilityScores.add(BtnWisUp);
-		
-		JLabel LabelWisNum = new JLabel("8");
+		final JLabel LabelWisNum = new JLabel("8");
 		LabelWisNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelWisNum.setBounds(364, 217, 23, 13);
 		panelAbilityScores.add(LabelWisNum);
 		
+		JButton BtnWisUp = new JButton("+");
+		BtnWisUp.setBounds(315, 213, 44, 21);
+		BtnWisUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String WisNum = LabelWisNum.getText();
+				int WisScore = Integer.parseInt(WisNum);
+				if (WisScore < 15) {
+					botonSuma(LabelPointsLeft, WisScore);
+					WisScore++;
+					WisNum = String.valueOf(WisScore);
+					LabelWisNum.setText(WisNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnWisUp);
+		
 		JButton BtnWisDown = new JButton("-");
 		BtnWisDown.setBounds(393, 213, 44, 21);
+		BtnWisDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String WisNum = LabelWisNum.getText();
+				int WisScore = Integer.parseInt(WisNum);
+				if (WisScore > 8) {
+					botonResta(LabelPointsLeft, WisScore);
+					WisScore--;
+					WisNum = String.valueOf(WisScore);
+					LabelWisNum.setText(WisNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnWisDown);
 		
 		//Charisma
@@ -213,32 +521,42 @@ public class CreationWindow extends JFrame {
 		LabelCha.setBounds(231, 240, 74, 13);
 		panelAbilityScores.add(LabelCha);
 		
-		JButton BtnChaUp = new JButton("+");
-		BtnChaUp.setBounds(315, 236, 44, 21);
-		panelAbilityScores.add(BtnChaUp);
-		
-		JLabel LabelChaNum = new JLabel("8");
+		final JLabel LabelChaNum = new JLabel("8");
 		LabelChaNum.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelChaNum.setBounds(364, 240, 23, 13);
 		panelAbilityScores.add(LabelChaNum);
 		
+		JButton BtnChaUp = new JButton("+");
+		BtnChaUp.setBounds(315, 236, 44, 21);
+		BtnChaUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ChaNum = LabelChaNum.getText();
+				int ChaScore = Integer.parseInt(ChaNum);
+				if (ChaScore < 15) {
+					botonSuma(LabelPointsLeft, ChaScore);
+					ChaScore++;
+					ChaNum = String.valueOf(ChaScore);
+					LabelChaNum.setText(ChaNum);
+				};
+			}
+		});
+		panelAbilityScores.add(BtnChaUp);
+
 		JButton BtnChaDown = new JButton("-");
 		BtnChaDown.setBounds(393, 236, 44, 21);
+		BtnChaDown.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ChaNum = LabelChaNum.getText();
+				int ChaScore = Integer.parseInt(ChaNum);
+				if (ChaScore > 8) {
+					botonResta(LabelPointsLeft, ChaScore);
+					ChaScore--;
+					ChaNum = String.valueOf(ChaScore);
+					LabelChaNum.setText(ChaNum);
+				};
+			}
+		});
 		panelAbilityScores.add(BtnChaDown);
-		
-		//Puntos
-		JLabel LabelRemaining = new JLabel("Remaining");
-		LabelRemaining.setBounds(141, 148, 62, 13);
-		panelAbilityScores.add(LabelRemaining);
-		
-		JLabel LabelPoints = new JLabel("Points:");
-		LabelPoints.setBounds(151, 159, 52, 13);
-		panelAbilityScores.add(LabelPoints);
-		
-		JLabel LabelPointsLeft = new JLabel("27");
-		LabelPointsLeft.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		LabelPointsLeft.setBounds(161, 176, 32, 36);
-		panelAbilityScores.add(LabelPointsLeft);
 		
 		//PANEL PROFICIENCIES
 		JPanel panelProficiencies = new JPanel();
@@ -319,58 +637,162 @@ public class CreationWindow extends JFrame {
 		panelProficiencies.add(CheckSurvival);
 		
 		//PANEL OPCIONES DE CLASE
+		ButtonGroup clericGroup = new ButtonGroup();
 		
 		JPanel panelClericOptions = new JPanel();
 		panelClericOptions.setBackground(SystemColor.control);
 		getContentPane().add(panelClericOptions, "Class Options");
 		panelClericOptions.setLayout(null);
 		
+		final JLabel labelSubDetail = new JLabel("");
+		labelSubDetail.setHorizontalAlignment(SwingConstants.CENTER);
+		labelSubDetail.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelSubDetail.setBounds(174, 332, 279, 65);
+		panelClericOptions.add(labelSubDetail);
+		
+		rasgo = "";
 		JRadioButton rdbtnClericArcana = new JRadioButton("Arcana");
-		rdbtnClericArcana.setBounds(220, 47, 83, 15);
+		rdbtnClericArcana.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericArcana.setBounds(264, 48, 83, 20);
+		clericGroup.add(rdbtnClericArcana);
+		rdbtnClericArcana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Detect Magic, Magic Missile <br> Arcana Skill <br> Gain Two Wizard Cantrip  <html>");
+				rasgo = "Bonus Spells: Detect Magic, Magic Missile. Arcana Skill. Gain Two Wizard Cantrip.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericArcana);
 		
 		JRadioButton rdbtnClericDeath = new JRadioButton("Death");
-		rdbtnClericDeath.setBounds(220, 62, 83, 15);
+		rdbtnClericDeath.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericDeath.setBounds(264, 70, 83, 20);
+		clericGroup.add(rdbtnClericDeath);
+		rdbtnClericDeath.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: False Life, Ray of Sickness <br> Martial Weapon Proficiency <br> Gain a Necromancy Cantrip<html>");
+				rasgo = "Bonus Spells: False Life, Ray of Sickness. Martial Weapon Proficiency. Gain a Necromancy Cantrip.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericDeath);
 		
 		JRadioButton rdbtnClericForge = new JRadioButton("Forge");
-		rdbtnClericForge.setBounds(220, 77, 83, 15);
+		rdbtnClericForge.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericForge.setBounds(264, 92, 83, 20);
+		rdbtnClericForge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Identify, Searing Smite <br> Heavy Armor, Smith Tool Proficiency <br> Imbue your gear with magic <html>");
+				rasgo = "Bonus Spells: Identify, Searing Smite. Heavy Armor, Smith Tool Proficiency. Imbue your gear with magic.";
+			}
+		});
+		clericGroup.add(rdbtnClericForge);
 		panelClericOptions.add(rdbtnClericForge);
 		
 		JRadioButton rdbtnClericGrave = new JRadioButton("Grave");
-		rdbtnClericGrave.setBounds(220, 92, 70, 15);
+		rdbtnClericGrave.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericGrave.setBounds(264, 114, 70, 20);
+		clericGroup.add(rdbtnClericGrave);
+		rdbtnClericGrave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Bane, False Life <br> Heal the dying more effectively <br> Sense nearby undead <html>");
+				rasgo = "Bonus Spells: Bane, False Life. Heal the dying more effectively. Sense nearby undead.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericGrave);
 		
 		JRadioButton rdbtnClericKnowledge = new JRadioButton("Knowledge");
-		rdbtnClericKnowledge.setBounds(220, 107, 100, 15);
+		rdbtnClericKnowledge.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericKnowledge.setBounds(264, 136, 100, 20);
+		rdbtnClericKnowledge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Command, Identify <br> Two Extra Languages <br> Two knowledge skills with double proficiency bonus <html>");
+				rasgo = "Bonus Spells: Command, Identify. Two Extra Languages. Two knowledge skills with double proficiency bonus.";
+			}
+		});
+		clericGroup.add(rdbtnClericKnowledge);
 		panelClericOptions.add(rdbtnClericKnowledge);
 		
 		JRadioButton rdbtnClericLife = new JRadioButton("Life");
-		rdbtnClericLife.setBounds(220, 122, 70, 15);
+		rdbtnClericLife.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericLife.setBounds(264, 158, 70, 20);
+		clericGroup.add(rdbtnClericLife);
+		rdbtnClericLife.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Bless, Cure Wounds <br> Heavy Armor Proficiency <br> More Potent Healing Spells <html>");
+				rasgo = "Bonus Spells: Bless, Cure Wounds. Heavy Armor Proficiency. More Potent Healing Spells.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericLife);
 		
 		JRadioButton rdbtnClericLight = new JRadioButton("Light");
-		rdbtnClericLight.setBounds(220, 137, 100, 15);
+		rdbtnClericLight.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericLight.setBounds(264, 180, 100, 20);
+		clericGroup.add(rdbtnClericLight);
+		rdbtnClericLight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Burning Hands, Fearie Fire <br> Bonus Cantrip: Light <br> Impose Disadvanatge when attacked <html>");
+				rasgo = "Bonus Spells: Burning Hands, Fearie Fire. Bonus Cantrip: Light. Impose Disadvanatge when attacked.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericLight);
 		
 		JRadioButton rdbtnClericNature = new JRadioButton("Nature");
-		rdbtnClericNature.setBounds(220, 152, 83, 15);
+		rdbtnClericNature.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericNature.setBounds(264, 202, 83, 20);
+		clericGroup.add(rdbtnClericNature);
+		rdbtnClericNature.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Animal Friendship, Speak with Animals <br> Heavy Armor Proficicency <br> Gain a Druid Cantrip and a Skill <html>");
+				rasgo = "Bonus Spells: Animal Friendship, Speak with Animals. Heavy Armor Proficicency. Gain a Druid Cantrip and a Skill.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericNature);
 		
 		JRadioButton rdbtnClericOrder = new JRadioButton("Order");
-		rdbtnClericOrder.setBounds(220, 167, 83, 15);
+		rdbtnClericOrder.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericOrder.setBounds(264, 224, 83, 20);
+		clericGroup.add(rdbtnClericOrder);
+		rdbtnClericOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Command, Heroism <br> Heavy Armor and Social Skill Proficiency <br> Giant Attacks When Spellcasting <html>");
+				rasgo = "Bonus Spells: Command, Heroism. Heavy Armor and Social Skill Proficiency. Giant Attacks When Spellcasting.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericOrder);
 		
 		JRadioButton rdbtnClericTempest = new JRadioButton("Tempest");
-		rdbtnClericTempest.setBounds(220, 182, 83, 15);
+		rdbtnClericTempest.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericTempest.setBounds(264, 246, 83, 20);
+		clericGroup.add(rdbtnClericTempest);
+		rdbtnClericTempest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Fog Cloud, Thunderwave <br> Heavy Armor and Martial Weapon Proficiencies <br> Shock attacker with Lightning <html>");
+				rasgo = "Bonus Spells: Fog Cloud, Thunderwave. Heavy Armor and Martial Weapon Proficiencies. Shock attacker with Lightning.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericTempest);
 		
 		JRadioButton rdbtnClericTrickery = new JRadioButton("Trickery");
-		rdbtnClericTrickery.setBounds(220, 197, 83, 15);
+		rdbtnClericTrickery.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericTrickery.setBounds(264, 268, 83, 20);
+		clericGroup.add(rdbtnClericTrickery);
+		rdbtnClericTrickery.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Charm Person, Disguise Self <br> Grant an Ally Advantage on Stealth <html>");
+				rasgo = "Bonus Spells: Charm Person, Disguise Self. Grant an Ally Advantage on Stealth.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericTrickery);
 		
 		JRadioButton rdbtnClericWar = new JRadioButton("War");
-		rdbtnClericWar.setBounds(220, 212, 83, 15);
+		rdbtnClericWar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnClericWar.setBounds(264, 290, 83, 20);
+		clericGroup.add(rdbtnClericWar);
+		rdbtnClericWar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				labelSubDetail.setText("<html>Bonus Spells: Divine Favor, Shield of Faith <br> Heavy Armor and Martial Weapon Proficiencies <br> Attack as a Bonus Action <html>");
+				rasgo = "Bonus Spells: Divine Favor, Shield of Faith. Heavy Armor and Martial Weapon Proficiencies. Attack as a Bonus Action.";
+			}
+		});
 		panelClericOptions.add(rdbtnClericWar);
 		
 		//PANEL EQUIPMENT
@@ -384,14 +806,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect1.setBounds(237, 48, 103, 13);
 		panelClericEquipment.add(LabelSelect1);
 		
+		ButtonGroup clericWeapons = new ButtonGroup();
+		
 		JRadioButton rdbtnMace = new JRadioButton("Mace");
 		rdbtnMace.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnMace.setBounds(237, 67, 103, 21);
+		clericWeapons.add(rdbtnMace);
 		panelClericEquipment.add(rdbtnMace);
 		
 		JRadioButton rdbtnWarhammer = new JRadioButton("Warhammer");
 		rdbtnWarhammer.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnWarhammer.setBounds(237, 85, 103, 21);
+		clericWeapons.add(rdbtnWarhammer);
 		panelClericEquipment.add(rdbtnWarhammer);
 		
 		JLabel LabelSelect2 = new JLabel("\u2022 Select:");
@@ -399,14 +825,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect2.setBounds(237, 120, 103, 13);
 		panelClericEquipment.add(LabelSelect2);
 		
+		ButtonGroup clericArmor = new ButtonGroup();
+		
 		JRadioButton rdbtnScaleMail = new JRadioButton("Scale mail");
 		rdbtnScaleMail.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnScaleMail.setBounds(237, 139, 103, 21);
+		clericArmor.add(rdbtnScaleMail);
 		panelClericEquipment.add(rdbtnScaleMail);
 		
 		JRadioButton rdbtnLeatherArmor = new JRadioButton("Leather armor");
 		rdbtnLeatherArmor.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnLeatherArmor.setBounds(237, 157, 103, 21);
+		clericArmor.add(rdbtnLeatherArmor);
 		panelClericEquipment.add(rdbtnLeatherArmor);
 		
 		JLabel LabelSelect3 = new JLabel("\u2022 Select:");
@@ -414,14 +844,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect3.setBounds(237, 192, 103, 13);
 		panelClericEquipment.add(LabelSelect3);
 		
+		ButtonGroup clericWeapon1 = new ButtonGroup();
+		
 		JRadioButton rdbtnLightCrossbow = new JRadioButton("Light crossbow, bolts (20)");
 		rdbtnLightCrossbow.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnLightCrossbow.setBounds(237, 211, 143, 21);
+		clericWeapon1.add(rdbtnLightCrossbow);
 		panelClericEquipment.add(rdbtnLightCrossbow);
 		
 		JRadioButton rdbtnSimpleWeapon = new JRadioButton("Simple Weapon");
 		rdbtnSimpleWeapon.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnSimpleWeapon.setBounds(237, 229, 103, 21);
+		clericWeapon1.add(rdbtnSimpleWeapon);
 		panelClericEquipment.add(rdbtnSimpleWeapon);
 		
 		JLabel LabelSelect4 = new JLabel("\u2022 Select:");
@@ -429,14 +863,18 @@ public class CreationWindow extends JFrame {
 		LabelSelect4.setBounds(237, 264, 103, 13);
 		panelClericEquipment.add(LabelSelect4);
 		
+		ButtonGroup clericItem = new ButtonGroup();
+		
 		JRadioButton rdbtnPriest = new JRadioButton("Priest's pouch");
 		rdbtnPriest.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnPriest.setBounds(237, 283, 143, 21);
+		clericItem.add(rdbtnPriest);
 		panelClericEquipment.add(rdbtnPriest);
 		
 		JRadioButton rdbtnExplorer = new JRadioButton("Explorer's pack");
 		rdbtnExplorer.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		rdbtnExplorer.setBounds(237, 301, 103, 21);
+		clericItem.add(rdbtnExplorer);
 		panelClericEquipment.add(rdbtnExplorer);
 		
 		JLabel LabelShield = new JLabel("\u2022 Shield");
@@ -447,6 +885,7 @@ public class CreationWindow extends JFrame {
 		JLabel LabelSymbol = new JLabel("\u2022 Holy symbol");
 		LabelSymbol.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		LabelSymbol.setBounds(237, 352, 103, 21);
+		
 		panelClericEquipment.add(LabelSymbol);
 		
 		//PANEL NAME
@@ -456,11 +895,11 @@ public class CreationWindow extends JFrame {
 		getContentPane().add(panelName, "Name");
 		panelName.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setBounds(252, 162, 116, 19);
-		panelName.add(textField);
-		textField.setColumns(10);
+		textFieldName = new JTextField();
+		textFieldName.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldName.setBounds(252, 162, 116, 19);
+		panelName.add(textFieldName);
+		textFieldName.setColumns(10);
 		
 		JLabel LabelName = new JLabel("Name");
 		LabelName.setBounds(293, 189, 36, 13);
@@ -480,21 +919,53 @@ public class CreationWindow extends JFrame {
 		panelFinish.add(LabelFinish);
 		
 		//esto no funciona como debe, necesita hilos
-		JLabel LabelResult = new JLabel(RaceSelected + " "+ ClassSelected + " "+BackgroundSelected);
+		
 		LabelResult.setBounds(182, 165, 216, 13);
 		panelFinish.add(LabelResult);
 		
+		//Al pulsar este boton se cierra la ventana editor y se carga la informacion en un Personaje
 		JButton DoneButton = new JButton("Done");
 		DoneButton.setBounds(192, 188, 85, 21);
 		DoneButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Los siguientes comentarios indican los botones de esta ventana, CreationWindow
+				//Race & Class
+				character.getRaza().setNombre(RaceSelected);
+				character.getSubraza().setNombre(comboSubrace.getName());
+				character.getClasepj().setNombre(ClassSelected);
+				//Background sin hacer
+				
+				//Ability Scores
+				character.getStr().setScore(Integer.parseInt(LabelStrNum.getText()));
+				character.getDex().setScore(Integer.parseInt(LabelDexNum.getText()));
+				character.getCon().setScore(Integer.parseInt(LabelConNum.getText()));
+				character.getIntel().setScore(Integer.parseInt(LabelIntNum.getText()));
+				character.getWis().setScore(Integer.parseInt(LabelWisNum.getText()));
+				character.getCha().setScore(Integer.parseInt(LabelChaNum.getText()));
+				
+				//Proficiencies
+				//Incompleto
+				
+				//Class options
+				//Sin implementar en DB
+				String[] textoRasgos = rasgo.split(".");
+				character.getClasepj().setRasgos(textoRasgos);;
+				
+				//Equipment
+				//Incompleto
+				
+				//Name
+				character.setName(textFieldName.getText());
+				
+				//Metodo para actualizar las label de mainAndWindow (la ventana inicial)
+				setExternalLabels(character);
+				
 				dispose();
 			}
 		});
 		panelFinish.add(DoneButton);
 		
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 680, 495);
 		
 		JMenuBar menuBar = new JMenuBar();

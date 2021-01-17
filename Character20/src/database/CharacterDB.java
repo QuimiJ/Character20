@@ -138,8 +138,8 @@ public class CharacterDB {
 				stmt5.setString(2, character.getClasepj().getNombre());
 				stmt5.setString(3, character.getClasepj().getHitdie());
 				stmt5.setString(4, character.getClasepj().getRasgos()[0]);
-				stmt5.setString(5, character.getClasepj().getRasgos()[1]);
-				stmt5.setString(6, character.getClasepj().getRasgos()[2]);
+				stmt5.setString(5, character.getClasepj().getRasgos()[0]);
+				stmt5.setString(6, character.getClasepj().getRasgos()[0]);
 				stmt5.setBoolean(7, character.getClasepj().isSimpleproficiency());
 				stmt5.setBoolean(8, character.getClasepj().isMartialproficiency());
 				stmt5.executeUpdate();

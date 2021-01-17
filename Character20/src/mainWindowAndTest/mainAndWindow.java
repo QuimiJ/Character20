@@ -27,8 +27,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
+import mainWindowAndTest.CreationWindow;
 
-public class Window extends JFrame {
+public class mainAndWindow extends JFrame {
 
 	private JFrame frame;
 	private static CharacterDB characterDB;
@@ -87,7 +88,7 @@ public class Window extends JFrame {
 				try {
 					//Metodo que maneja un fichero properties que guarda las veces que se ha usado la aplicacion.
 					timesOpenProperties();
-					Window window = new Window();
+					mainAndWindow window = new mainAndWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -99,7 +100,7 @@ public class Window extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public Window() {
+	public mainAndWindow() {
 		//Metodo para inicializar la ventana
 		initialize();
 	}
@@ -891,6 +892,27 @@ public class Window extends JFrame {
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
+		JButton bEditor = new JButton("Editor");
+		bEditor.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Thread tEditor = new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							CreationWindow frame = new CreationWindow(character);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				tEditor.start();
+			}			
+		});
+		bEditor.setBounds(0, 10, 100, 42);
+		panel_4.add(bEditor);
+		
 		JButton bBackground = new JButton("Modo nocturno \r\n");
 		bBackground.addActionListener(new ActionListener() {
 			@Override
@@ -912,24 +934,10 @@ public class Window extends JFrame {
 					}
 				});
 				tBackground.start();
-				
 			}			
 		});
-		bBackground.setBounds(0, 10, 130, 42);
+		bBackground.setBounds(100, 10, 100, 42);
 		panel_4.add(bBackground);
-		
-		JButton bStoreProperties = new JButton("Store");
-		//RODEAR de un if que chequeé si se puede hacer el store 
-		bStoreProperties.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {		
-				getLabelsTextFields(character);
-				storeOrLoadDB("store", character, "");		
-			}
-		});
-		bStoreProperties.setBounds(300, 10, 120, 42);
-		panel_4.add(bStoreProperties);
-		
 		
 		JButton bLoadProperties = new JButton("Load");
 		//RODEAR de un if que chequeé si se puede hacer el load
@@ -950,8 +958,20 @@ public class Window extends JFrame {
 				tStore.start();
 			}
 		});
-		bLoadProperties.setBounds(150, 10, 130, 42);
-		panel_4.add(bLoadProperties);		
+		bLoadProperties.setBounds(200, 10, 100, 42);
+		panel_4.add(bLoadProperties);	
+		
+		JButton bStoreProperties = new JButton("Store");
+		//RODEAR de un if que chequeé si se puede hacer el store 
+		bStoreProperties.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {		
+				getLabelsTextFields(character);
+				storeOrLoadDB("store", character, "");		
+			}
+		});
+		bStoreProperties.setBounds(300, 10, 100, 42);
+		panel_4.add(bStoreProperties);
 	}
 	
 	//Recibe un String operation que controla que operacion ejectuta el metodo (store o load),
@@ -978,7 +998,7 @@ public class Window extends JFrame {
 			return character;
 	}
 	
-	public void setLabelsTextFields(Personaje character) {
+	public static void setLabelsTextFields(Personaje character) {
 		textFieldIntroduceTuNombre.setText(character.getName());
 		textFieldPuntosGolpe.setText(Integer.toString(character.getLife()));
 		textFieldAC.setText(Integer.toString(character.getAC()));

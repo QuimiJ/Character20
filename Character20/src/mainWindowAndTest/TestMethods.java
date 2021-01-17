@@ -1,12 +1,16 @@
 package mainWindowAndTest;
 
 import clasesCriatura.*;
+import mainWindowAndTest.CreationWindow;
 import static org.junit.Assert.*;
 
+import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
+
+import javax.swing.JLabel;
 
 import org.junit.Test;
 
@@ -37,6 +41,4 @@ public class TestMethods {
 		tStat.setScore(15);
 		assertEquals(2, tStat.getModifier());
 	}
-	
-	
 }
